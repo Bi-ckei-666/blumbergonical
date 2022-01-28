@@ -52,3 +52,4 @@ class CartMixin(View):
 			
 
 
+# Послание в миксынах!!!
