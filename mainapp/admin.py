@@ -61,3 +61,8 @@ admin.site.register(Cart)
 admin.site.register(Customer)
 admin.site.register(Order)
 admin.site.register(Lighting, LightingAdmin)
+
+
+
+#интересно получилось или нет
+
