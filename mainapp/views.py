@@ -38,18 +38,14 @@ def other_page(request, page):
 '''
 class ContactView(CategoryDetailMixin, CartMixin, View):
 
-    def contact(request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
             
         categories = Category.objects.get_categories_for_left_sidebar()
-        products = LatestProducts.objects.get_products_for_main_page(
-            'notebook', 
-            'smartphone',
-            'lighting' 
-        ) 
+         
         context = {
-           
-            'categories': categories,
-            'products': products            
+            'cart': self.cart,
+            'categories': categories
+                        
         }
         return render(request, 'contact.html', context)
 
