@@ -143,7 +143,7 @@
                     <div class="col mb-5">
                         <div class="card">
                             <!-- Product image-->
-                            <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="..." />
+                            <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="..." style="height: 130px" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -165,18 +165,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="paginator">
-                    {% if page.hase_previous %}
-                    <a href="?page={{ page.previous_page_number }}">&lt</a>
-                    &nbsp;&nbsp; |&nbsp;&nbsp;   
-                    {% endif %} 
-                    часть № {{ page.number }} из {{ page.current_page.num_pages }}
-                    {% if page.has_next %}
-                    &nbsp;&nbsp; |&nbsp;&nbsp;
-                    <a href="?page={{ page.next_page_number }}">&gt</a>
-                    {% endif %}
-
-            </div>
+                
             </div>
             
 

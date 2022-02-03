@@ -62,12 +62,15 @@ class BaseView(CartMixin, View):
             'smartphone',
             'lighting',
             'nonstationarywire' 
-        ) 
-
+        )  
+        paginator = Paginator(products, 4)
+        page_number = self.request.GET.get('page')
+        product_list = paginator.get_page(page_number)
         context = {
             'categories': categories,
             'products': products,
-            'cart': self.cart
+            'cart': self.cart,
+            'product_list': product_list
            
         }
         return render(request, 'base.html', context)
