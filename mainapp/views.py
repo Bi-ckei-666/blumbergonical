@@ -18,7 +18,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Notebook, Smartphone, Category, LatestProducts, Customer, Cart, CartProduct, Lighting
+from .models import Notebook, Smartphone, Category, LatestProducts, Customer, Cart, CartProduct, Lighting, NonStationaryWire
 from .mixins import CategoryDetailMixin, CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
@@ -60,7 +60,8 @@ class BaseView(CartMixin, View):
         products = LatestProducts.objects.get_products_for_main_page(
             'notebook', 
             'smartphone',
-            'lighting' 
+            'lighting',
+            'nonstationarywire' 
         ) 
 
         context = {
@@ -80,7 +81,8 @@ class ProductDetailView(CategoryDetailMixin, DetailView, CartMixin):
     CT_MODEL_MODEL_CLASS = {
         'notebook': Notebook,
         'smartphone': Smartphone,
-        'lighting': Lighting
+        'lighting': Lighting,
+        'nonstationarywire': NonStationaryWire
 
     }
 

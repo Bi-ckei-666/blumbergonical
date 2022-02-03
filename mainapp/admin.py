@@ -49,6 +49,13 @@ class LightingAdmin(admin.ModelAdmin):
 			return ModelChoiceField(Category.objects.filter(slug='Lighting'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 
+class NonStationaryWireAdmin(admin.ModelAdmin):
+
+	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
+		if db_filed.name == 'category':
+			return ModelChoiceField(Category.objects.filter(slug='Nonstationarywire'))
+		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
+
 
 
 
@@ -61,6 +68,7 @@ admin.site.register(Cart)
 admin.site.register(Customer)
 admin.site.register(Order)
 admin.site.register(Lighting, LightingAdmin)
+admin.site.register(NonStationaryWire, NonStationaryWireAdmin)
 
 
 

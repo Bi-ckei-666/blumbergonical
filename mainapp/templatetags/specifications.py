@@ -59,6 +59,21 @@ PRODUCT_SPEC = {
         'Мощность': 'power',
         'Цоколь': 'plinth',
         'Форма Лампы': 'form_light'
+    },
+
+    'nonstationarywire': {
+
+        'Наименование товара': 'name',
+        'Серия': 'seria',
+        'Брэнд': 'brand',
+        'Артикул производителя': 'articals',
+        'Срок гарантии': 'garant_time',
+        'Страна производитель': 'created_cantry',
+        #'Наминальное сечение проводника': 'nominal_section',
+        'Материал жил проводника': 'material',
+        'Класс токопроводящей жилы': 'conductor_class',
+        'Форма жил проводника': 'form_wire'
+
     }
 }
 

@@ -73,7 +73,8 @@ class CategoryManager(models.Manager):
 	CATEGORY_NAME_COUNT_NAME = {
 		'Ноутбуки': 'notebook__count',
 		'Смартфоны':'smartphone__count',
-		'Освещение': 'lighting__count'
+		'Освещение': 'lighting__count',
+		'Кабели и провода': 'nonstationarywire__count'
 	}
 	
 	def get_queryset(self):
@@ -81,7 +82,7 @@ class CategoryManager(models.Manager):
 
 
 	def get_categories_for_left_sidebar(self):
-		models = get_models_for_count('notebook', 'smartphone', 'lighting')
+		models = get_models_for_count('notebook', 'smartphone', 'lighting', 'nonstationarywire')
 		qs = list(self.get_queryset().annotate(*models))
 		data = [
 			dict(name=c.name, url=c.get_absolute_url(), count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -179,6 +180,23 @@ class Lighting(Product):
 	def get_absolute_url(self):
 		return get_product_url(self, 'product_detail')
 	
+class NonStationaryWire(Product):
+	name = models.CharField(max_length=255, verbose_name='Наименование товара')
+	brand = models.CharField(max_length=255, verbose_name='Брэнд')
+	seria = models.CharField(max_length=255, verbose_name='Серия')
+	articals = models.CharField(max_length=255, verbose_name='Артикул производителя')
+	garant_time = models.CharField(max_length=255, verbose_name='Срок гарантии')
+	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
+	#nominal_section = models.CharField(max_length=255, verbose_name='Наминально сечение проводника')
+	material = models.CharField(max_length=255, verbose_name='Материал жил проводника')
+	conductor_class = models.CharField(max_length=255, verbose_name='Класс токопроводящей жилы')
+	form_wire = models.CharField(max_length=255, verbose_name='Форма жил проводника')
+
+	def __str__(self):
+		return "{} : {}".format(self.category.name, self.title)
+
+	def get_absolute_url(self):
+		return get_product_url(self, 'product_detail')
 
 
 
