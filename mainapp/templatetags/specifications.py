@@ -35,7 +35,9 @@ PRODUCT_SPEC = {
         'Частота процессора': 'processor_freq',
         'Оперативная память': 'ram',
         'Видеокарта': 'video',
-        'Время работы аккумулятора': 'time_without_charge'
+        'Время работы аккумулятора': 'time_without_charge',
+        'Количество': 'count_view'
+
     },
     'smartphone': {
         'Диагональ': 'diagonal',
@@ -46,7 +48,8 @@ PRODUCT_SPEC = {
         'Наличие слота для SD карты': 'sd',
         'Максимальный объем SD карты': 'sd_volume',
         'Камера (МП)': 'main_cam_mp',
-        'Фронтальная камера (МП)': 'frontal_cam_mp'
+        'Фронтальная камера (МП)': 'frontal_cam_mp',
+        'Количество': 'count_view'
     },
     'lighting': {
 
@@ -58,7 +61,8 @@ PRODUCT_SPEC = {
         'Страна производитель': 'created_cantry',
         'Мощность': 'power',
         'Цоколь': 'plinth',
-        'Форма Лампы': 'form_light'
+        'Форма Лампы': 'form_light',
+        'Количество': 'count_view'
     },
 
     'nonstationarywire': {
@@ -72,7 +76,8 @@ PRODUCT_SPEC = {
         #'Наминальное сечение проводника': 'nominal_section',
         'Материал жил проводника': 'material',
         'Класс токопроводящей жилы': 'conductor_class',
-        'Форма жил проводника': 'form_wire'
+        'Форма жил проводника': 'form_wire',
+        'Количество': 'count_view'
 
     }
 }

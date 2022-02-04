@@ -119,7 +119,7 @@ class Product(models.Model):
 	image = models.ImageField(verbose_name='Изображение')
 	description = models.TextField(verbose_name='описание', null=True)
 	price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
-
+	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
 
 	def __str__(self):
 		return self.title
@@ -136,6 +136,8 @@ class Notebook(Product):
 	ram = models.CharField(max_length=255, verbose_name = 'оперативная память')
 	video = models.CharField(max_length=255, verbose_name = 'видеокарта')
 	time_without_charge = models.CharField(max_length=255, verbose_name = 'время работы аккумулятора')
+	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)
@@ -156,6 +158,8 @@ class Smartphone(Product):
 	sd_volume = models.CharField(max_length=255, null=True, blank=True, verbose_name = 'Максимальный объем SD карты')
 	main_cam_mp = models.CharField(max_length=255, verbose_name = 'главная камера')
 	frontal_cam_mp = models.CharField(max_length=255, verbose_name = 'фронтальная камера')
+	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)
@@ -173,6 +177,7 @@ class Lighting(Product):
 	power = models.CharField(max_length=255, verbose_name='Мощность')
 	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
 	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
+	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)
@@ -191,6 +196,8 @@ class NonStationaryWire(Product):
 	material = models.CharField(max_length=255, verbose_name='Материал жил проводника')
 	conductor_class = models.CharField(max_length=255, verbose_name='Класс токопроводящей жилы')
 	form_wire = models.CharField(max_length=255, verbose_name='Форма жил проводника')
+	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)

@@ -5,7 +5,7 @@
 
 	<h3 class="text-center mt-5 mb-5">Оформления заказа </h3>
 	
-
+<section id="content-sec">
 	<table class="table">
 		<thead>
 			<tr>
@@ -42,16 +42,16 @@
 	</table>
 
 
-<h3>
+
 	<h3 class="text-center mt-5 mb-5">Форма заказа</h3>
 
-<form action="{% url 'make_order' %}" method="POST">
-	{% csrf_token %}
-	{{ form|crispy }}
-  <input type="submit" class="btn btn-success btn-block mb-3" values="Оформить заказ">
-</form>
+	<form action="{% url 'make_order' %}" method="POST">
+		{% csrf_token %}
+		{{ form|crispy }}
+	  <input type="submit" class="btn btn-success btn-block mb-3" values="Оформить заказ">
+	</form>
 
-
+</section>
 
 
 {% endblock content %}

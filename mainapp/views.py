@@ -13,7 +13,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import TemplateDoesNotExist
 from django.template.loader import get_template
-from django.views.generic import DetailView, View
+from django.views.generic import DetailView, View, ListView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
@@ -52,9 +52,9 @@ class ContactView(CategoryDetailMixin, CartMixin, View):
 
 
 
-
 class BaseView(CartMixin, View):
 
+  
     def get(self, request, *args, **kwargs):
         categories = Category.objects.get_categories_for_left_sidebar()
         products = LatestProducts.objects.get_products_for_main_page(
@@ -71,7 +71,7 @@ class BaseView(CartMixin, View):
             'products': products,
             'cart': self.cart,
             'product_list': product_list
-           
+  
         }
         return render(request, 'base.html', context)
 
