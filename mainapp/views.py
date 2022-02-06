@@ -62,8 +62,10 @@ class BaseView(CartMixin, View):
             'smartphone',
             'lighting',
             'nonstationarywire' 
-        )  
-        paginator = Paginator(products, 4)
+        )
+
+        prod = products 
+        paginator = Paginator(prod, 4)
         page_number = self.request.GET.get('page')
         product_list = paginator.get_page(page_number)
         context = {
