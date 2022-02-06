@@ -23,7 +23,7 @@ from .mixins import CategoryDetailMixin, CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
 
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 '''
@@ -52,6 +52,27 @@ class ContactView(CategoryDetailMixin, CartMixin, View):
 
 
 
+def listing(request):
+    products_list = LatestProducts.objects.get_products_for_main_page(
+            'notebook', 
+            'smartphone',
+            'lighting',
+            'nonstationarywire' 
+        )
+    paginator = Paginator(products_list, 25) # Show 25 products per page
+
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        products = paginator.page(paginator.num_pages)
+
+    return render_to_response('base.html', {"products": products})
+
 class BaseView(CartMixin, View):
 
   
@@ -64,8 +85,8 @@ class BaseView(CartMixin, View):
             'nonstationarywire' 
         )
 
-        prod = products 
-        paginator = Paginator(prod, 4)
+       
+        paginator = Paginator(products, 4)
         page_number = self.request.GET.get('page')
         product_list = paginator.get_page(page_number)
         context = {
@@ -75,6 +96,7 @@ class BaseView(CartMixin, View):
             'product_list': product_list
   
         }
+        print(product_list)
         return render(request, 'base.html', context)
 
 
