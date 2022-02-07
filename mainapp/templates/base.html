@@ -42,7 +42,7 @@
 
             #nav-pan {
                 float: left;
-                height: 1500px;
+                height: 1000px;
                 width: 20%;
 
             }
@@ -167,7 +167,7 @@
                         </div>
                     </div>
                     {% endfor %}
-                    <div class="pagination">
+                    <div class="pagination" id="paginate">
                         <span class="step-links">
                             {% if product_list.has_previous %}
                                 <a href="?page=1">&laquo; first</a>
@@ -312,8 +312,6 @@
                 <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
             </ul>
         </footer>
-         <footer class="py-5 bg-dark" class="footer mt-auto" id="f-r">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
-        </footer>
+        
     </body>
 </html>
