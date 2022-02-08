@@ -18,7 +18,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Notebook, Smartphone, Category, LatestProducts, Customer, Cart, CartProduct, Lighting, NonStationaryWire
+from .models import Notebook, Smartphone, Category, LatestProducts, Customer, Cart, CartProduct, Lighting, NonStationaryWire, SubCat
 from .mixins import CategoryDetailMixin, CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
@@ -36,6 +36,10 @@ def other_page(request, page):
 
 
 '''
+
+
+
+
 class ContactView(CategoryDetailMixin, CartMixin, View):
 
     def get(self, request, *args, **kwargs):
@@ -58,23 +62,20 @@ class BaseView(CartMixin, View):
   
     def get(self, request, *args, **kwargs):
         categories = Category.objects.get_categories_for_left_sidebar()
+
         products = LatestProducts.objects.get_products_for_main_page(
             'notebook', 
             'smartphone',
             'lighting',
             'nonstationarywire' 
         )
-
-       
         paginator = Paginator(products, 4)
         page_number = self.request.GET.get('page')
         product_list = paginator.get_page(page_number)
         context = {
             'categories': categories,
-           
             'cart': self.cart,
             'product_list': product_list
-  
         }
         print(len(product_list))
         print(product_list)
@@ -121,7 +122,27 @@ class CategoryDetailView(CategoryDetailMixin, DetailView, CartMixin):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
         context['cart'] = self.cart
+
+
+        return context
+
+class SubCatView(CategoryDetailMixin, DetailView, CartMixin):
+
+    model = Category
+    queryset = Category.objects.all()
+    context_object_name = 'sub_category'
+    template_name = 'sub_category_detail.html'
+    slug_url_kwarg = 'slug'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['cart'] = self.cart
+
+
         return context
     
 

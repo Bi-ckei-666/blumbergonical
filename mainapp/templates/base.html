@@ -26,6 +26,8 @@
             body {
                 display: flex;
                 flex-direction: column;
+                background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
+
             }
 
             section {
@@ -36,33 +38,61 @@
                 position: absolute;
                 right: 0;
                 float: left;
-                height: 50%;
+                
                 width: 80%;
             }
+            
 
             #nav-pan {
                 float: left;
                 height: 1000px;
                 width: 20%;
+                
+                background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
+
+
 
             }
 
             .paginator  {
                 clear: left;
+                width: 200px;
             }
 
-            #footer-down {
+            footer {
                 flex: 0 0 auto;
                 clear: left;
                 margin-top: -100px;
                 height: 100px;
+                background: linear-gradient(to bottom, #ccffff 0%, #006699 100%);
                 
             }
 
             #f-r {
                 clear: left;
             }
+            #search {
+                margin-left: auto;
+                margin-right: auto;
+                align-content: center;
+                width: 600px;
+                height: 45px;
+                background: linear-gradient(to bottom, #3333cc 0%, #00ffff 100%);
+                border-radius: 8px;
+                
+                
+            }
 
+            header {
+                background: linear-gradient(to bottom, #3333cc 0%, #00ffff 100%);
+            }
+
+            #header_text {
+                font-style: italic;
+                font-style: oblique;
+
+
+            }
 
            
 
@@ -106,120 +136,49 @@
         <!-- Header-->
         
 
-        <header class="bg-dark py-5" >
+        <header class=" py-5" id="header">
             <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
+                <div class="text-center text-black" id="header_text">
                     <h1 class="display-4 fw-bolder">Высокое напряжение</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">интернет магазин</p>
+                    <p class="lead fw-normal text-black-50 mb-0">интернет магазин</p>
                 </div>
             </div>
+            
                
         </header>
+            <div id="search">
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0">
+                    <input type="search" class="form-control" placeholder="Поиск" aria-label="Search" style="border-radius: ;">
+                </form>
+            </div>
 
         
 
         <!-- Section-->
         <section class="py-5" id="">
 
-            
-
-                        
-            {% block content %}
-            {% if messages %}
-                {% for message in messages %}
-
-                <div class="alert alert-saccess alert-dismissible fade show" role="alert">
-                    <strong>{{ message }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    <span aria-hidden="true">&times;</span>
-                </div>
-
-                {% endfor %}
-            {% endif %}
-            <div class="container px-4 px-lg-5 mt-5" id="content-sec">
-                
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="product_pic">
-                    {% for product in product_list %}
-                    <div class="col mb-5">
-                        {{ product.full_name|upper }}
-                        <div class="card">
-                            <!-- Product image-->
-                            <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="..." style="height: 180px" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">
-                                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-                                    </h5>
-                                    
-                                    <!-- Product price-->
-                                    <p>{{ product.price }} руб.</p>
-                                    <p>Количество {{ product.count_view }}</p>
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                    <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}"><button class="btn btn-outline-dark mt-auto">Добавить товар в корзину</button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <div class="pagination" id="paginate">
-                        <span class="step-links">
-                            {% if product_list.has_previous %}
-                                <a href="?page=1">&laquo; first</a>
-                                <a href="? page={{ product_list.previous_page_number }}">previous</a>
-                            {% endif %}
-
-                            <span class="current">
-                                Page {{ product_list.number }} of {{ product_list.paginator.num_pages }}.
-                            </span>
-
-                            {% if product_list.has_next %}
-                                <a href="?page={{ product_list.next_page_number }}">next</a>
-                                <a href="?page={{ product_list.paginator.num_pages }}">last &raquo;</a>
-                            {% endif %}
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-            
-
-            {% endblock content %}
-
-
             <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;" id="nav-pan">
                 <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-                    <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+                   
                     <span class="fs-5 fw-semibold">Навигация</span>
                 </a>
                 <ul class="list-unstyled ps-0">
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-                        Home
+                        Категории
                         </button>
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li>
-                                    <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#item-collapse" aria-expanded="true">
-                                    категории
-                                    </button>
-                                        <div class="collapse show" id="item-collapse">
+                                {% for category in categories %}
+                                    <li><a class="dropdown-item" href="{{ category.url}}">{{ category.name }} ({{ category.count }})</a></li>
+                                        <div class="collapse show" id="home-collapse">
                                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                                {% for category in categories %}
-                                                <li><a class="dropdown-item" href="{{ category.url}}">{{ category.name }} ({{ category.count }})</a></li>
-                                                {% endfor %}
+                                                <li><a class="dropdown-item" href="{{ subcat.url}}">{{ subcat.name }} </a></li>
+                                                
                                             </ul>
-                                        </div>
-                                </li>
-                                <li><a href="#" class="link-dark rounded">Updates</a></li>
-                                <li><a href="#" class="link-dark rounded">Reports</a></li>
-                                
-                            </ul>
+                                        </div>                                
+                                {% endfor %}
+                            </ul>    
                         </div>
                         
                             
@@ -267,6 +226,78 @@
                     </li>
                 </ul>
             </div>
+
+                        
+            {% block content %}
+            {% if messages %}
+                {% for message in messages %}
+
+                <div class="alert alert-saccess alert-dismissible fade show" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <span aria-hidden="true">&times;</span>
+                </div>
+
+                {% endfor %}
+            {% endif %}
+            <div class="container px-4 px-lg-5 mt-5" id="content-sec">
+                
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="product_pic">
+                    {% for product in product_list %}
+                    <div class="col mb-5" id="pord-view">
+                        {{ product.full_name|upper }}
+                        <div class="card" style="background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);" >
+                            <!-- Product image-->
+                            <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="..." style="height: 120px" />
+                            <!-- Product details-->
+                            <div class="card-body p-4" style="height: 120px">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">
+                                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                                    </h5>
+                                    
+                                    <!-- Product price-->
+                                    <p>{{ product.price }} руб.</p>
+                                    <p>Количество {{ product.count_view }}</p>
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center">
+                                    <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}"><button class="btn btn-outline-dark mt-auto">Добавить товар в корзину</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="pagination" id="paginate">
+                        <span class="step-links">
+                            {% if product_list.has_previous %}
+                                <a href="?page=1">&laquo; Первая</a>
+                                <a href="? page={{ product_list.previous_page_number }}">Предидущая</a>
+                            {% endif %}
+
+                            <!--<span class="current">
+                                Страница {{ product_list.number }} из {{ product_list.paginator.num_pages }}.
+                            </span> -->
+
+                            {% if product_list.has_next %}
+                                <a href="?page={{ product_list.next_page_number }}">Далее</a>
+                                <a href="?page={{ product_list.paginator.num_pages }}">Последняя &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+
+                    
+
+            {% endblock content %}
+
+
+            
         
         </section>
 
@@ -302,7 +333,7 @@
                 <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                     <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
                 </a>
-                <span class="text-muted">&copy; 2021 Company, Inc</span>
+                <span class="text-muted-black-center" >&copy; 2022 NerEnergo, Inc</span>
                 
             </div>
 

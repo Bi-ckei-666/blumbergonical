@@ -30,6 +30,12 @@ class NotebookAdmin(admin.ModelAdmin):
 			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 
+class SubNotebookAdmin(admin.ModelAdmin):	
+	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
+		if db_filed.name == 'category':
+			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
+		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
+
 
 class SmartphoneAdmin(admin.ModelAdmin):	
 
@@ -47,6 +53,8 @@ class LightingAdmin(admin.ModelAdmin):
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
 			return ModelChoiceField(Category.objects.filter(slug='Lighting'))
+		elif db_filed.name == 'sub_categor':
+			return ModelChoiceField(SubCat.objects.filter(slug='Lamps'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 
 class NonStationaryWireAdmin(admin.ModelAdmin):
@@ -54,6 +62,7 @@ class NonStationaryWireAdmin(admin.ModelAdmin):
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
 			return ModelChoiceField(Category.objects.filter(slug='Nonstationarywire'))
+			
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 
 
@@ -61,6 +70,7 @@ class NonStationaryWireAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category)
+admin.site.register(SubCat)
 admin.site.register(Notebook, NotebookAdmin)
 admin.site.register(Smartphone, SmartphoneAdmin)
 admin.site.register(CartProduct)
@@ -72,5 +82,4 @@ admin.site.register(NonStationaryWire, NonStationaryWireAdmin)
 
 
 
-#интересно получилось или нет
 
