@@ -29,13 +29,13 @@ class NotebookAdmin(admin.ModelAdmin):
 		if db_filed.name == 'category':
 			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-
+'''
 class SubNotebookAdmin(admin.ModelAdmin):	
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
 			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-
+'''
 
 class SmartphoneAdmin(admin.ModelAdmin):	
 
@@ -70,7 +70,6 @@ class NonStationaryWireAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category)
-admin.site.register(SubCat)
 admin.site.register(Notebook, NotebookAdmin)
 admin.site.register(Smartphone, SmartphoneAdmin)
 admin.site.register(CartProduct)

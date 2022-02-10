@@ -4,7 +4,7 @@ from django.views.generic import View
 
 
 
-from .models import Category, Customer, Cart, Notebook, Smartphone, Lighting, NonStationaryWire, SubCat
+from .models import Category, Customer, Cart, Notebook, Smartphone, Lighting, NonStationaryWire
 
 class CategoryDetailMixin(SingleObjectMixin):
 
@@ -22,7 +22,6 @@ class CategoryDetailMixin(SingleObjectMixin):
 			model = self.CATEGORY_SLUG2PRODUCT_MODEL[self.get_object().slug]
 			context = super().get_context_data(**kwargs)
 			context['categories'] = Category.objects.get_categories_for_left_sidebar()
-			context['subcategoies'] = SubCat.objects.all()
 			context['category_products'] = model.objects.all()
 			return context	
 	

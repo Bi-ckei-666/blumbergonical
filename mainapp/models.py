@@ -7,6 +7,9 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
 from django.utils import timezone
 
+from mptt.fields import TreeForeignKey
+from mptt.models import MPTTModel
+
 
 User = get_user_model()
 # Create your models here.
@@ -94,11 +97,12 @@ class CategoryManager(models.Manager):
 
 
 
-class Category(models.Model):
+class Category(MPTTModel):
 
 	name = models.CharField(max_length=255, verbose_name="имя категории")
 	slug = models.SlugField(unique=True)
 	objects = CategoryManager()
+	parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
 
 	def __str__(self):
 		return self.name
@@ -106,18 +110,8 @@ class Category(models.Model):
 	def get_absolute_url(self):
 		return reverse('category_detail', kwargs={'slug': self.slug})
 
-class SubCat(models.Model):
-
-	name = models.CharField(max_length=255, verbose_name="Имя подкатегории")
-	slug = models.SlugField(unique=True)
-	objects = CategoryManager()
-
-
-	def __str__(self):
-		return self.name
-
-	def get_absolute_url(self):
-		return reverse('sub_category_detail', kwargs={'slug': self.slug})
+	class MPTTMeta:
+		order_insertion_by = ['name']
 
 class Product(models.Model):
 
@@ -125,7 +119,6 @@ class Product(models.Model):
 		abstract = True
 
 	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
-	sub_category = models.ForeignKey(SubCat, verbose_name='Подкатегория', null=True, blank=True, on_delete=models.CASCADE)
 	title = models.CharField(max_length=255, verbose_name="наименование")
 	slug = models.SlugField(unique=True)
 	image = models.ImageField(verbose_name='Изображение')

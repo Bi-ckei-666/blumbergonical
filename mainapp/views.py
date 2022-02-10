@@ -18,7 +18,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Notebook, Smartphone, Category, LatestProducts, Customer, Cart, CartProduct, Lighting, NonStationaryWire, SubCat
+from .models import Notebook, Smartphone, Category, LatestProducts, Customer, Cart, CartProduct, Lighting, NonStationaryWire
 from .mixins import CategoryDetailMixin, CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
