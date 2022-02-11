@@ -64,7 +64,7 @@ class LatestProductsManager:
 		
 		return products
 
-
+'''
 
 class LatestProducts:
 
@@ -95,13 +95,13 @@ class CategoryManager(models.Manager):
 		return data
 
 
-
+'''
 
 class Category(MPTTModel):
 
 	name = models.CharField(max_length=255, verbose_name="имя категории")
 	slug = models.SlugField(unique=True)
-	objects = CategoryManager()
+	#objects = CategoryManager()
 	parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
 
 	def __str__(self):

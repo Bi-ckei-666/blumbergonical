@@ -18,7 +18,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Notebook, Smartphone, Category, LatestProducts, Customer, Cart, CartProduct, Lighting, NonStationaryWire
+from .models import Notebook, Smartphone, Category, Product, Customer, Cart, CartProduct, Lighting, NonStationaryWire
 from .mixins import CategoryDetailMixin, CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
@@ -44,7 +44,7 @@ class ContactView(CategoryDetailMixin, CartMixin, View):
 
     def get(self, request, *args, **kwargs):
             
-        categories = Category.objects.get_categories_for_left_sidebar()
+        categories = Category.objects.all()
          
         context = {
             'cart': self.cart,
@@ -61,14 +61,10 @@ class BaseView(CartMixin, View):
 
   
     def get(self, request, *args, **kwargs):
-        categories = Category.objects.get_categories_for_left_sidebar()
+        categories = Category.objects.all()
 
-        products = LatestProducts.objects.get_products_for_main_page(
-            'notebook', 
-            'smartphone',
-            'lighting',
-            'nonstationarywire' 
-        )
+        products = Product.objects.filter(category=self.category)
+
         paginator = Paginator(products, 4)
         page_number = self.request.GET.get('page')
         product_list = paginator.get_page(page_number)
@@ -205,7 +201,7 @@ class CartView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
         
-        categories = Category.objects.get_categories_for_left_sidebar()
+        categories = Category.objects.all()
         context = {
             'cart': self.cart,
             'categories': categories
@@ -216,7 +212,7 @@ class CartView(CartMixin, View):
 class CheckoutView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
-        categories = Category.objects.get_categories_for_left_sidebar()
+        categories = Category.objects.all()
         form = OrderForm(request.POST or None)
         context = {
             'cart': self.cart,
@@ -256,7 +252,7 @@ class MakeOrderView(CartMixin, View):
 '''
 
     def get(self, request, *args, **kwargs):
-        categories = Category.objects.get_categories_for_left_sidebar()
+        categories = Category.objects.all()
         context = {
             'cart': self.cart,
             'categories': categories
@@ -295,7 +291,7 @@ class ChangeQTYView(CartMixin, View):
 class CheckoutView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
-        categories = Category.objects.get_categories_for_left_sidebar()
+        categories = Category.objects.all()
         form = OrderForm(request.POST or None)
         context = {
             'cart': self.cart,
