@@ -152,7 +152,19 @@
                 </form>
             </div>
 
-        
+                        {% load mptt_tags %}
+                        <ul>
+                            {% recursetree categories %}
+                                <li>
+                                    {{ node.name }}
+                                    {% if not node.is_leaf_node %}
+                                        <ul class="children">
+                                            {{ children }}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endrecursetree %}
+                        </ul>
 
         <!-- Section-->
         <section class="py-5" id="">
@@ -180,6 +192,8 @@
                                 {% endfor %}
                             </ul>    
                         </div>
+
+                        
                         
                             
                     
@@ -210,20 +224,24 @@
                             </ul>
                         </div>
                     </li>
+
+                    {% load mptt_tags %}
+                        
+                    {% recursetree categories %}
                     <li class="border-top my-3"></li>
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                        Account
+                        {{ node.name }}
                         </button>
                         <div class="collapse" id="account-collapse">
+                            {% if not node.is_leaf_node %}
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-dark rounded">New...</a></li>
-                                <li><a href="#" class="link-dark rounded">Profile</a></li>
-                                <li><a href="#" class="link-dark rounded">Settings</a></li>
-                                <li><a href="#" class="link-dark rounded">Sign out</a></li>
+                                <li><a href="{{ category.get_absolute_url}}" class="link-dark rounded">{{ children }}</a></li>
                             </ul>
+                            {% endif %}
                         </div>
                     </li>
+                    {% endrecursetree %}
                 </ul>
             </div>
 

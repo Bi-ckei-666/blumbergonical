@@ -19,7 +19,6 @@ class CategoryAdmin(DraggableMPTTAdmin):
     def get_queryset(self, request):
         qs = super().get_queryset(request)
 
-        
         # Add cumulative product count
         qs = Category.objects.add_related_count(
                 qs,
@@ -44,7 +43,7 @@ class CategoryAdmin(DraggableMPTTAdmin):
         return instance.products_cumulative_count
     related_products_cumulative_count.short_description = 'Related products (in tree)'
 
-
+'''
 class SmartphoneAdminForm(ModelForm):
 
 	def __init__(self, *args, **kwargs):
@@ -64,13 +63,13 @@ class NotebookAdmin(admin.ModelAdmin):
 		if db_filed.name == 'category':
 			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-'''
+
 class SubNotebookAdmin(admin.ModelAdmin):	
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
 			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-'''
+
 
 class SmartphoneAdmin(admin.ModelAdmin):	
 
@@ -81,15 +80,16 @@ class SmartphoneAdmin(admin.ModelAdmin):
 		if db_filed.name == 'category':
 			return ModelChoiceField(Category.objects.filter(slug='Smartphone'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-
+'''
 class LightingAdmin(admin.ModelAdmin):	
 
 
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Lighting'))
-		elif db_filed.name == 'sub_categor':
-			return ModelChoiceField(SubCat.objects.filter(slug='Lamps'))
+			return ModelChoiceField(Category.objects.filter(slug='Lamps')) 
+		
+'''			
+		
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 
 class NonStationaryWireAdmin(admin.ModelAdmin):
@@ -101,18 +101,18 @@ class NonStationaryWireAdmin(admin.ModelAdmin):
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 
 
-
+'''
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Notebook, NotebookAdmin)
-admin.site.register(Smartphone, SmartphoneAdmin)
+admin.site.register(Notebook)
+admin.site.register(Smartphone)
 admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)
 admin.site.register(Order)
 admin.site.register(Lighting, LightingAdmin)
-admin.site.register(NonStationaryWire, NonStationaryWireAdmin)
+admin.site.register(NonStationaryWire)
 
 
 

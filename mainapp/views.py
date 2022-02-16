@@ -5,7 +5,6 @@
 
 #def test_view(request):
 #	return render(request, 'base.html', {} )
- 
 from django.db import transaction
 from django.shortcuts import render
 from django.contrib.contenttypes.models import ContentType
@@ -57,15 +56,15 @@ class ContactView(CategoryDetailMixin, CartMixin, View):
 
 
 
-class BaseView(CartMixin, View):
+class BaseView(CategoryDetailMixin, CartMixin, View):
 
   
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
 
-        products = Product.objects.filter(category=self.category)
+        products = Product.objects.all()
 
-        paginator = Paginator(products, 4)
+        paginator = Paginator(products, 1)
         page_number = self.request.GET.get('page')
         product_list = paginator.get_page(page_number)
         context = {
@@ -123,23 +122,9 @@ class CategoryDetailView(CategoryDetailMixin, DetailView, CartMixin):
 
 
         return context
-
-class SubCatView(CategoryDetailMixin, DetailView, CartMixin):
-
-    model = Category
-    queryset = Category.objects.all()
-    context_object_name = 'sub_category'
-    template_name = 'sub_category_detail.html'
-    slug_url_kwarg = 'slug'
-
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['cart'] = self.cart
+        
 
 
-        return context
     
 
 
