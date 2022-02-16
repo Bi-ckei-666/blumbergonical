@@ -109,7 +109,7 @@ class ProductDetailView(CategoryDetailMixin, DetailView, CartMixin):
 class CategoryDetailView(CategoryDetailMixin, DetailView, CartMixin):
 
     model = Category
-    queryset = Category.objects.all()
+    queryset = Category.objects.filter()
     context_object_name = 'category'
     template_name = 'category_detail.html'
     slug_url_kwarg = 'slug'
