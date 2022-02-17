@@ -8,6 +8,8 @@ from django.urls import reverse
 from django.utils import timezone
 
 
+from mptt.models import MPTTModel, TreeForeignKey
+
 User = get_user_model()
 # Create your models here.
 
@@ -94,12 +96,15 @@ class CategoryManager(models.Manager):
 '''
 
 
-class Category(models.Model):
+class Category(MPTTModel):
 
 	name = models.CharField(max_length=255, verbose_name="имя категории")
 	slug = models.SlugField(unique=True)
 	#objects = CategoryManager()
-	parent = models.ForeignKey('self', related_name='children',on_delete=models.CASCADE,blank=True,null=True)
+	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+
+	class MPTTMeta:
+		order_insertion_by = ['name']
 
 	def __str__(self):
 		return self.name
@@ -124,9 +129,7 @@ class SubCat(models.Model):
 
 class Product(models.Model):
 
-	class Meta:
-		abstract = True
-
+	
 	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
 	title = models.CharField(max_length=255, verbose_name="наименование")
 	slug = models.SlugField(unique=True)
@@ -150,7 +153,7 @@ class Notebook(Product):
 	ram = models.CharField(max_length=255, verbose_name = 'оперативная память')
 	video = models.CharField(max_length=255, verbose_name = 'видеокарта')
 	time_without_charge = models.CharField(max_length=255, verbose_name = 'время работы аккумулятора')
-	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
 
 
 	def __str__(self):
@@ -172,7 +175,7 @@ class Smartphone(Product):
 	sd_volume = models.CharField(max_length=255, null=True, blank=True, verbose_name = 'Максимальный объем SD карты')
 	main_cam_mp = models.CharField(max_length=255, verbose_name = 'главная камера')
 	frontal_cam_mp = models.CharField(max_length=255, verbose_name = 'фронтальная камера')
-	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
 
 
 	def __str__(self):
@@ -191,7 +194,7 @@ class Lighting(Product):
 	power = models.CharField(max_length=255, verbose_name='Мощность')
 	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
 	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
-	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)
@@ -210,7 +213,7 @@ class NonStationaryWire(Product):
 	material = models.CharField(max_length=255, verbose_name='Материал жил проводника')
 	conductor_class = models.CharField(max_length=255, verbose_name='Класс токопроводящей жилы')
 	form_wire = models.CharField(max_length=255, verbose_name='Форма жил проводника')
-	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
 
 
 	def __str__(self):

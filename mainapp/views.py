@@ -62,7 +62,7 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
 
-        products = Product.objects.filter(slug = 'slug')
+        products = Product.objects.all()
 
         paginator = Paginator(products, 1)
         page_number = self.request.GET.get('page')
