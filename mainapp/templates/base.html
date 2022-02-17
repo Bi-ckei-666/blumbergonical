@@ -1,3 +1,5 @@
+{% load mptt_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -168,7 +170,7 @@
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 {% for category in categories %}
-                                    <li><a class="dropdown-item" href="{{ category.url}}">{{ category.name }} ({{ category.count }})</a></li>
+                                    <li><a class="dropdown-item" href="{{ categories.url}}">{{ category.name }} ({{ category.count }})</a></li>
                                         <div class="collapse show" id="home-collapse">
                                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                                 <li><a class="dropdown-item" href=""> </a></li>
@@ -191,7 +193,7 @@
                         <div class="collapse" id="dashboard-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 {% for category in categories %}
-                                <li><a class="dropdown-item" href="{{ category.url}}">{{ category.name }} ({{ category.count }})</a></li>
+                                <li><a class="dropdown-item" href="">{{ category.name }} ({{ category.count }})</a></li>
                                 {% endfor %}
 
                             </ul>
@@ -211,18 +213,19 @@
                         </div>
                     </li>
 
-                    {% load mptt_tags %}
                         
-                    {% recursetree categories %}
+                        
+                    
                     <li class="border-top my-3"></li>
+                    {% recursetree categories %}
                     <li class="mb-1">
                         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
                         {{ node.name }}
                         </button>
                         <div class="collapse" id="account-collapse">
                             {% if not node.is_leaf_node %}
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="{{ category.url}}" class="link-dark rounded">{{ category.name }}{{ children }}</a></li>
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" class="children">
+                                <li><a href="/category/{{node.slug}} " class="link-dark rounded">{{ children }}</a></li>
                             </ul>
                             {% endif %}
                         </div>

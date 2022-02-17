@@ -7,9 +7,6 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
 from django.utils import timezone
 
-from mptt.fields import TreeForeignKey
-from mptt.models import MPTTModel
-
 
 User = get_user_model()
 # Create your models here.
@@ -64,13 +61,13 @@ class LatestProductsManager:
 		
 		return products
 
-'''
+
 
 class LatestProducts:
 
 	objects = LatestProductsManager()
 
-
+'''
 class CategoryManager(models.Manager):
 
 	CATEGORY_NAME_COUNT_NAME = {
@@ -86,7 +83,7 @@ class CategoryManager(models.Manager):
 
 
 	def get_categories_for_left_sidebar(self):
-		models = get_models_for_count('notebook', 'smartphone', 'lighting', 'nonstationarywire')
+		models = get_models_for_count('notebook', 'smartphone', 'lighting', 'nonstationarywire' )
 		qs = list(self.get_queryset().annotate(*models))
 		data = [
 			dict(name=c.name, url=c.get_absolute_url(), count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -94,15 +91,15 @@ class CategoryManager(models.Manager):
 		]
 		return data
 
-
 '''
 
-class Category(MPTTModel):
+
+class Category(models.Model):
 
 	name = models.CharField(max_length=255, verbose_name="имя категории")
 	slug = models.SlugField(unique=True)
 	#objects = CategoryManager()
-	parent = TreeForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
+	parent = models.ForeignKey('self', related_name='children',on_delete=models.CASCADE,blank=True,null=True)
 
 	def __str__(self):
 		return self.name
@@ -110,12 +107,25 @@ class Category(MPTTModel):
 	def get_absolute_url(self):
 		return reverse('category_detail', kwargs={'slug': self.slug})
 
-	class MPTTMeta:
-		order_insertion_by = ['name']
+'''
+class SubCat(models.Model):
+
+	name = models.CharField(max_length=255, verbose_name="Имя подкатегории")
+	slug = models.SlugField(unique=True)
+	objects = CategoryManager()
+
+
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse('sub_category_detail', kwargs={'slug': self.slug})
+'''
 
 class Product(models.Model):
 
-	
+	class Meta:
+		abstract = True
 
 	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
 	title = models.CharField(max_length=255, verbose_name="наименование")
@@ -123,7 +133,7 @@ class Product(models.Model):
 	image = models.ImageField(verbose_name='Изображение')
 	description = models.TextField(verbose_name='описание', null=True)
 	price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
-	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
 
 	def __str__(self):
 		return self.title
