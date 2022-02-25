@@ -21,7 +21,7 @@ class CategoryDetailMixin(SingleObjectMixin):
 		if isinstance(self.get_object(), Category):
 			model = self.CATEGORY_SLUG2PRODUCT_MODEL[self.get_object().slug]
 			context = super().get_context_data(**kwargs)
-			context['categories'] = Category.objects.filter(slug = 'name')
+			context['categories'] = Category.objects.all()
 			context['category_products'] = model.objects.all()
 			return context	
 	

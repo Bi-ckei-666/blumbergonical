@@ -64,7 +64,7 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
 
         products = Product.objects.all()
 
-        paginator = Paginator(products, 1)
+        paginator = Paginator(products, 4)
         page_number = self.request.GET.get('page')
         product_list = paginator.get_page(page_number)
         context = {
@@ -109,7 +109,7 @@ class ProductDetailView(CategoryDetailMixin, DetailView, CartMixin):
 class CategoryDetailView(CategoryDetailMixin, DetailView, CartMixin):
 
     model = Category
-    queryset = Category.objects.filter(name = 'name', slug = 'slug')
+    queryset = Category.objects.all()
     context_object_name = 'category'
     template_name = 'category_detail.html'
     slug_url_kwarg = 'slug'
