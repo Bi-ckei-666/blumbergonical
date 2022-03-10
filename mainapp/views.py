@@ -103,6 +103,7 @@ class ProductDetailView(CategoryDetailMixin, DetailView, CartMixin):
         context = super().get_context_data(**kwargs)
         context['ct_model'] = self.model._meta.model_name
         context['cart'] = self.cart 
+        
         return context
 
 
