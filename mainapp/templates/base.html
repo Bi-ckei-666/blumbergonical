@@ -96,6 +96,8 @@
 
            
 
+
+
             
            
             
@@ -166,7 +168,7 @@
                         Категории
                         </button>
                     </li>
-             
+        
                     {% load mptt_tags %}
                     <li class="border-top my-3"></li>
                     {% recursetree categories %}
@@ -179,7 +181,7 @@
 
                         <div class="collapse" id="account-collapse">
                           
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" class="children">
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" class="children" >
                                 {% if not node.is_leaf_node %}    
                                 <li><a href=" /category/{{node.slug}} " class="link-dark rounded">{{ children }}</a></li>
                                 {% endif %}    
@@ -188,8 +190,77 @@
                         </div>
                     </li>
                     {% endrecursetree %}
+
+
+
+
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {% load mptt_tags %}
+
+                    <li class="border-top my-3"></li>
+
+
+                    {% recursetree categories %}
+
+                    <li class="mb-1">
+
+
+                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="true">
+
+                        {{ node.name }}
+
+                        </button>
+
+                        <div class="collapse" id="account-collapse">
+                          
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" class="children" >
+
+                                {% if not node.is_leaf_node %}    
+
+                                <li><a href=" /category/{{node.slug}} " class="link-dark rounded">{{ children }}</a></li>
+
+                                {% endif %}  
+
+                            </ul>
+                            
+                        </div>
+                    </li>
+                    {% endrecursetree %}
+
+
+
+
+
+
+
+
                 </ul>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
                         
             {% block content %}
