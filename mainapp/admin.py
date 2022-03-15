@@ -28,11 +28,7 @@ class CategoryAdmin(DraggableMPTTAdmin):
                 cumulative=True)	
 
         # Add non cumulative product count
-        qs = Category.objects.add_related_count(qs,
-                 Product,
-                 'category',
-                 'products_count',
-                 cumulative=False)
+        qs = Category.objects.add_related_count(qs, Product, 'category', 'products_count', cumulative=False)
         return qs
 
     def related_products_count(self, instance):
@@ -86,22 +82,19 @@ class LightingAdmin(admin.ModelAdmin):
 
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Lamps')) 
+			return ModelChoiceField(Category.objects.filter(slug='Lamps'))
+		 
 		
-'''			
-		
-		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 
 class NonStationaryWireAdmin(admin.ModelAdmin):
 
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Nonstationarywire'))
+			return ModelChoiceField(Category.objects.filter(slug='Wire'))
 			
-		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
+	
 
 
-'''
 
 
 admin.site.register(Category, CategoryAdmin)

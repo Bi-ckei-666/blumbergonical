@@ -11,7 +11,7 @@ class CategoryDetailMixin(SingleObjectMixin):
 	CATEGORY_SLUG2PRODUCT_MODEL = {
 		'Notebook': Notebook,
 		'Smartphone': Smartphone,
-		'Lighting': Lighting,
+		'lighting': Lighting,
 		'Nonstationarywire': NonStationaryWire
 		
 	}

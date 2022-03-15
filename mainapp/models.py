@@ -49,18 +49,11 @@ class LatestProductsManager:
 
 	@staticmethod
 	def get_products_for_main_page(*args, **kwargs):
-		with_respect_to = kwargs.get('with_respect_to')
 		products = []
 		ct_models = ContentType.objects.filter(model__in=args)
 		for ct_model in ct_models:
 			model_products = ct_model.model_class()._base_manager.all().order_by('-id')
 			products.extend(model_products)
-		if with_respect_to:
-			ct_model = ContentType.objects.filter(model=with_respect_to)
-			if ct_model.exists():
-				if with_respect_to in args:
-					return sorted(products, key=lambda x: x.__class__._meta.model_name.startswith(with_respect_to), reverse=True)
-		
 		return products
 
 
@@ -114,10 +107,6 @@ class Category(MPTTModel):
 
 class Product(models.Model):
 
-	#class Meta:
-	#	abstract = True
-
-	
 	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
 	title = models.CharField(max_length=255, verbose_name="наименование")
 	slug = models.SlugField(unique=True)
@@ -131,9 +120,6 @@ class Product(models.Model):
 
 	def get_model_name(self):
 		return self.__class__.__name__.lower()
-
-	
-
 
 
 class Notebook(Product):
@@ -265,7 +251,7 @@ class Customer(models.Model):
 	user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
 	phone = models.CharField(max_length=20, verbose_name='Номер телефона', null=True, blank=True)
 	address = models.CharField(max_length=255, verbose_name='Адрес', null=True, blank=True)
-	orders = models.ManyToManyField('Order', verbose_name='Заказы полкупателя', related_name='related_customer')
+	orders = models.ManyToManyField('Order', verbose_name='Заказы полкупателя', related_name='related_customer', blank=True)
 
 
 	def __str__(self):

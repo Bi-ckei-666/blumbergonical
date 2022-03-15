@@ -17,7 +17,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Notebook, Smartphone, Category, Product, Customer, Cart, CartProduct, Lighting, NonStationaryWire
+from .models import Notebook, Smartphone, Category, Product, Customer, Cart, CartProduct, Lighting, NonStationaryWire, LatestProducts
 from .mixins import CategoryDetailMixin, CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
@@ -63,17 +63,18 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
         categories = Category.objects.all()
 
         products = Product.objects.all()
+        product_for_main_page = LatestProducts.objects.get_products_for_main_page('notebook', 'lighting', 'nonstationarywire')
 
-        paginator = Paginator(products, 4)
-        page_number = self.request.GET.get('page')
-        product_list = paginator.get_page(page_number) 
+        
+       
         context = {
             'categories': categories,
             'cart': self.cart,
-            'product_list': product_list
+            'products' : products,
+            'product_for_main_page' : product_for_main_page
         }
-        print(len(product_list))
-        print(product_list)
+        print(len(product_for_main_page))
+        print(product_for_main_page)
         return render(request, 'base.html', context)
 
 
@@ -123,12 +124,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView, CartMixin):
 
 
         return context
-        
-
-
-    
-
-
 
 class AddToCartView(CartMixin, View):
 
