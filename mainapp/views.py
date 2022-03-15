@@ -66,7 +66,7 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
 
         paginator = Paginator(products, 4)
         page_number = self.request.GET.get('page')
-        product_list = paginator.get_page(page_number)
+        product_list = paginator.get_page(page_number) 
         context = {
             'categories': categories,
             'cart': self.cart,

@@ -19,3 +19,7 @@ class OrderForm(forms.ModelForm):
 		fields = (
 			'first_name', 'last_name', 'phone', 'address', 'buying_type', 'order_date', 'comment'
 			)
+
+class SearchForm(forms.ModelForm):
+
+	query = forms.CharField()

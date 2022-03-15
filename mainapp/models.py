@@ -112,22 +112,10 @@ class Category(MPTTModel):
 	def get_absolute_url(self):
 		return reverse('category_detail', kwargs={'slug': self.slug})
 
-'''
-class SubCat(models.Model):
-
-	name = models.CharField(max_length=255, verbose_name="Имя подкатегории")
-	slug = models.SlugField(unique=True)
-	objects = CategoryManager()
-
-
-	def __str__(self):
-		return self.name
-
-	def get_absolute_url(self):
-		return reverse('sub_category_detail', kwargs={'slug': self.slug})
-'''
-
 class Product(models.Model):
+
+	#class Meta:
+	#	abstract = True
 
 	
 	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
@@ -143,6 +131,8 @@ class Product(models.Model):
 
 	def get_model_name(self):
 		return self.__class__.__name__.lower()
+
+	
 
 
 

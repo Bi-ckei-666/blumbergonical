@@ -94,13 +94,17 @@
 
             }
 
-            #dropdown-content:hover {
+            #dropdown-content {
                 display: none;
                 position: absolute;
                 background-color: #f1f1f1;
                 min-width: 160px;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
+            }
+
+            #account-collapse:hover {
+
             }
 
            
@@ -181,7 +185,7 @@
                     {% recursetree categories %}
                     <li class="mb-1">
 
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                        <button class="btn btn-toggle align-items-center rounded collapsed hover" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
 
                         {{ node.name }}
                         </button>
@@ -190,7 +194,7 @@
                           
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" class="children">
                                 {% if not node.is_leaf_node %}    
-                                <li id="dropdown-content"><a href=" /category/{{node.slug}} " class="link-dark rounded">{{ children }}</a></li>
+                                <li id="dropdown-content"><a href=" /category/{{node.slug}} " class="link-dark rounded ">{{ children }}</a></li>
                                 {% endif %}    
                             </ul>
                             
