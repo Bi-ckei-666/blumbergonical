@@ -60,6 +60,7 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
 
   
     def get(self, request, *args, **kwargs):
+        categories_for_sidebar = Category.objects.get_categories_for_left_sidebar()
         categories = Category.objects.all()
 
         products = Product.objects.all()

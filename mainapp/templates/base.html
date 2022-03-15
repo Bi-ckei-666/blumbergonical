@@ -81,12 +81,12 @@
                 position: absolute;
                 width: 200px;
                 left: 100%;
-                opacity: 0;
+                opacity: 1;
                 padding: 10px; 
             }
 
-            .menu__list:hover.children-1{
-                opacity: 1; 
+            .menu__list:hover.children-1.menu__list{
+                opacity: 0; 
             }
 
 
@@ -131,10 +131,6 @@
 
 
             }
-
-
-
-           
 
 
         </style>
@@ -207,52 +203,21 @@
                         <li class="menu__list"><a href="#">{{ node.name }}</a>
 
                             {% if not node.is_leaf_node %}
+                                
                                 <ul class="children-1">
-                                    
-                                    <li><a href=" /category/{{node.slug}} ">{{ children }}</a></li>
-
-                                    
+                                    {% for category in categories_for_sidebar}
+                                    {{ children }}<a href=" /category/{{node.slug}} "></a>
+                                    {% endfor %}
                                 </ul>
+
                             {% endif %}
-                        
+                            
                         </li>
                     {% endrecursetree %}
 
 
                 </ul>
             </div>
-
-                    {% load mptt_tags %}
-
-                    <li class="border-top my-3"></li>
-
-
-                    {% recursetree categories %}
-
-                    <li class="mb-1">
-
-                        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="true">
-
-                        {{ node.name }}
-
-                        </button>
-
-                        <div class="collapse" id="account-collapse">
-                          
-                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" class="children" >
-
-                                {% if not node.is_leaf_node %}    
-
-                                    <li><a href=" /category/{{node.slug}} " class="link-dark rounded">{{ children }}</a></li>
-
-                                {% endif %}  
-
-                            </ul>
-                            
-                        </div>
-                    </li>
-                    {% endrecursetree %}
-
 
                         
             {% block content %}

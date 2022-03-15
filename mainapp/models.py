@@ -62,7 +62,7 @@ class LatestProducts:
 
 	objects = LatestProductsManager()
 
-'''
+
 class CategoryManager(models.Manager):
 
 	CATEGORY_NAME_COUNT_NAME = {
@@ -78,22 +78,22 @@ class CategoryManager(models.Manager):
 
 
 	def get_categories_for_left_sidebar(self):
-		models = get_models_for_count('notebook', 'smartphone', 'lighting', 'nonstationarywire' )
+		models = get_models_for_count()
 		qs = list(self.get_queryset().annotate(*models))
 		data = [
-			dict(name=c.name, url=c.get_absolute_url(), count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
+			dict(name=c.name, url=c.get_absolute_url())
 			for c in qs
 		]
 		return data
 
-'''
+
 
 
 class Category(MPTTModel):
 
 	name = models.CharField(max_length=255, verbose_name="имя категории")
 	slug = models.SlugField(unique=True)
-	#objects = CategoryManager()
+	objects = CategoryManager()
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
 	class MPTTMeta:
