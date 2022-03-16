@@ -195,7 +195,7 @@
                 </a>
 
                 {% load mptt_tags %}
-
+                
                 <ul class="menu">
 
                     {% recursetree categories %}
@@ -205,8 +205,10 @@
                             {% if not node.is_leaf_node %}
                                 
                                 <ul class="children-1">
-                                    {% for category in categories_for_sidebar}
-                                    {{ children }}<a href=" /category/{{node.slug}} "></a>
+                                    
+                                    <li><a href=" /category/{{node.slug}} ">{{ children }}</a></li>
+                                    {% for category in categories_for_sidebar %}
+                                    <li><a href="{{ category.url }}">ye xnjj</a></li>
                                     {% endfor %}
                                 </ul>
 
@@ -215,7 +217,7 @@
                         </li>
                     {% endrecursetree %}
 
-
+                
                 </ul>
             </div>
 

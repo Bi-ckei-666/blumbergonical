@@ -65,13 +65,6 @@ class LatestProducts:
 
 class CategoryManager(models.Manager):
 
-	CATEGORY_NAME_COUNT_NAME = {
-		'Ноутбуки': 'notebook__count',
-		'Смартфоны':'smartphone__count',
-		'Освещение': 'lighting__count',
-		'Кабели и провода': 'nonstationarywire__count',
-	
-	}
 	
 	def get_queryset(self):
 		return super().get_queryset()
@@ -87,13 +80,23 @@ class CategoryManager(models.Manager):
 		return data
 
 
+class Category_1(models.Model):
 
+	name = models.CharField(max_length=255, verbose_name="имя категории")
+	slug = models.SlugField(unique=True)
+	objects = CategoryManager()
+
+	def __str__(self):
+		return self.name
+
+	def get_absolute_url(self):
+		return reverse('category_detail', kwargs={'slug': self.slug})
 
 class Category(MPTTModel):
 
 	name = models.CharField(max_length=255, verbose_name="имя категории")
 	slug = models.SlugField(unique=True)
-	objects = CategoryManager()
+	#objects = CategoryManager()
 	parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
 	class MPTTMeta:
@@ -172,6 +175,8 @@ class Lighting(Product):
 	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
 	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
 	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
+
+	
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)
