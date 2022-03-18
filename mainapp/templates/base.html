@@ -200,17 +200,15 @@
 
                     {% recursetree categories %}
                     
-                        <li class="menu__list"><a href="#">{{ node.name }}</a>
+                        <li class="menu__list"><a href="/category/{{node.slug}}" {% if not node.is_child_node %} data-toggle="dropdown" aria-expanded="True" {% endif %}>{{ node.name }}</a>
 
-                            {% if not node.is_leaf_node %}
+                            {% if not node.is_child_node %}
                                 
-                                <ul class="children-1">
+                            <ul class="children-1">
                                     
-                                    <li><a href=" /category/{{node.slug}} ">{{ children }}</a></li>
-                                    {% for category in categories_for_sidebar %}
-                                    <li><a href="{{ category.url }}">ye xnjj</a></li>
-                                    {% endfor %}
-                                </ul>
+                                <li class="children"><a href="">{{ children }}</a></li>
+                                       
+                            </ul>
 
                             {% endif %}
                             

@@ -62,7 +62,6 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
     def get(self, request, *args, **kwargs):
         
         categories = Category.objects.all()
-        categories_for_sidebar = Category_1.objects.get_categories_for_left_sidebar()
         products = Product.objects.all()
         product_for_main_page = LatestProducts.objects.get_products_for_main_page('notebook', 'lighting', 'nonstationarywire')
 
@@ -70,7 +69,6 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
        
         context = {
             'categories': categories,
-            'categories_for_sidebar': categories_for_sidebar,
             'cart': self.cart,
             'products' : products,
             'product_for_main_page' : product_for_main_page
