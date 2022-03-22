@@ -81,12 +81,12 @@
                 position: absolute;
                 width: 200px;
                 left: 100%;
-                opacity: 0;
+                display: none;
                 padding: 10px; 
             }
 
             .menu__list:hover.children-1{
-                opacity: 1; 
+                display: block; 
             }
 
 
@@ -214,31 +214,8 @@
                             
                         </li>
                     {% endrecursetree %}
-
-                
+               
                 </ul>
-            
-
-
-                {% recursetree categories %}
-
-                <li class="mb-1">
-                    <button  class=" btn btn-toggle align-items-center rounded collapsed "  data-bs-toggle="collapse"  data-bs-target="#home-collapse" aria-expanded="true" >
-                    {{ node.name }}
-                    </button>
-                    
-                    <div class="{% if not node.is_leaf_node %} collapse show {% endif %}" id="home-collapse">
-                    {% if not node.is_child_node %}   
-                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            {{ children }}
-                        
-                        </ul>
-                    {% endif %}   
-                    </div>
-                    
-                </li>
-                {% endrecursetree %}
-
             </div>
 
                         
