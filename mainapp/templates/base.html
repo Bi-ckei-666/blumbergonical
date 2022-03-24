@@ -53,6 +53,11 @@
                 
             }
 
+            #nav-span{
+                align-content: center;
+                padding: 10px;
+            }
+
             ul{
                 margin: 0;
                 padding: 0;
@@ -79,11 +84,12 @@
 
             div.children-1{
                 position: absolute;
-                width: 200px;
+                width: 150px;
                 left: 100%;
                 display: none;
-
                 padding: 10px;
+                top: -10px;
+
 
             }
 
@@ -128,16 +134,35 @@
                 font-style: italic;
                 font-style: oblique;
 
+            }
+            
+            input {
+                width: 250px;
+                height: 42px;
+                padding-left: 15px;
+                border-radius: 42px;
+                border: 2px solid #324b4e;
+                background: #F9F0DA;
+                outline: none;
+                position: relative;
+                transition: .3s linear;
+            }
 
+            input:focus {
+                
+                width: 300px;
+            }
+
+            #form_crispy{
+                position: absolute;
+                width: 500px;
             }
 
 
+
+
+
         </style>
-        <script type="text/javascript">
-            
-        </script>
-        
-      
         
     </head>
     <body>
@@ -146,9 +171,7 @@
             <div class="container px-4 px-lg-5">
                 <!--<a class="navbar-brand" href="#!">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
-                
-
-            
+ 
                 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -183,18 +206,22 @@
             
                
         </header>
-            <div id="search">
+            
+            <div class="container d-flex flex-wrap justify-content-center">
+                <a href="{% url 'base.html' %}" class="d-flex mb-3 mb-lg-0 me-lg-5 text-dark text-decoration-none">
+                    <span class="fs-4">Nerenergo</span>
+                </a>
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0">
-                    <input type="search" class="form-control" placeholder="Поиск" aria-label="Search" style="border-radius: ;">
+                    <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
                 </form>
             </div>
 
         <!-- Section-->
         <section class="py-5" id="">
 
-            <div class="nav-pan text-black" id="nav-pan">
+            <div class="nav-pan text-black" id="nav-pan" class="wrapper">
                 <a href="/" class="d-flex align-items-center link-dark text-decoration-none border-bottom">
-                    <span class="fs-5 fw-semibold">Категории</span>
+                    <span class="fs-5 fw-semibold align-items-center" id="nav-span">Категории</span>
                 </a>
 
                 {% load mptt_tags %}
@@ -206,7 +233,7 @@
                     <li class="menu__list"><a href="/category/{{node.slug}}" {% if not node.is_child_node %} data-toggle="dropdown" aria-expanded="True" {% endif %}>{{ node.name }}</a>
 
                         {% if not node.is_child_node %}
-                        <div class="children-1">   
+                        <div class="children-1" >   
                             <ul class="children-1">                                       
                                 {{ children }}           
                             </ul>

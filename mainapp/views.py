@@ -63,7 +63,7 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
         
         categories = Category.objects.all()
         products = Product.objects.all()
-        product_for_main_page = LatestProducts.objects.get_products_for_main_page('notebook', 'lighting', 'nonstationarywire')
+        product_for_main_page = LatestProducts.objects.get_products_for_main_page('notebook', 'lighting', 'nonstationarywire', 'smartphone')
 
         
        
