@@ -4,7 +4,7 @@ from django.views.generic import View
 
 
 
-from .models import Category, Customer, Cart, Notebook, Smartphone, Lighting, NonStationaryWire
+from .models import Category, Customer, Cart, Notebook, Smartphone, Lighting, NonStationaryWire, Lampa
 
 class CategoryDetailMixin(SingleObjectMixin):
 
@@ -12,7 +12,8 @@ class CategoryDetailMixin(SingleObjectMixin):
 		'Notebook': Notebook,
 		'Smartphone': Smartphone,
 		'lighting': Lighting,
-		'Nonstationarywire': NonStationaryWire
+		'Nonstationarywire': NonStationaryWire,
+		'Lamps': Lampa
 		
 	}
 	

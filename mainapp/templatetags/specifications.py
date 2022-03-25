@@ -3,7 +3,7 @@
 from django import template
 
 from django.utils.safestring import mark_safe
-from mainapp.models import Smartphone, Notebook, Lighting
+from mainapp.models import Smartphone, Notebook, Lighting, NonStationaryWire, Lampa
 
 
 
@@ -73,13 +73,26 @@ PRODUCT_SPEC = {
         'Артикул производителя': 'articals',
         'Срок гарантии': 'garant_time',
         'Страна производитель': 'created_cantry',
-        #'Наминальное сечение проводника': 'nominal_section',
+        'Наминальное сечение проводника': 'nominal_section',
         'Материал жил проводника': 'material',
         'Класс токопроводящей жилы': 'conductor_class',
         'Форма жил проводника': 'form_wire',
         'Количество': 'count_view'
 
-    }
+    },
+
+    'lampa': {
+
+        'Наименование товара': 'name',
+        'Серия': 'seria',
+        'Брэнд': 'brand',
+        'Артикул производителя': 'articals',
+        'Срок гарантии': 'garant_time',
+        'Страна производитель': 'created_cantry',
+        'Мощность': 'power',
+        'Цоколь': 'plinth',
+        'Форма Лампы': 'form_light'
+    },
 }
 
 

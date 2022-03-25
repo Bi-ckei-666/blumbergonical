@@ -132,7 +132,7 @@ class Notebook(Product):
 	ram = models.CharField(max_length=255, verbose_name = 'оперативная память')
 	video = models.CharField(max_length=255, verbose_name = 'видеокарта')
 	time_without_charge = models.CharField(max_length=255, verbose_name = 'время работы аккумулятора')
-	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	
 
 
 	def __str__(self):
@@ -155,7 +155,7 @@ class Smartphone(Product):
 	sd_volume = models.CharField(max_length=255, null=True, blank=True, verbose_name = 'Максимальный объем SD карты')
 	main_cam_mp = models.CharField(max_length=255, verbose_name = 'главная камера')
 	frontal_cam_mp = models.CharField(max_length=255, verbose_name = 'фронтальная камера')
-	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	
 
 
 	def __str__(self):
@@ -174,7 +174,7 @@ class Lighting(Product):
 	power = models.CharField(max_length=255, verbose_name='Мощность')
 	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
 	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
-	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	
 
 	
 
@@ -183,6 +183,25 @@ class Lighting(Product):
 
 	def get_absolute_url(self):
 		return get_product_url(self, 'product_detail')
+
+class Lampa(Product):
+	name = models.CharField(max_length=255, verbose_name='Наименование товара')
+	seria = models.CharField(max_length=255, verbose_name='Серия')
+	brand = models.CharField(max_length=255, verbose_name='Брэнд')
+	articals = models.CharField(max_length=255, verbose_name='Артикул производителя')
+	garant_time = models.CharField(max_length=255, verbose_name='Срок гарантии')
+	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
+	power = models.CharField(max_length=255, verbose_name='Мощность')
+	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
+	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
+	
+
+	def __str__(self):
+		return "{} : {}".format(self.category.name, self.title)
+
+	def get_absolute_url(self):
+		return get_product_url(self, 'product_detail')
+
 	
 class NonStationaryWire(Product):
 	name = models.CharField(max_length=255, verbose_name='Наименование товара')
@@ -191,11 +210,11 @@ class NonStationaryWire(Product):
 	articals = models.CharField(max_length=255, verbose_name='Артикул производителя')
 	garant_time = models.CharField(max_length=255, verbose_name='Срок гарантии')
 	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
-	#nominal_section = models.CharField(max_length=255, verbose_name='Наминально сечение проводника')
+	nominal_section = models.CharField(max_length=255, verbose_name='Наминально сечение проводника')
 	material = models.CharField(max_length=255, verbose_name='Материал жил проводника')
 	conductor_class = models.CharField(max_length=255, verbose_name='Класс токопроводящей жилы')
 	form_wire = models.CharField(max_length=255, verbose_name='Форма жил проводника')
-	count_views = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	
 
 
 	def __str__(self):
