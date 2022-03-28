@@ -28,6 +28,7 @@ TABLE_CONTENT = """
                     </tr>
                 """
 
+
 PRODUCT_SPEC = {
     'notebook': {
         'Диагональ': 'diagonal',
@@ -113,8 +114,7 @@ def product_spec(product):
             PRODUCT_SPEC['smartphone']['Максимальный объем SD карты'] = 'sd_volume'
     return mark_safe(TABLE_HEAD + get_product_spec(product, model_name) + TABLE_TAIL)
 	
-'''
-    
+'''  
     def get_product_spec(product, model_name):
     table_content = ''
     for name, value in PRODUCT_SPEC[model_name].items():

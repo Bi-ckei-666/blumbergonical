@@ -191,7 +191,7 @@ class Lampa(Product):
 	articals = models.CharField(max_length=255, verbose_name='Артикул производителя')
 	garant_time = models.CharField(max_length=255, verbose_name='Срок гарантии')
 	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
-	power = models.CharField(max_length=255, verbose_name='Мощность')
+	power = models.CharField(max_length=255, verbose_name='Мощность', blank=True)
 	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
 	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
 	
