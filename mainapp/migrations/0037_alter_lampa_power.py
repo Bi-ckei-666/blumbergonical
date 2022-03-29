@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 
 from django.db import migrations, models
 
