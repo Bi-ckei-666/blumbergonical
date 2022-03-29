@@ -29,6 +29,14 @@
                 background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
             }
 
+            #nav-bar ul li{
+                border: ;
+                border-radius: 5px;
+            }
+
+
+            }
+
             section {
                 flex: 1 0 auto;
             }
@@ -102,14 +110,7 @@
                 width: 200px;
             }
 
-            footer {
-                flex: 0 0 auto;
-                clear: left;
-                margin-top: -100px;
-                height: 100px;
-                background: linear-gradient(to bottom, #ccffff 0%, #006699 100%);
-                
-            }
+           
 
             #f-r {
                 clear: left;
@@ -139,7 +140,7 @@
             input {
                 width: 250px;
                 height: 42px;
-                padding-left: 15px;
+                padding-left: 50px;
                 border-radius: 42px;
                 border: 2px solid #324b4e;
                 background: #F9F0DA;
@@ -158,7 +159,14 @@
                 width: 500px;
             }
 
-
+             footer {
+                flex: 0 0 auto;
+                clear: left;
+                margin-top: -120px;
+                height: 100px;
+                background: linear-gradient(to bottom, #ccffff 0%, #006699 100%);
+                
+            }
 
 
 
@@ -173,13 +181,15 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
  
                 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'base.html' %}">Главная</a></li>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-6">
+                        <li class="nav-item" ><a class="nav-link active" aria-current="page" href="{% url 'base.html' %}">Главная</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Контакты</a></li>
-                        
-                        
+
                     </ul>
+                    
+                    
+
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <!--<i class="bi-cart-fill me-1"></i>-->
@@ -203,18 +213,21 @@
                     <p class="lead fw-normal text-black-50 mb-0">интернет магазин</p>
                 </div>
             </div>
-            
-               
-        </header>
-            
-            <div class="container d-flex flex-wrap justify-content-center">
+            <div class="container d-flex flex-wrap justify-content-center" >
                 <a href="{% url 'base.html' %}" class="d-flex mb-3 mb-lg-0 me-lg-5 text-dark text-decoration-none">
-                    <span class="fs-4">Nerenergo</span>
+                    <span class="fs-4"><h3><em>NerEnergo</em></h3></span>
                 </a>
+            </div>
+            <div class="container d-flex flex-wrap justify-content-center">
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0">
                     <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
                 </form>
             </div>
+           
+               
+        </header>
+            
+            
 
         <!-- Section-->
         <section class="py-5" id="">
