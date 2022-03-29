@@ -29,6 +29,14 @@
                 background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
             }
 
+            #nav-bar ul li{
+                border: ;
+                border-radius: 5px;
+            }
+
+
+            }
+
             section {
                 flex: 1 0 auto;
             }
@@ -102,14 +110,7 @@
                 width: 200px;
             }
 
-            footer {
-                flex: 0 0 auto;
-                clear: left;
-                margin-top: -100px;
-                height: 100px;
-                background: linear-gradient(to bottom, #ccffff 0%, #006699 100%);
-                
-            }
+           
 
             #f-r {
                 clear: left;
@@ -158,7 +159,14 @@
                 width: 500px;
             }
 
-
+             footer {
+                flex: 0 0 auto;
+                clear: left;
+                margin-top: -120px;
+                height: 100px;
+                background: linear-gradient(to bottom, #ccffff 0%, #006699 100%);
+                
+            }
 
 
 
@@ -173,13 +181,15 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
  
                 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'base.html' %}">Главная</a></li>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-6">
+                        <li class="nav-item" ><a class="nav-link active" aria-current="page" href="{% url 'base.html' %}">Главная</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Контакты</a></li>
-                        
-                        
+
                     </ul>
+                    
+                    
+
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <!--<i class="bi-cart-fill me-1"></i>-->
@@ -202,6 +212,19 @@
                     <h1 class="display-4 fw-bolder">Высокое напряжение</h1>
                     <p class="lead fw-normal text-black-50 mb-0">интернет магазин</p>
                 </div>
+            </div>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="\media\3.jpg" class="img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="\media\23.jpg" class="img-fluid" alt="...">
+                </div>
+                <div class="carousel-item">
+                  <img src="\media\12.jpg" class="img-fluid" alt="...">
+                </div>
+              </div>
             </div>
             
                
