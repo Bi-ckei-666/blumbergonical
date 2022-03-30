@@ -193,7 +193,7 @@ class Lampa(Product):
 	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
 	power = models.CharField(max_length=255, verbose_name='Мощность', blank=True)
 	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
-	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
+	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы', blank=True)
 	
 
 	def __str__(self):

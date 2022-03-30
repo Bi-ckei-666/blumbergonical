@@ -113,6 +113,16 @@ def product_spec(product):
         else:
             PRODUCT_SPEC['smartphone']['Максимальный объем SD карты'] = 'sd_volume'
     return mark_safe(TABLE_HEAD + get_product_spec(product, model_name) + TABLE_TAIL)
+
+@register.filter
+def product_spec(product):
+    model_name = product.__class__._meta.model_name
+    if isinstance(product, Lampa):
+        if not product.form_light:
+            PRODUCT_SPEC['lampa'].pop('Форма Лампы', None)
+        else:
+            PRODUCT_SPEC['lampa']['Форма Лампы'] = 'form_light'
+    return mark_safe(TABLE_HEAD + get_product_spec(product, model_name) + TABLE_TAIL)
 	
 '''  
     def get_product_spec(product, model_name):
