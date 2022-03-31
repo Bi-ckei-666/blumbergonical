@@ -243,13 +243,15 @@
 
                     {% recursetree categories %}
                     
-                    <li class="menu__list"><a href="/category/{{node.slug}}" {% if not node.is_child_node %} data-toggle="dropdown" aria-expanded="True" {% endif %}>{{ node.name }}</a>
+                    <li class="menu__list"><a href="/category/{{node.slug}}" {% if not node.is_child_node %} data-toggle="dropdown" aria-expanded="True" {% endif %}>{{ node.name }} ({{node.level}})</a>
 
-                        {% if not node.is_child_node %}
-                        <div class="children-1" >   
-                            <ul class="children-1">                                       
-                                {{ children }}           
+                        {% if not node.is_leaf_node %}
+                        <div class="children-1" >
+                               
+                            <ul>                                       
+                                {{ children }}          
                             </ul>
+
                         </div>
                         {% endif %}
                             
