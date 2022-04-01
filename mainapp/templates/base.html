@@ -106,20 +106,20 @@
                 display: block;
             }
 
-            .children-1 div ul li div ul li{
-                display: none;
-            }
 
 
-            div.children-2{
+            div.children-1class-1{
                 position: absolute;
-                width: 150px;
+                width: 200px;
                 left: 100%;
                 display: none;
                 padding: 10px;
                 top: -10px;
 
 
+            }
+            div.children-1:hover div.children-1class-1{
+                display: block;
             }
 
             .paginator  {
@@ -263,9 +263,9 @@
                     <li class="menu__list"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} ({{node.level}})</a>
 
                         {% if not node.is_leaf_node %}
-                        <div class="children-1" >
-                               
-                            <ul>                                                                     
+                        <div class="children-1{% if node.level == 1 %}class_1{% elif node.level == 2%}class-2{% endif %}">   
+                            <ul>
+                                текущий уровеь {{node.level}}                                                                     
                                 {{ children }}
               
                             </ul>
