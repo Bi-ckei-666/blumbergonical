@@ -90,35 +90,36 @@
 
             }
 
-            div.children-1{
+            div.children-1class-0{
                 position: absolute;
                 width: 150px;
                 left: 100%;
                 display: none;
                 padding: 10px;
                 top: -10px;
-                display: !important;
             }
 
-           
-
-            li.menu__list:hover div.children-1{
-                display: block;
-            }
-
-
-
-            div.children-1class-1{
+             div.children-1class-1{
                 position: absolute;
-                width: 200px;
+                width: 300px;
                 left: 100%;
                 display: none;
                 padding: 10px;
                 top: -10px;
-
-
             }
-            div.children-1:hover div.children-1class-1{
+
+           
+
+            li.menu__list:hover div.children-1class-0{
+                display: block;
+            }
+
+            li.menu__list:hover div.children-1class-1{
+                display: none;
+            }
+
+
+            div.children-1class-0 ul li:hover div.children-1class-1{
                 display: block;
             }
 
@@ -263,10 +264,10 @@
                     <li class="menu__list"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} ({{node.level}})</a>
 
                         {% if not node.is_leaf_node %}
-                        <div class="children-1{% if node.level == 1 %}class_1{% elif node.level == 2%}class-2{% endif %}">   
+                        <div class="children-1{% if node.level == 0 %}class-0{% elif node.level == 1%}class-1{% endif %}">   
                             <ul>
-                                текущий уровеь {{node.level}}                                                                     
-                                {{ children }}
+                                                                                             
+                                <em class="{% if node.level == 0 %}class-0{% endif %}">{{ children }}</em>
               
                             </ul>
 
