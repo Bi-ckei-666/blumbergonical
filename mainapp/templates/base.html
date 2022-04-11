@@ -62,12 +62,16 @@
                 background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
                 margin-top: 5px;
                 margin-bottom: 5px;
-                
+                width: 200px;
+
+
+
             }
 
-            #nav-span{
+            #nav-span {
                 align-content: center;
                 padding: 10px;
+
 
             }
 
@@ -77,28 +81,32 @@
                 list-style: none;
             }
 
+            .menu{
+                width: 200px;
+                border: solid 1px;
+                border-radius: 5px;
 
+
+            }
             .menu a{     
-                background: #fff;
-                padding: 10px;  
+                background-color: #fff;
+                padding: 5px;  
                 display: block;
                 color: #000;
                 border-bottom: 1px;
                 transition: 0.2s all;
+                border-radius: 10px;
+                border: solid 1px;
+                width: 175px;
             }
             .menu a:hover{
-                background: #666;
-                padding: 10px 0 10px 20px;
+                background: #9966ff;
+                padding: 5px 0 5px 5px;
 
             }
 
             .menu__list{
                 position: relative;
-                background: linear-gradient(to right, #66ffff 0%, #3399ff 100%);
-
-
-
-
             }
 
             div.children-1class-0{
@@ -106,24 +114,37 @@
                 width: 200px;
                 left: 100%;
                 display: none;
-                padding: 10px;
-                top: -10px;
-                z-index: 2;
-                border: solid;
-                border-color: red;
-                border-radius: 15;
+                padding: 1px;
+                top: 0;
+                z-index: 2;                
+                background: #fff;
+                border: solid 1px;
 
             }
 
-             div.children-1class-1{
+            div.children-1class-0 a{
+                background: #fff;
+                border: solid 1px;
+                border-radius: 5px;
+            }
+
+
+            div.children-1class-1{
                 position: absolute;
                 width: 500px;
                 left: 100%;
                 display: none;
-                padding: 10px;
-                top: -10px;
+                padding: 1px;
+                top: 0;
                 z-index: 2;
+                background: #fff;
+                border: solid 1px;
             }
+
+            div.children-1class-1 a{
+                width: 475px;
+            }
+
 
            
 
@@ -278,7 +299,7 @@
 
                     {% recursetree categories %}
                     
-                    <li class="menu__list"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} ({{node.level}})</a>
+                    <li class="menu__list"><button class="btn"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} </a></button>
 
                         {% if not node.is_leaf_node %}
                         <div class="children-1{% if node.level == 0 %}class-0{% elif node.level == 1%}class-1{% endif %}">   
