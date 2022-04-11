@@ -25,6 +25,8 @@
 
             body {
                 display: flex;
+                width: 1280px;
+                margin-left: 40px;
                 flex-direction: column;
                 background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
             }
@@ -32,10 +34,11 @@
             #nav-bar ul li{
                 border: ;
                 border-radius: 5px;
+
             }
 
 
-            }
+            
 
             section {
                 flex: 1 0 auto;
@@ -46,6 +49,7 @@
                 right: 0;
                 float: left;
                 width: 80%;
+                z-index: 1;
             }
 
             a{text-decoration: none;}
@@ -56,12 +60,15 @@
                 width: 150px;
                 margin: 30px;
                 background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
+                margin-top: 5px;
+                margin-bottom: 5px;
                 
             }
 
             #nav-span{
                 align-content: center;
                 padding: 10px;
+
             }
 
             ul{
@@ -87,6 +94,10 @@
 
             .menu__list{
                 position: relative;
+                background: linear-gradient(to right, #66ffff 0%, #3399ff 100%);
+
+
+
 
             }
 
@@ -97,6 +108,11 @@
                 display: none;
                 padding: 10px;
                 top: -10px;
+                z-index: 2;
+                border: solid;
+                border-color: red;
+                border-radius: 15;
+
             }
 
              div.children-1class-1{
@@ -106,12 +122,16 @@
                 display: none;
                 padding: 10px;
                 top: -10px;
+                z-index: 2;
             }
 
            
 
             li.menu__list:hover div.children-1class-0{
                 display: block;
+                transition: 1s;
+
+
             }
 
             li.menu__list:hover div.children-1class-1{
