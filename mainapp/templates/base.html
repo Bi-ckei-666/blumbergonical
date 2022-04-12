@@ -31,6 +31,8 @@
                 background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);
             }
 
+          
+
             #nav-bar ul li{
                 border: ;
                 border-radius: 5px;
@@ -48,8 +50,9 @@
                 position: absolute;
                 right: 0;
                 float: left;
-                width: 80%;
+                width: 100%;
                 z-index: 1;
+                height: 1000px;
             }
 
             a{text-decoration: none;}
@@ -274,50 +277,56 @@
                     <span class="fs-4"><h3><em>NerEnergo</em></h3></span>
                 </a>
             </div>
+
             <div class="container d-flex flex-wrap justify-content-center">
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0">
                     <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
                 </form>
             </div>
-           
+
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Категории
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <div class="nav-pan text-black" id="nav-pan" class="wrapper">
+                        <a href="/" class="d-flex align-items-center link-dark text-decoration-none border-bottom">
+                            <span class="fs-5 fw-semibold align-items-center" id="nav-span">Категории</span>
+                        </a>
+
+                        {% load mptt_tags %}
+                        
+                        <ul class="menu">
+
+                            {% recursetree categories %}
+                            
+                            <li class="menu__list"><button class="btn"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} </a></button>
+
+                                {% if not node.is_leaf_node %}
+                                <div class="children-1{% if node.level == 0 %}class-0{% elif node.level == 1%}class-1{% endif %}">   
+                                    <ul>
+                                                                                                     
+                                        <em class="{% if node.level == 0 %}class-0{% endif %}">{{ children }}</em>
+                      
+                                    </ul>
+
+                                </div>
+                                {% endif %}
+                                    
+                            </li>
+                            {% endrecursetree %}
+                       
+                        </ul>
+                    </div>
+               
                
         </header>
             
             
 
         <!-- Section-->
-        <section class="py-5" id="">
-
-            <div class="nav-pan text-black" id="nav-pan" class="wrapper">
-                <a href="/" class="d-flex align-items-center link-dark text-decoration-none border-bottom">
-                    <span class="fs-5 fw-semibold align-items-center" id="nav-span">Категории</span>
-                </a>
-
-                {% load mptt_tags %}
-                
-                <ul class="menu">
-
-                    {% recursetree categories %}
-                    
-                    <li class="menu__list"><button class="btn"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} </a></button>
-
-                        {% if not node.is_leaf_node %}
-                        <div class="children-1{% if node.level == 0 %}class-0{% elif node.level == 1%}class-1{% endif %}">   
-                            <ul>
-                                                                                             
-                                <em class="{% if node.level == 0 %}class-0{% endif %}">{{ children }}</em>
-              
-                            </ul>
-
-                        </div>
-                        {% endif %}
-                            
-                    </li>
-                    {% endrecursetree %}
-               
-                </ul>
-            </div>
-
+        <section class="py-5" id="" class="section-base">
                         
             {% block content %}
             {% if messages %}
