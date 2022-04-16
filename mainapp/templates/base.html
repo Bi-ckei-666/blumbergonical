@@ -44,15 +44,17 @@
 
             section {
                 flex: 1 0 auto;
+                height: 1500px;
             }
 
             #content-sec {
                 position: absolute;
+                margin-right: 80px;
                 right: 0;
                 float: left;
                 width: 100%;
                 z-index: 1;
-                height: 1000px;
+                
             }
 
             a{text-decoration: none;}
@@ -226,6 +228,11 @@
                 background: linear-gradient(to bottom, #ccffff 0%, #006699 100%);
                 
             }
+            .btn-category{
+                background: darkblue;
+            }
+
+
 
 
 
@@ -233,8 +240,28 @@
         
     </head>
     <body>
+
+        <script type="text/javascript">
+            // When the user scrolls the page, execute myFunction
+            window.onscroll = function() {myFunction()};
+
+            // Get the navbar
+            var navbar = document.getElementById("navbar-top");
+
+            // Get the offset position of the navbar
+            var sticky = navbar.offsetTop;
+
+            // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+            function myFunction() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky")
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+        </script>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar-top">
             <div class="container px-4 px-lg-5">
                 <!--<a class="navbar-brand" href="#!">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
@@ -277,49 +304,50 @@
                     <span class="fs-4"><h3><em>NerEnergo</em></h3></span>
                 </a>
             </div>
+            <ul>
+                <li>
+                    <div class="container d-flex flex-wrap justify-content-center">
+                        <form class="col-12 col-lg-auto mb-3 mb-lg-0">
+                            <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+                        </form>
+                    </div>
+                </li>
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" class="btn-category" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Категории
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <div class="nav-pan text-black" id="nav-pan" class="wrapper">
 
-            <div class="container d-flex flex-wrap justify-content-center">
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0">
-                    <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
-                </form>
-            </div>
+                                {% load mptt_tags %}
+                                
+                                <ul class="menu">
 
-
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Категории
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <div class="nav-pan text-black" id="nav-pan" class="wrapper">
-                        <a href="/" class="d-flex align-items-center link-dark text-decoration-none border-bottom">
-                            <span class="fs-5 fw-semibold align-items-center" id="nav-span">Категории</span>
-                        </a>
-
-                        {% load mptt_tags %}
-                        
-                        <ul class="menu">
-
-                            {% recursetree categories %}
-                            
-                            <li class="menu__list"><button class="btn"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} </a></button>
-
-                                {% if not node.is_leaf_node %}
-                                <div class="children-1{% if node.level == 0 %}class-0{% elif node.level == 1%}class-1{% endif %}">   
-                                    <ul>
-                                                                                                     
-                                        <em class="{% if node.level == 0 %}class-0{% endif %}">{{ children }}</em>
-                      
-                                    </ul>
-
-                                </div>
-                                {% endif %}
+                                    {% recursetree categories %}
                                     
-                            </li>
-                            {% endrecursetree %}
-                       
+                                    <li class="menu__list"><button class="btn"><a href="/category/{{node.slug}}"  data-toggle="dropdown" aria-expanded="True" >{{ node.name }} </a></button>
+
+                                        {% if not node.is_leaf_node %}
+                                        <div class="children-1{% if node.level == 0 %}class-0{% elif node.level == 1%}class-1{% endif %}">   
+                                            <ul>
+                                                                                                             
+                                                <em class="{% if node.level == 0 %}class-0{% endif %}">{{ children }}</em>
+                              
+                                            </ul>
+
+                                        </div>
+                                        {% endif %}
+                                            
+                                    </li>
+                                    {% endrecursetree %}
+                               
+                                </ul>
+                            </div>
                         </ul>
                     </div>
-               
+                </li>            
+           </ul>               
                
         </header>
             
