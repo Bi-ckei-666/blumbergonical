@@ -5,7 +5,7 @@
 
 	<h3 class="text-center mt-5 mb-5">Оформления заказа </h3>
 	
-<section id="content-sec">
+<section class="content-chek">
 	<table class="table">
 		<thead>
 			<tr>
@@ -13,15 +13,14 @@
 				<th scope="col">Изображение</th>
 				<th scope="col">Цена</th>
 				<th scope="col">Кол-во</th>
-					<th scope="col">Общая цена</th> 
-				 
+				<th scope="col">Общая цена</th> 
 			</tr>
 		</thead>
 		<tbody>
 	  	{% for item in cart.product.all %}
 	  	<tr>
 		  	<th scope="row">{{ item.content_object.title }}</th>
-		  	<td class="w-25"><img src="{{ item.content_object.image.url }}" class="img-fluid"></td>
+		  	<td class="w-25"><img src="{{ item.content_object.image.url }}" class="img-fluid" style="width: 50px; height: 50px;"></td>
 		  	<td>{{ item.content_object.price }} руб.</td>
 		  	<td>{{ item.qty }}</td>
 		  		<td>{{ item.final_price }} руб</td>
@@ -39,7 +38,7 @@
 	</table>
 	<h3 class="text-center mt-5 mb-5">Форма заказа</h3>
 
-	<form action="{% url 'make_order' %}" method="POST" id="form_crispy" class="wrapper">
+	<form action="{% url 'make_order' %}" method="POST" id="form_crispy" >
 		{% csrf_token %}
 		{{ form|crispy }}
 	  <input type="submit" class="btn btn-success btn-block mb-3" values="Оформить заказ">
