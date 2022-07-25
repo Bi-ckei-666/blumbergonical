@@ -112,7 +112,7 @@ admin.site.register(Order)
 admin.site.register(Lighting, LightingAdmin)
 admin.site.register(NonStationaryWire, NonStationaryWireAdmin)
 admin.site.register(Lampa, LampaAdmin)
-
+admin.site.register(News)
 
 
 

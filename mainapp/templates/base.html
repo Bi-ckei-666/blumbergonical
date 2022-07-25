@@ -191,17 +191,7 @@
             #f-r {
                 clear: left;
             }
-            #search {
-                margin-left: auto;
-                margin-right: auto;
-                align-content: center;
-                width: 600px;
-                height: 45px;
-                background: linear-gradient(to bottom, #3333cc 0%, #00ffff 100%);
-                border-radius: 8px;
-                
-                
-            }
+         
 
             header {
                 background: linear-gradient(to bottom, #3333cc 0%, #00ffff 100%);
@@ -348,22 +338,21 @@
             <div class="container px-4 px-lg-5">
                 <!--<a class="navbar-brand" href="#!">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
- 
+
                 <li>
-                    <div class="dropdown" class="btn-category">
+                    <div class="dropdown" class="btn-category"> 
                         <button class="btn btn-secondary dropdown-toggle"  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" class="btn-menu-list">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                            </svg>
-                                                           
-                                
+                            <h7>каталог товаров</h7>
                         </button>
+
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="ulnavbar" >
                                 <div class="nav-pan text-white" id="nav-pan" class="wrapper">
 
+
                                     {% load mptt_tags %}
-                                            
+                                    
                                     <ul class="menu" class="dropdown-item">
+
 
                                         {% recursetree categories %}
                                                 
@@ -397,9 +386,12 @@
                         
 
                     </ul>
-                    
-                    
-
+                    <ul>
+                        <form class="col-12 col-lg-10 mb-3 mb-lg-0">
+                            <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+                        </form>
+                    </ul>
+                    <ul></ul>
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <!--<i class="bi-cart-fill me-1"></i>-->
@@ -418,7 +410,7 @@
         <!-- Header-->
         
 
-        <header  class=" py-5 border border-4 border-dark rounded-pill" id="header" class="border border-3" class="header-nav">
+        <header  class=" py-5 border border-1 border-dark" id="header" class="border border-3" class="header-nav">
             <div class="container px-4 px-lg-5 my-2" >
                 <div class="text-center text-black" id="header_text">
                     <h1 class="display-5 fw-bolder">Высокое напряжение</h1>
@@ -429,17 +421,7 @@
                 <a href="{% url 'base.html' %}" class="d-flex mb-3 mb-lg-0 me-lg-5 text-dark text-decoration-none">
                     <span class="fs-4"><h3><em>NerEnergo</em></h3></span>
                 </a>
-            </div>
-            <ul>
-                <li>
-                    <div class="container d-flex flex-wrap justify-content-center">
-                        <form class="col-12 col-lg-auto mb-3 mb-lg-0">
-                            <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
-                        </form>
-                    </div>
-                </li>
-                            
-           </ul>               
+            </div>               
                
         </header>
             
@@ -449,72 +431,93 @@
         <section class="py-5" id="" class="section-base">
                         
             {% block content %}
-            {% if messages %}
-                {% for message in messages %}
 
-                <div class="alert alert-saccess alert-dismissible fade show" role="alert">
-                    <strong>{{ message }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    <span aria-hidden="true">&times;</span>
+            <h3 class="text-center">новости</h3>
+            {% for post in news_post %}
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <div class="col">
+                  <div class="card">
+                    <img src="{{post.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{post.title}}</h5>
+                      <p class="card-text">{{post.description}}</p>
+                    </div>
+                  </div>
                 </div>
-
                 {% endfor %}
-            {% endif %}
-            <div class="container px-4 px-lg-5 mt-5" id="content-sec">
-                
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="product_pic">
-                    {% for product in product_for_main_page %}
-                    <div class="col mb-5" id="pord-view"> 
-                        <div class="card" style="background: linear-gradient(to top, #ccffff 0%, #ffffff 100%);" >
-                            <!-- Product image-->
-                            <!--<a href=" /products/{{node.slug}} ">-->
-                            <!---->
-                            <a href=" {{ product.get_absolute_url }} "><img class="card-img-top" src="{{ product.image.url }}" alt="..." style="height: 120px" /></a>
-                            <!-- Product details-->
-                            <div class="card-body p-4" style="height: 120px">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">
-                                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-                                    </h5>
-                                    
-                                    <!-- Product price-->
-                                    <p>{{ product.price }} руб.</p>
-                                    <p>Количество {{ product.count_view }}</p>
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center">
-                                    <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}"><button class="btn btn-outline-dark mt-auto">Добавить товар в корзину</button></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <div class="pagination" id="paginate">
-                        <span class="step-links">
-                            {% if product_list.has_previous %}
-                                <a href="?page=1">&laquo; Первая</a>
-                                <a href="? page={{ product_list.previous_page_number }}">Предидущая</a>
-                            {% endif %}
 
-                            <!--<span class="current">
-                                Страница {{ product_list.number }} из {{ product_list.paginator.num_pages }}.
-                            </span> -->
 
-                            {% if product_list.has_next %}
-                                <a href="?page={{ product_list.next_page_number }}">Далее</a>
-                                <a href="?page={{ product_list.paginator.num_pages }}">Последняя &raquo;</a>
-                            {% endif %}
-                        </span>
+                <div class="col">
+                  <div class="card">
+                    <img src="media/12.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     </div>
+                  </div>
                 </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="media/12.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+               
+                
                 
             </div>
-
-                    
-
+            <p></p>
+            <h3 class="text-center">акции</h3>
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <div class="col">
+                  <div class="card">
+                    <img src="media/12.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="media/12.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="media/12.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="media/12.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card">
+                    <img src="media/12.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
             {% endblock content %}
 
 
