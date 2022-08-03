@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mt-3 ms-5">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="{% url 'base.html' %}">Главная</a></li>
+		
+	</ol>
+</nav>
+
+<p>
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Ссылка с href
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    Некоторый заполнитель для компонента сворачивания. Эта панель по умолчанию скрыта, но открывается, когда пользователь активирует соответствующий триггер.
+  </div>
+</div>
+
+
+
+{% load mptt_tags %}
+<div class="row row-cols-1 row-cols-md-5 g-4">
+
+    {% recursetree categories %}
+    
+
+       	<div class="card">
+
+       			
+       			<a class="btn btn-primary" data-bs-toggle="collapse" href="/category/{{node.slug}} #collapseExample" role="button" aria-expanded="false" aria-controls="{%if node.level == 1%} collapseExample {%elif node.level != 1%} {%endif%}">
+       			{{ node.name }}
+       			</a>
+
+            	{% if not node.is_leaf_node %}
+            		<div div class="collapse" id="{% if node.level == 1 %} collapseExample {% endif %}">   
+                		<div class="card card-body">                                                                         
+                    		<em class="">{{ children }}</em>
+                		</div>
+            		</div>
+            	{% endif %} 
+
+
+       	 </div>
+    	{% endrecursetree %}
+
+    </div>	
+</div>
+
+{% endblock content %}

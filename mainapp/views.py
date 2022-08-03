@@ -78,9 +78,18 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
         print(product_for_main_page)
         return render(request, 'base.html', context)
 
+class AllCategoryView(CategoryDetailMixin, CartMixin, View): #каталог категорий товаров
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()
+        news_post = News.objects.order_by('title')[:2]
 
-
-
+        context = {
+            'cart': self.cart,
+            'categories': categories,
+            'news_post' : news_post
+                        
+        }
+        return render(request, 'all_category.html', context)
 
 class ProductDetailView(CategoryDetailMixin, DetailView, CartMixin):
 
