@@ -10,3 +10,8 @@ $navbarRight.on('show.bs.collapse', function () {
   $navbarLeft.collapse('hide');
   $navbarMiddle.collapse('hide');
 })
+
+
+function log() {
+  console.log('вот я тут');
+}
