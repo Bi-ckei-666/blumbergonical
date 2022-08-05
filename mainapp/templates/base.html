@@ -30,23 +30,85 @@
 
 
         <!-- Navigation-->
-
+        <!--<nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">Ссылка</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link disabled">Отключенная</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                    <button class="btn btn-outline-success" type="submit">Поиск</button>
+                </form>
+                </div>
+            </div>
+        </nav>-->
        
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top border-bottom" style="background-color: #e3f2fd;"id="navbar-top-base">
-            <div class="container px-4 px-lg-5">
-                <!--<a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="container-fluid px-4 px-lg-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="dropdown" class="btn-category"> 
-                        
-                        <nav class="navbar bg-light">
-                        <form class="container-fluid justify-content-start">
-                            <button class="btn btn-outline-dark me-1" type="button"><a class="nav-link active" aria-current="page" href="{% url 'all_category' %}">Каталог категорий</a></button>
-                        </form>
-                        </nav>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mr-auto">
 
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="ulnavbar" >
+                        <li class="nav-item" >
+                            <form class="container-fluid justify-content-start">
+                                <button class="btn btn-outline-dark me-2" type="button">
+                                    <a class="nav-link active waves-effect"  href="{% url 'all_category' %}">Каталог категорий</a>
+                                </button>
+                            </form>   
+                        </li>
+                        <li class="nav-item " >
+                            <a class="nav-link waves-effect" href="{% url 'base.html' %}">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="{% url 'contact' %}">Услуги</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="{% url 'contact' %}">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect" href="{% url 'contact' %}">Контакты</a>
+                        </li>
+                        <li class="nav-item">
+                            <form class=" d-flex">
+                                <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+                                <button class="btn btn-outline-dark" type="submit">Поиск</button>
+                            </form>
+                        </li>
+                        <li class="nav-item d-flex">
+                            <form class="d-flex">
+                                <button class="btn btn-outline-dark" type="submit">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    <a class="nav-link" href="{% url 'cart' %}">Корзина<span class="badge bg-dark text-white ms-1 rounded-pill">{{cart.product.count}}</span></a>            
+                                </button>
+                            </form>
+                        </li>           
+                    </ul>
+                </div>
+            </div>
+        </nav>      
+
+
+
+                            <!-- рызвертка категорий продуктов с рекурсивного запроса к БД
+                                модудль MPTT Django -->
+
+                            <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" class="ulnavbar" >
                                 <div class="nav-pan text-white" id="nav-pan" class="wrapper">
 
                                            
@@ -66,39 +128,12 @@
                                            
                                     </ul>
                                 </div>
-                            </ul>
+                            </ul>-->
 
 
-                    </div>
-                <div class="collapse navbar-collapse ">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-6">
+          
                         
-                        <li class="nav-item" ><a class="nav-link active" aria-current="page" href="{% url 'base.html' %}">Главная</a></li>
-
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Услуги</a></li>
-
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">О нас</a></li>
-
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Контакты</a></li>
-
-                        
-                    </ul>
-                    <ul>
-                        <form class=" d-flex">
-                            <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
-                        </form>
-                    </ul>
-                    <ul></ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <!--<i class="bi-cart-fill me-1"></i>-->
-                            <a class="nav-link" href="{% url 'cart' %}">Корзина<span class="badge bg-dark text-white ms-1 rounded-pill">{{cart.product.count}}</span></a>            
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </nav>
+          
         
         
 
