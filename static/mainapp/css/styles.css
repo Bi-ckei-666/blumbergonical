@@ -4,9 +4,6 @@ body {
     background: red;
 }
 
-header{
-    background: rgb(255, 150, 250);
-}
 
 a {
     color: green;
@@ -18,11 +15,9 @@ a {
 
 }
 
-
 .nav-item {
     background: red;
 }
-
 
 #nav-bar ul li{
     border: ;

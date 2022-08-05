@@ -1,6 +1,6 @@
 var $navbarLeft  = $('#collapseExample0');
 var $navbarRight = $('#collapseExample1');
-var $navbarMiddle = $('#collapseExample2')
+var $navbarMiddle = $('#collapseExample2');
 
 $navbarLeft.on('show.bs.collapse', function () {
   $navbarRight.collapse('hide');
