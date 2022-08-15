@@ -77,14 +77,7 @@ class SmartphoneAdmin(admin.ModelAdmin):
 			return ModelChoiceField(Category.objects.filter(slug='Smartphone'))
 		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
 '''
-class LightingAdmin(admin.ModelAdmin):	
 
-
-	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
-		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Lamps'))
-		 
-		
 
 class NonStationaryWireAdmin(admin.ModelAdmin):
 
@@ -103,13 +96,10 @@ class LampaAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Notebook)
-admin.site.register(Smartphone)
 admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)
 admin.site.register(Order)
-admin.site.register(Lighting, LightingAdmin)
 admin.site.register(NonStationaryWire, NonStationaryWireAdmin)
 admin.site.register(Lampa, LampaAdmin)
 admin.site.register(News)

@@ -4,14 +4,11 @@ from django.views.generic import View
 
 
 
-from .models import Category, Customer, Cart, Notebook, Smartphone, Lighting, NonStationaryWire, Lampa
+from .models import Category, Customer, Cart, NonStationaryWire, Lampa
 
 class CategoryDetailMixin(SingleObjectMixin):
 
 	CATEGORY_SLUG2PRODUCT_MODEL = {
-		'Notebook': Notebook,
-		'Smartphone': Smartphone,
-		'lighting': Lighting,
 		'Nonstationarywire': NonStationaryWire,
 		'Lamps': Lampa
 		

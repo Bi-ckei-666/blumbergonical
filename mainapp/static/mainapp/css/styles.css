@@ -1,0 +1,33 @@
+#cart {
+    right: 100%;
+}
+
+.carousel {
+  margin-bottom: 2rxem;
+}
+
+.carousel-item {
+  height: 20rem;
+}
+.carousel-item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 20rem;
+}
+
+
+#scrolling-wrapper {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  width: auto;
+  margin: 50px auto;
+}
+
+#cardy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

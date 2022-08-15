@@ -3,7 +3,7 @@
 from django import template
 
 from django.utils.safestring import mark_safe
-from mainapp.models import Smartphone, Notebook, Lighting, NonStationaryWire, Lampa
+from mainapp.models import NonStationaryWire, Lampa
 
 
 
@@ -30,41 +30,6 @@ TABLE_CONTENT = """
 
 
 PRODUCT_SPEC = {
-    'notebook': {
-        'Диагональ': 'diagonal',
-        'Тип дисплея': 'display',
-        'Частота процессора': 'processor_freq',
-        'Оперативная память': 'ram',
-        'Видеокарта': 'video',
-        'Время работы аккумулятора': 'time_without_charge',
-        'Количество': 'count_view'
-
-    },
-    'smartphone': {
-        'Диагональ': 'diagonal',
-        'Тип дисплея': 'display',
-        'Разрешение экрана': 'resolutions',
-        'Заряд аккумулятора': 'accum_volume',
-        'Оперативная память': 'ram',
-        'Наличие слота для SD карты': 'sd',
-        'Максимальный объем SD карты': 'sd_volume',
-        'Камера (МП)': 'main_cam_mp',
-        'Фронтальная камера (МП)': 'frontal_cam_mp',
-        'Количество': 'count_view'
-    },
-    'lighting': {
-
-        'Наименование товара': 'name',
-        'Серия': 'seria',
-        'Брэнд': 'brand',
-        'Артикул производителя': 'articals',
-        'Срок гарантии': 'garant_time',
-        'Страна производитель': 'created_cantry',
-        'Мощность': 'power',
-        'Цоколь': 'plinth',
-        'Форма Лампы': 'form_light',
-        'Количество': 'count_view'
-    },
 
     'nonstationarywire': {
 
@@ -104,15 +69,7 @@ def get_product_spec(product, model_name):
     return table_content 
 
 
-@register.filter
-def product_spec(product):
-    model_name = product.__class__._meta.model_name
-    if isinstance(product, Smartphone):
-        if not product.sd:
-            PRODUCT_SPEC['smartphone'].pop('Максимальный объем SD карты', None)
-        else:
-            PRODUCT_SPEC['smartphone']['Максимальный объем SD карты'] = 'sd_volume'
-    return mark_safe(TABLE_HEAD + get_product_spec(product, model_name) + TABLE_TAIL)
+
 
 @register.filter
 def product_spec(product):

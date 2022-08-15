@@ -24,7 +24,7 @@
         <!--<link href="css/styles.css" rel="stylesheet" />-->
 
     </head>
-    <body class="bg-light">
+    <body class="bg-light" >
 
        
 
@@ -55,36 +55,34 @@
             </div>
         </nav>-->
        
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom d-flex justify-content-center ">
-            <div class="container ">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom ">
+            <div class="container px-6">
                 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse " id="navbarContent">
+                <div class="collapse navbar-collapse nav-fill" id="navbarContent"><!-- остановка здесь 6.08.2022-->
 
-                    <ul class="navbar-nav mr-auto ">
+                    <ul class="navbar-nav mr-auto x col">
 
                         <li class="nav-item " >
-                            <a class="nav-link waves-effect" href="{% url 'all_category' %}">Каталог категорий</a>
+                            <a class="nav-link" href="{% url 'all_category' %}">Каталог категорий</a>
                         </li>
                         <li class="nav-item " >
-                            <a class="nav-link waves-effect" href="{% url 'base.html' %}">Главная</a>
+                            <a class="nav-link" href="{% url 'base.html' %}">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="{% url 'contact' %}">Услуги</a>
+                            <a class="nav-link" href="{% url 'contact' %}">О нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link waves-effect" href="{% url 'contact' %}">О нас</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link waves-effect" href="{% url 'contact' %}">Контакты</a>
+                            <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav nav-flex-icon "> 
-                        <li class="nav-item">
+                    <ul class="navbar-nav nav-flex-icon g-10 col" id="cart"> 
+                        
+                        <li class="nav-item ">
                             <a href="{% url 'cart' %}" class="nav-link waves-effect">
                                 <span class="badge text-bg-secondary rounded-pill bg-danger">{{cart.product.count}}</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
@@ -94,9 +92,9 @@
                             </a>
                         </li>
                     </ul>
-
-
-
+                </div>
+            </div>
+        </nav> 
 
                     <!--    <li class="nav-item">
                             <form class=" d-flex">
@@ -113,10 +111,10 @@
                             </form>
                         </li>           
                     </ul>-->
-                </div>
-            </div>
-        </nav>      
+              
 
+        <!-- Header-->             
+                
 
 
                             <!-- рызвертка категорий продуктов с рекурсивного запроса к БД
@@ -146,44 +144,111 @@
 
 
           
-                        
-          
-        
-        
-
-
-        
-            
-        <!-- Header-->
-        <header  class=" py-5 border-bottom border-top p-2 mb-2 " id="header" class="header-nav">
-
-            <div class="container px-3 px-lg-3 my-2" >
-                <div class="text-center text-black" id="header_text">
-                    <p class="lead fw-normal text-black-50 text-center fs-2">интернет магазин</p>
+        <main>
+            <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <div style="background-repeat: no-repeat; background-size: cover;">
+                        <img src="/media/electro-1.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="container">
+                        <div class="carousel-caption position-absolute top-30 start-10">
+                            <h1 class="">NerEnergo</h1>
+                            <p>Интернет-магазин электрики</p>
+                            <div class="container d-flex flex-wrap justify-content-center " >
+                                <form class=" d-flex">
+                                    <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+                                    <button class="btn btn-outline-dark bg-light" type="submit" ><a href="{% url 'search' %}">Поиск</a></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div style="background-repeat: no-repeat; background-size: cover;">
+                        <img src="/media/electro-2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="container">
+                        <div class="carousel-caption position-absolute top-30 start-10">
+                            <h1 class="">NerEnergo</h1>
+                            <p>Интернет-магазин электрики</p>
+                            <div class="container d-flex flex-wrap justify-content-center " >
+                                <form class=" d-flex">
+                                    <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+                                    <button class="btn btn-outline-dark bg-light" type="submit">Поиск</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div id="carusel-bg" style="background-repeat: no-repeat; background-size: cover;">
+                        <img src="/media/electro-3.jpeg" class="d-block w-100 h-100" alt="...">
+                    </div>
+                    <div class="container">
+                        <div class="carousel-caption position-absolute top-30 start-10">
+                            <h1 class="">NerEnergo</h1>
+                            <p>Интернет-магазин электрики</p>
+                            <div class="container d-flex flex-wrap justify-content-center " >
+                                <form class=" d-flex">
+                                    <input type="search" class="form-control" placeholder="Поиск..." aria-label="Search">
+                                    <button class="btn btn-outline-dark bg-light" type="submit">Поиск</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+           
+                <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-
-            <div class="container d-flex flex-wrap justify-content-center" >
-                
-                <a href="{% url 'base.html' %}" class="d-flex mb-3 mb-lg-0 me-lg-5 text-dark text-decoration-none">
-                    <span class="fs-4"><h3 class="text-center"><em>NerEnergo</em></h3></span>
-                </a>
-            </div>               
-                
+        </main> 
 
 
-        </header>
-            
             
 
         <!-- Section-->
         <section class="py-5 p-3 container-lg" id="" class="section-base">
                         
-            {% block content %}
+        {% block content %}
+        
 
+            <p class="text-center">ПРОДУКТЫ</p>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="row row-cols-1 row-cols-md-5 g-4 scrolling-wrapper row flex-row flex-nowrap" id="scrolling-wrapper">
+                        {% for product in products %}
             
+                        <div class="col" id="cardy">
+                            <div class="card">
+                                <img src="{{product.image.url}}" class="card-img-top" style="width: 195px; height: 140px;"> <alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{product.title}}</h5>
+                                    <p class="card-text text-center">{{product.price}} Р.</p>
+                                </div>
+                          </div>
+                        </div>
+            
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
             {% for post in news_post %}
-                <div class="card shadow p-3 mb-3 mb-lg-0 bg-body rounded text-center" >
+                <div class="card shadow p-3 mb-5 bg-body rounded text-center" >
                     <div class="card-body ">
                         <h5 class="card-title">{{post.title}}</h5>
                         <p class="card-text">{{post.description}}</p>

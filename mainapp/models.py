@@ -125,65 +125,6 @@ class Product(models.Model):
 		return self.__class__.__name__.lower()
 
 
-class Notebook(Product):
-	diagonal = models.CharField(max_length=255, verbose_name='Диагональ')
-	display = models.CharField(max_length=255, verbose_name='тип дисплея')
-	processor_freq = models.CharField(max_length=255, verbose_name = 'частота процессора')
-	ram = models.CharField(max_length=255, verbose_name = 'оперативная память')
-	video = models.CharField(max_length=255, verbose_name = 'видеокарта')
-	time_without_charge = models.CharField(max_length=255, verbose_name = 'время работы аккумулятора')
-	
-
-
-	def __str__(self):
-		return "{} : {}".format(self.category.name, self.title)
-
-	def get_absolute_url(self):
-		return get_product_url(self, 'product_detail')
-		
-
-	
-
-
-class Smartphone(Product):
-	diagonal = models.CharField(max_length=255, verbose_name='Диагональ')
-	display = models.CharField(max_length=255, verbose_name='тип дисплея')
-	resolutions = models.CharField(max_length=255, verbose_name='разрешение экрана')
-	accum_volume = models.CharField(max_length=255, verbose_name='объем батареи')
-	ram = models.CharField(max_length=255, verbose_name = 'оперативная память')
-	sd = models.BooleanField(default=True, verbose_name = 'наличие SD')
-	sd_volume = models.CharField(max_length=255, null=True, blank=True, verbose_name = 'Максимальный объем SD карты')
-	main_cam_mp = models.CharField(max_length=255, verbose_name = 'главная камера')
-	frontal_cam_mp = models.CharField(max_length=255, verbose_name = 'фронтальная камера')
-	
-
-
-	def __str__(self):
-		return "{} : {}".format(self.category.name, self.title)
-
-	def get_absolute_url(self):
-		return get_product_url(self, 'product_detail')
-
-class Lighting(Product):
-	name = models.CharField(max_length=255, verbose_name='Наименование товара')
-	seria = models.CharField(max_length=255, verbose_name='Серия')
-	brand = models.CharField(max_length=255, verbose_name='Брэнд')
-	articals = models.CharField(max_length=255, verbose_name='Артикул производителя')
-	garant_time = models.CharField(max_length=255, verbose_name='Срок гарантии')
-	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
-	power = models.CharField(max_length=255, verbose_name='Мощность')
-	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
-	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы')
-	
-
-	
-
-	def __str__(self):
-		return "{} : {}".format(self.category.name, self.title)
-
-	def get_absolute_url(self):
-		return get_product_url(self, 'product_detail')
-
 class Lampa(Product):
 	name = models.CharField(max_length=255, verbose_name='Наименование товара')
 	seria = models.CharField(max_length=255, verbose_name='Серия')
