@@ -22,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   overflow-x: auto;
-  width: auto;
+  width: 500px;
   margin: 50px auto;
 }
 
