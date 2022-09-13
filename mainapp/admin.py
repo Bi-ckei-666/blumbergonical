@@ -88,14 +88,16 @@ class NonStationaryWireAdmin(admin.ModelAdmin):
 class LampaAdmin(admin.ModelAdmin):
 	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
 		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Lamps'))
+			return ModelChoiceField(Category.objects.filter(slug__in=['Lamp-nakal', 'Svetodiod', 'Lamp-gas', 'Lamp-gal', 'Lamp-lum', 'Lamp-svetodiod', 'Lamp-specnaz']))
 			
-	
+
+			
 
 
 
 
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Product)
 admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)

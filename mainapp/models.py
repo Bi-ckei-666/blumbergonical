@@ -126,6 +126,7 @@ class Product(models.Model):
 
 
 class Lampa(Product):
+	
 	name = models.CharField(max_length=255, verbose_name='Наименование товара')
 	seria = models.CharField(max_length=255, verbose_name='Серия')
 	brand = models.CharField(max_length=255, verbose_name='Брэнд')
@@ -135,13 +136,25 @@ class Lampa(Product):
 	power = models.CharField(max_length=255, verbose_name='Мощность', blank=True)
 	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
 	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы', blank=True)
-	
+	light_stream = models.CharField(max_length=255, verbose_name='Световой поток', blank=True)
+	count_prod = models.CharField(max_length=255, verbose_name='Упаковка производителя', blank=True)
+	color_temer = models.CharField(max_length=255, verbose_name='Цветовая температура', blank=True)
+	diametr = models.CharField(max_length=255, verbose_name='Диаметр', blank=True)
+	naminal_napr = models.CharField(max_length=255, verbose_name='Нвминальное напряжение', blank=True)
+	color = models.CharField(max_length=255, verbose_name='Цвет', blank=True)
+	potreb_power = models.CharField(max_length=255, verbose_name='Потребляемая мощность', blank=True)
+
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)
 
 	def get_absolute_url(self):
 		return get_product_url(self, 'product_detail')
+
+	class Meta:
+		verbose_name = 'Объект Лампы'
+		verbose_name_plural = 'Лампы'
+
 
 	
 class NonStationaryWire(Product):
@@ -155,8 +168,6 @@ class NonStationaryWire(Product):
 	material = models.CharField(max_length=255, verbose_name='Материал жил проводника')
 	conductor_class = models.CharField(max_length=255, verbose_name='Класс токопроводящей жилы')
 	form_wire = models.CharField(max_length=255, verbose_name='Форма жил проводника')
-	
-
 
 	def __str__(self):
 		return "{} : {}".format(self.category.name, self.title)
