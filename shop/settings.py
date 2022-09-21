@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'mainapp',
     'crispy_forms',
     'mptt',
-    'bootstrap5',
     
 ]
 

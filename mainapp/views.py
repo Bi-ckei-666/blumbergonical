@@ -76,7 +76,7 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
         }
         print(len(product_for_main_page))
         print(product_for_main_page)
-        return render(request, 'base.html', context)
+        return render(request, 'index.html', context)
 
 class AllCategoryView(CategoryDetailMixin, CartMixin, View): #каталог категорий товаров
     def get(self, request, *args, **kwargs):
