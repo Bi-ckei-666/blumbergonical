@@ -1,17 +1,192 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
 
 {% block content %}
 
-<nav aria-label="breadcrumb" class="mt-3 ms-5">
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{% url 'base.html' %}">Главная</a></li>
-		
-	</ol>
-</nav>
+
+        <!--start breadcrumb-->
+        <section class="py-3 border-bottom d-none d-md-flex">
+          <div class="container">
+            <div class="page-breadcrumb d-flex align-items-center">
+              <h3 class="breadcrumb-title pe-3">Каталог категорий</h3>
+              <div class="ms-auto">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index.html' %}"><i class="bx bx-home-alt"></i> Главная</a>
+                    </li>
+
+                    <li class="breadcrumb-item active" aria-current="page">Каталог категорий</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--end breadcrumb-->
+
+        <!--start shop categories-->
+        <section class="py-4">
+          <div class="container">
+            <div class="product-categories">
+              <div class="row row-cols-1 row-cols-lg-3">
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/electro.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Высоковольтное и щитовое оборудование</h6>
+                      </a>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/batery.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Генераторы электроэнергии и элементы питания</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/montage.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Изделия для электромонтажа</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/instrument.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Инструменты, техника</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/kabelenes_sys.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Кабеленесущие системы</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
 
 
-<div class="container text-center">
+
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/kabeli.png" class="card-img-top border-bottom mx-auto d-block bg-dark-1" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Кабели, провода и аксессуары</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/wind.png" class="card-img-top border-bottom mx-auto d-block bg-dark-1" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Климатические и инженерные системы</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/rele.png" class="card-img-top border-bottom mx-auto d-block bg-dark-1" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Низковольтное и промышленное электрооборудование</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/svetilniki.png" class="card-img-top border-bottom mx-auto d-block bg-dark-1" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Освещение</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/montage.png" class="card-img-top border-bottom mx-auto d-block bg-dark-1" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Связь, телекоммуникации</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/saved.png" class="card-img-top border-bottom mx-auto d-block bg-dark-1" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Устройства и средства безопасности</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card rounded-0 product-card">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/rozetki.png" class="card-img-top border-bottom mx-auto d-block bg-dark-1" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class="list-group list-group-flush">
+                      <a href="javascript:;" class="list-group-item bg-transparent">
+                        <h6 class="mb-0 text-uppercase text-center">Электроустановочные изделия</h6>
+                      </a> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end row-->
+            </div>
+          </div>
+        </section>
+        <!--end shop categories-->
+
+
+
+<!--<div class="container text-center">
   <div class="row">
     <div class="col">
       <p>
@@ -174,7 +349,7 @@
   
 
  
-</div>
+</div>-->
 
       
 
