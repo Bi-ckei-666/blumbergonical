@@ -31,3 +31,11 @@
   justify-content: center;
   align-items: center;
 }
+
+#block-1 {
+  display: none;
+  width: 700px;
+}
+#block-2 {
+  display: none;
+}
