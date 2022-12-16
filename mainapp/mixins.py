@@ -4,8 +4,10 @@ from django.views.generic import View
 
 
 
-from .models import Category, Customer, Cart, NonStationaryWire, Lampa
+from .models import Category, Customer, Cart
 
+
+'''
 class CategoryDetailMixin(SingleObjectMixin):
 
 	CATEGORY_SLUG2PRODUCT_MODEL = {
@@ -26,6 +28,9 @@ class CategoryDetailMixin(SingleObjectMixin):
 		context = super().get_context_data(**kwargs)
 		context['categories'] = Category.objects.filter(slug = 'name')
 		return context
+
+	'''
+	
        
 class CartMixin(View):
 

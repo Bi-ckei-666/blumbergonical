@@ -39,57 +39,7 @@ class CategoryAdmin(DraggableMPTTAdmin):
         return instance.products_cumulative_count
     related_products_cumulative_count.short_description = 'Related products (in tree)'
 
-'''
-class SmartphoneAdminForm(ModelForm):
 
-	def __init__(self, *args, **kwargs):
-		super().__init__(*args, **kwargs)
-		instance = kwargs.get('instance')
-		if instance and not instance.sd:
-			self.fields['sd_volume'].widget.attrs.update({'readonly': True, 'style': 'background: lightgray;'})
-	def clean(self):
-		if not self.cleaned_data['sd']:
-			self.cleaned_data['sd_volume'] = None
-		return self.cleaned_data
-
-
-
-class NotebookAdmin(admin.ModelAdmin):	
-	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
-		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
-		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-
-class SubNotebookAdmin(admin.ModelAdmin):	
-	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
-		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Notebook'))
-		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-
-
-class SmartphoneAdmin(admin.ModelAdmin):	
-
-	change_form_template =  'admin.html'
-	form = SmartphoneAdminForm
-	
-	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
-		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Smartphone'))
-		return super().formfield_for_foreignkey(db_filed, request, **kwargs)
-'''
-
-
-class NonStationaryWireAdmin(admin.ModelAdmin):
-
-	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
-		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug='Wire'))
-
-class LampaAdmin(admin.ModelAdmin):
-	def formfield_for_foreignkey(self, db_filed, request, **kwargs):
-		if db_filed.name == 'category':
-			return ModelChoiceField(Category.objects.filter(slug__in=['Lamp-nakal', 'Svetodiod', 'Lamp-gas', 'Lamp-gal', 'Lamp-lum', 'Lamp-svetodiod', 'Lamp-specnaz']))
-			
 
 			
 
@@ -102,8 +52,7 @@ admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)
 admin.site.register(Order)
-admin.site.register(NonStationaryWire, NonStationaryWireAdmin)
-admin.site.register(Lampa, LampaAdmin)
+
 admin.site.register(News)
 
 

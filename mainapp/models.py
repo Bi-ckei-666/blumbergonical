@@ -30,7 +30,7 @@ def get_models_for_count(*model_names):
 
 def get_product_url(obj, viewname):
     ct_model = obj.__class__._meta.model_name
-    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
+    return reverse(viewname, kwargs={'id': id, 'slug': obj.slug})
 
 
 
@@ -63,34 +63,6 @@ class LatestProducts:
 	objects = LatestProductsManager()
 
 
-class CategoryManager(models.Manager):
-
-	
-	def get_queryset(self):
-		return super().get_queryset()
-
-
-	def get_categories_for_left_sidebar(self):
-		models = get_models_for_count()
-		qs = list(self.get_queryset().annotate(*models))
-		data = [
-			dict(name=c.name, url=c.get_absolute_url())
-			for c in qs
-		]
-		return data
-
-
-class Category_1(models.Model):
-
-	name = models.CharField(max_length=255, verbose_name="имя категории")
-	slug = models.SlugField(unique=True)
-	objects = CategoryManager()
-
-	def __str__(self):
-		return self.name
-
-	def get_absolute_url(self):
-		return reverse('category_detail', kwargs={'slug': self.slug})
 
 class Category(MPTTModel):
 
@@ -108,6 +80,10 @@ class Category(MPTTModel):
 	def get_absolute_url(self):
 		return reverse('category_detail', kwargs={'slug': self.slug})
 
+	class Meta:
+		verbose_name = 'Категорию'
+		verbose_name_plural = 'категории'
+
 class Product(models.Model):
 
 	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
@@ -117,6 +93,17 @@ class Product(models.Model):
 	description = models.TextField(verbose_name='описание', null=True)
 	price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
 	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
+	characteristiks = models.TextField(verbose_name='описание', null=True)
+	property1 = models.CharField(max_length=255, verbose_name="свойство_№1", blank=True)
+	property2 = models.CharField(max_length=255, verbose_name="свойство_№2", blank=True)
+	property3 = models.CharField(max_length=255, verbose_name="свойство_№3", blank=True)
+	property4 = models.CharField(max_length=255, verbose_name="свойство_№4", blank=True)
+	property5 = models.CharField(max_length=255, verbose_name="свойство_№5", blank=True)
+	property6 = models.CharField(max_length=255, verbose_name="свойство_№6", blank=True)
+	property7 = models.CharField(max_length=255, verbose_name="свойство_№7", blank=True)
+	property8 = models.CharField(max_length=255, verbose_name="свойство_№8", blank=True)
+	property9 = models.CharField(max_length=255, verbose_name="свойство_№9", blank=True)
+	property10 = models.CharField(max_length=255, verbose_name="свойство_№10", blank=True)
 
 	def __str__(self):
 		return self.title
@@ -124,57 +111,12 @@ class Product(models.Model):
 	def get_model_name(self):
 		return self.__class__.__name__.lower()
 
-
-class Lampa(Product):
-	
-	name = models.CharField(max_length=255, verbose_name='Наименование товара')
-	seria = models.CharField(max_length=255, verbose_name='Серия')
-	brand = models.CharField(max_length=255, verbose_name='Брэнд')
-	articals = models.CharField(max_length=255, verbose_name='Артикул производителя')
-	garant_time = models.CharField(max_length=255, verbose_name='Срок гарантии')
-	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
-	power = models.CharField(max_length=255, verbose_name='Мощность', blank=True)
-	plinth = models.CharField(max_length=255, verbose_name='Цоколь')
-	form_light = models.CharField(max_length=255, verbose_name='Форма Лампы', blank=True)
-	light_stream = models.CharField(max_length=255, verbose_name='Световой поток', blank=True)
-	count_prod = models.CharField(max_length=255, verbose_name='Упаковка производителя', blank=True)
-	color_temer = models.CharField(max_length=255, verbose_name='Цветовая температура', blank=True)
-	diametr = models.CharField(max_length=255, verbose_name='Диаметр', blank=True)
-	naminal_napr = models.CharField(max_length=255, verbose_name='Нвминальное напряжение', blank=True)
-	color = models.CharField(max_length=255, verbose_name='Цвет', blank=True)
-	potreb_power = models.CharField(max_length=255, verbose_name='Потребляемая мощность', blank=True)
-
-
-	def __str__(self):
-		return "{} : {}".format(self.category.name, self.title)
-
 	def get_absolute_url(self):
-		return get_product_url(self, 'product_detail')
+		return reverse('product_detail', args=[self.id, self.slug])
 
 	class Meta:
-		verbose_name = 'Объект Лампы'
-		verbose_name_plural = 'Лампы'
-
-
-	
-class NonStationaryWire(Product):
-	name = models.CharField(max_length=255, verbose_name='Наименование товара')
-	brand = models.CharField(max_length=255, verbose_name='Брэнд')
-	seria = models.CharField(max_length=255, verbose_name='Серия')
-	articals = models.CharField(max_length=255, verbose_name='Артикул производителя')
-	garant_time = models.CharField(max_length=255, verbose_name='Срок гарантии')
-	created_cantry = models.CharField(max_length=255, verbose_name='Страна производитель')
-	nominal_section = models.CharField(max_length=255, verbose_name='Наминально сечение проводника')
-	material = models.CharField(max_length=255, verbose_name='Материал жил проводника')
-	conductor_class = models.CharField(max_length=255, verbose_name='Класс токопроводящей жилы')
-	form_wire = models.CharField(max_length=255, verbose_name='Форма жил проводника')
-
-	def __str__(self):
-		return "{} : {}".format(self.category.name, self.title)
-
-	def get_absolute_url(self):
-		return get_product_url(self, 'product_detail')
-
+		verbose_name = 'Продукт'
+		verbose_name_plural = 'Продукты'
 
 
 
@@ -188,8 +130,8 @@ class CartProduct(models.Model):
 	qty = models.PositiveIntegerField(default=1)
 	final_price = models.DecimalField(max_digits=9, default=0, decimal_places=2, verbose_name='Общая Цена')
 
-	def __str__(self):
-		return "Продукт: {} (для корзины)".format(self.content_object.title)
+	#def __str__(self):
+	#	return "Продукт: {} (для корзины)".format(self.content_object.title)
 
 	def save(self, *args, **kwargs):
 		self.final_price = self.qty * self.content_object.price
@@ -197,6 +139,10 @@ class CartProduct(models.Model):
 
 	def get_model_name(self, *args, **kwargs):
 		return self.__class__._meta.model_name
+
+	class Meta:
+		verbose_name = 'Товары в корзине'
+		verbose_name_plural = 'Товары в корзине'
 
 
 
@@ -216,6 +162,12 @@ class Cart(models.Model):
 	def __str__(self):
 		return str(self.id)
 
+	class Meta:
+		verbose_name = 'Корзину'
+		verbose_name_plural = 'Корзина'
+
+
+
 	
 
 
@@ -232,6 +184,10 @@ class Customer(models.Model):
 
 	def __str__(self):
 		return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
+
+	class Meta:
+		verbose_name = 'Покупателя'
+		verbose_name_plural = 'Покупатели'
 
 
 class Order(models.Model):

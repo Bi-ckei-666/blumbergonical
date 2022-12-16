@@ -1,8 +1,8 @@
 from django.urls import path
 from .views import (
     BaseView, 
-    ProductDetailView, 
-    CategoryDetailView, 
+    ProductDetailView,
+    ProductListView, 
     CartView, 
     AddToCartView, 
     DeleteFromCartView,
@@ -23,8 +23,8 @@ from .views import (
 
 urlpatterns = [
     path('', BaseView.as_view(), name='index.html'),
-    path('products/<str:ct_model>/<str:slug>/', ProductDetailView.as_view(), name='product_detail'),
-    path('category/<str:slug>/', CategoryDetailView.as_view(), name='category_detail'),
+    path('products/<id>/<slug>/', ProductDetailView.as_view(), name='product_detail'),
+    path('category/<str:slug>/', ProductListView.as_view(), name='category_detail'),
     path('cart/', CartView.as_view(), name='cart'),
     path('add-to-cart/<str:ct_model>/<str:slug>/', AddToCartView.as_view(), name='add_to_cart'),
     path('remove-from-cart/<str:ct_model>/<str:slug>/', DeleteFromCartView.as_view(), name='delete_from_cart'),
@@ -37,5 +37,5 @@ urlpatterns = [
     
 ]
 
-    
+
 

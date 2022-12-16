@@ -6,7 +6,7 @@
 #def test_view(request):
 #	return render(request, 'base.html', {} )
 from django.db import transaction
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse, Http404
@@ -17,8 +17,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Category, Category_1, Product, Customer, Cart, CartProduct, NonStationaryWire, LatestProducts, Lampa, News
-from .mixins import CategoryDetailMixin, CartMixin
+from .models import Category, Product, Customer, Cart, CartProduct, LatestProducts, News
+from .mixins import CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
 
@@ -39,7 +39,7 @@ def other_page(request, page):
 
 
 
-class ContactView(CategoryDetailMixin, CartMixin, View):
+class ContactView( CartMixin, View):
 
     def get(self, request, *args, **kwargs):
             
@@ -56,14 +56,14 @@ class ContactView(CategoryDetailMixin, CartMixin, View):
 
 
 
-class BaseView(CategoryDetailMixin, CartMixin, View):
+class BaseView( CartMixin, View):
 
   
     def get(self, request, *args, **kwargs):
         
         categories = Category.objects.all()
         products = Product.objects.all()
-        product_for_main_page = LatestProducts.objects.get_products_for_main_page('nonstationarywire', 'lampa')
+        product_for_main_page = LatestProducts.objects.get_products_for_main_page()
         news_post = News.objects.order_by('title')[:2]
         
        
@@ -78,46 +78,55 @@ class BaseView(CategoryDetailMixin, CartMixin, View):
         print(product_for_main_page)
         return render(request, 'index.html', context)
 
-class AllCategoryView(CategoryDetailMixin, CartMixin, View): #каталог категорий товаров
+class AllCategoryView( CartMixin, View): #каталог категорий товаров
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
-        news_post = News.objects.order_by('title')[:2]
+        
 
         context = {
             'cart': self.cart,
-            'categories': categories,
-            'news_post' : news_post
+            'categories': categories
                         
         }
         return render(request, 'all_category.html', context)
 
-class ProductDetailView(CategoryDetailMixin, DetailView, CartMixin):
 
-    CT_MODEL_MODEL_CLASS = {
-        'nonstationarywire': NonStationaryWire,
-        'lampa': Lampa
+class ProductListView(DetailView, CartMixin):
+    model = Category
+    
+    def product_list(request, category_slug=None):
+        category = None
+        categories = Category.objects.all()
+        products = Product.objects.filter(available=True)
 
-    }
 
-    def dispatch(self, request, *args, **kwargs):
-        self.model = self.CT_MODEL_MODEL_CLASS[kwargs['ct_model']]
-        self.queryset = self.model._base_manager.all()
-        return super().dispatch(request, *args, **kwargs)
+        if category_slug:
+            category = get_objects_or_404(Category, slug = category_slug)
+            products = products.filter(category=category)
 
-    context_object_name = 'product'
-    template_name = 'product_detail.html'
-    slug_url_kwarg = 'slug'
+        return render(request, 'category_detail', {'category': category, 'products': products, 'categories': categories,  cart: self.cart})
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['ct_model'] = self.model._meta.model_name
-        context['cart'] = self.cart 
-        context['categories'] = Category.objects.all()
+
+
+
+class ProductDetailView(DetailView, CartMixin):
+    model = Product
+
+    def product_detail(request, id, slug):
+
         
-        return context
+        products = get_object_or_404(Product, id=id, slug=slug, available=True)
 
+        context = {
+                
+            'cart': self.cart,
+            'products' : products
+            } 
 
-class CategoryDetailView(CategoryDetailMixin, DetailView, CartMixin):
+        render(request, 'product_detail', context)
+
+'''
+class CategoryDetailView( DetailView, CartMixin):
 
     model = Category
     queryset = Category.objects.all()
@@ -134,10 +143,12 @@ class CategoryDetailView(CategoryDetailMixin, DetailView, CartMixin):
 
         return context
 
+'''
+
 class AddToCartView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
-        ct_model, product_slug = kwargs.get('ct_model'), kwargs.get('slug')
+        ct_model, product_slug = kwargs.get('id'), kwargs.get('slug')
       
         content_type = ContentType.objects.get(model=ct_model)
         product = content_type.model_class().objects.get(slug=product_slug)
@@ -154,7 +165,7 @@ class AddToCartView(CartMixin, View):
 class DeleteFromCartView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
-        ct_model, product_slug = kwargs.get('ct_model'), kwargs.get('slug')
+        ct_model, product_slug = kwargs.get('id'), kwargs.get('slug')
         content_type = ContentType.objects.get(model=ct_model)
         product = content_type.model_class().objects.get(slug=product_slug)
         cart_product = CartProduct.objects.get(
@@ -173,7 +184,7 @@ class DeleteFromCartView(CartMixin, View):
 class ChangeQTYView(CartMixin, View):
 
     def post(self, request, *args, **kwargs):
-        ct_model, product_slug = kwargs.get('ct_model'), kwargs.get('slug')
+        ct_model, product_slug = kwargs.get('id'), kwargs.get('slug')
         content_type = ContentType.objects.get(model=ct_model)
         product = content_type.model_class().objects.get(slug=product_slug)
         cart_product = CartProduct.objects.get(
@@ -239,7 +250,7 @@ class MakeOrderView(CartMixin, View):
         return HttpResponseRedirect('/checkout/')
    
 
-class SearchView(CategoryDetailMixin, CartMixin, View):
+class SearchView( CartMixin, View):
 
     def get(self, request, *args, **kwargs):
             

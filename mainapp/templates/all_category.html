@@ -53,12 +53,18 @@
                         <div><a class="" href="">1</a></div>
                         
                       </div>
+
+                      
                       <div class="col">
-                       <div>щитовое оборудование</div>
-                       
-                        <div><a class="" href="">1</a></div>
-                        <div><a class="" href="">1</a></div>       
+                        <div>щитовое оборудование</div>
+                        {% for c in categories %}
+                          {% if c.name == "Аксессуары и комплектующие для щитов и шкафов" %}
+                          <div><a class="" href="{{c.get_absolute_url}}">Аксессуары и комплектующие для щитов и шкафов</a></div>
+                          <div><a class="" href="">1</a></div>  
+                          {% endif %}   
+                        {% endfor %}    
                       </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -183,7 +189,7 @@
                 </div>
                 <div class="col">
                   <div class="card rounded-0 product-card">
-                    <a href="javascript:;">
+                    <a href="javascript bg-dark-1:;">
                       <img src="/media/shop-categories/montage.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
                     <div class="list-group list-group-flush">
