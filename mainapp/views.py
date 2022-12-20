@@ -6,6 +6,7 @@
 #def test_view(request):
 #	return render(request, 'base.html', {} )
 from django.db import transaction
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.contrib import messages
@@ -79,9 +80,13 @@ class BaseView( CartMixin, View):
         return render(request, 'index.html', context)
 
 class AllCategoryView( CartMixin, View): #каталог категорий товаров
+    
+
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
         
+
+
 
         context = {
             'cart': self.cart,
@@ -97,9 +102,12 @@ class ProductListView(DetailView, CartMixin):
     def product_list(request, category_slug=None):
         category = None
         categories = Category.objects.all()
-        products = Product.objects.all()
+        products = Product.objects.filter(available=True)
 
-        return render(request, 'category_detail.html', {'products': products, 'category': category, 'categories': categories,  'cart': self.cart})
+        if category_slug:
+            category = get_object_or_404(Category, slug=category_slug)
+            products = Product.filter(category=category)
+        return render(request, 'category_detail', {'products': products, 'category': category, 'categories': categories,  'cart': self.cart})
 
 
 
@@ -245,17 +253,26 @@ class MakeOrderView(CartMixin, View):
         return HttpResponseRedirect('/checkout/')
    
 
-class SearchView( CartMixin, View):
+class SearchView(CartMixin , View):
+
+    model = Product
 
     def get(self, request, *args, **kwargs):
-            
+
+       
+        query = self.request.GET.get('q')
+
+        products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
         categories = Category.objects.all()
-        
+
         context = {
+            'categories': categories,
             'cart': self.cart,
-            'categories': categories
-            }
+            'products' : products
+            
+        }
+        
         return render(request, 'search.html', context)
-
-
-
+        
+      
+       

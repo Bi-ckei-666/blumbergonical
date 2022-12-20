@@ -41,13 +41,17 @@ class CategoryAdmin(DraggableMPTTAdmin):
 
 
 
-			
+class ProductAdmin(admin.ModelAdmin):
+        list_display = ['title', 'category', 'slug', 'price']
+     
+        list_editable = ['price']
+       
 
 
 
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Product)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)

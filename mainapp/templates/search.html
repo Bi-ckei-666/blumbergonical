@@ -1,18 +1,55 @@
-{% extends 'base.html' %}
+{% extends 'index.html' %}
 
 {% block content %}
 
-<div class="container">
-	<div class="row">
-		<div class="col-4">
-			
-		</div>
-		<div class="col-8">
-			
-		</div>		
-	</div>
-	
-</div>
 
+<section class="py-4">
+					<div class="container">
+						<div class="d-flex align-items-center">
+							<h5 class="text-uppercase mb-0">Результат Поиска</h5>
+						</div>
+						<hr/>
+
+
+						<div class="product-grid">
+							<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+								{% for product in products %}
+								
+								<div class="col">
+
+									<div class="card rounded-0 product-card">
+										
+										<a href="{{ product.get_absolute_url }}">
+											<img src="{{product.image.url}}" class="card-img-top" alt="..." width="140" height="210">
+										</a>
+										<div class="card-body">
+											<div class="product-info">
+												<a href="javascript:;">
+													<p class="product-catergory font-13 mb-1">{{product.category}}</p>
+												</a>
+												<a href="{{ product.get_absolute_url }}">
+													<h6 class="product-name mb-2">{{product.title}}</h6>
+												</a>
+												<div class="d-flex align-items-center">
+													<div class="mb-1 product-price">
+														<span class="text-white fs-5">{{product.price}} Р.</span>
+													</div>
+												</div>
+												<div class="product-action mt-2">
+													<div class="d-grid gap-2">
+														<a href="" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>	<a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct"><i class='bx bx-zoom-in'></i>Quick View</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+</section>
 
 {% endblock content %}

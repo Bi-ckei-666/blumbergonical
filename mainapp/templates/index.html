@@ -80,8 +80,10 @@
 
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
-								<input type="text" class="form-control w-100" placeholder="Поиск...">
-									<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+								<form action="{% url 'search' %}" method="get" class="w-100">
+									<input type="text" name = 'q' class="form-control w-100" placeholder="Поиск...">
+										<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+								</form>
 							</div>
 						</div>
 						<div class="col col-md-auto order-3 d-none d-xl-flex align-items-center">
@@ -364,7 +366,7 @@
 				<section class="py-4">
 					<div class="container">
 						<div class="d-flex align-items-center">
-							<h5 class="text-uppercase mb-0">РЕКОМЕНДУЕМЫЕ ТОВАРЫ</h5>
+							<h5 class="text-uppercase mb-0">ТОВАРЫ</h5>
 							<a href="javascript:;" class="btn btn-light ms-auto rounded-0">Все продукты<i class='bx bx-chevron-right'></i></a>
 						</div>
 						<hr/>
@@ -397,7 +399,12 @@
 												</div>
 												<div class="product-action mt-2">
 													<div class="d-grid gap-2">
-														<!--<a href=" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>	<a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct"><i class='bx bx-zoom-in'></i>Quick View</a>-->
+														<a href="" class="btn btn-light btn-ecomm" >
+															<i class='bx bxs-cart-add'></i>
+															Добавить в корзину
+														</a>	
+
+														<a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct"><i class='bx bx-zoom-in'></i>Quick View</a>
 													</div>
 												</div>
 											</div>
