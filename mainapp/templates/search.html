@@ -4,10 +4,114 @@
 
 
 <section class="py-4">
+
+					
 					<div class="container">
-						<div class="d-flex align-items-center">
-							<h5 class="text-uppercase mb-0">Результат Поиска</h5>
-						</div>
+						<h3 class="breadcrumb-title pe-3">Результат</h3>
+						<hr>
+						<div class="row">
+							<div class="col-12 col-xl-3">
+								<div class="btn-mobile-filter d-xl-none"><i class='bx bx-slider-alt'></i>
+								</div>
+								<div class="filter-sidebar d-none d-xl-flex">
+									<div class="card rounded-0 w-100">
+										<div class="card-body">
+											<div class="align-items-center d-flex d-xl-none">
+												<h6 class="text-uppercase mb-0">фильтр</h6>
+												<div class="btn-mobile-filter-close btn-close ms-auto cursor-pointer"></div>
+											</div>
+											<hr class="d-flex d-xl-none" />
+											
+											<div class="price-range">
+												<h6 class="text-uppercase mb-3">Цена</h6>
+												<div class="my-4" id="slider"></div>
+												<div class="d-flex align-items-center">
+													<button type="button" class="btn btn-white btn-sm text-uppercase rounded-0 font-13 fw-500">фильтр</button>
+													<div class="ms-auto">
+														<p class="mb-0">Цена: 00.00 - 1000.00 Р</p>
+													</div>
+												</div>
+											</div>
+											<hr>
+											<div class="product-brands">
+												<h6 class="text-uppercase mb-3">Brands</h6>
+												<ul class="list-unstyled mb-0 categories-list">
+													<li>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="Adidas">
+															<label class="form-check-label" for="Adidas">Adidas (15)</label>
+														</div>
+													</li>
+													<li>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="Armani">
+															<label class="form-check-label" for="Armani">Armani (26)</label>
+														</div>
+													</li>
+													<li>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="CalvinKlein">
+															<label class="form-check-label" for="CalvinKlein">Calvin Klein (24)</label>
+														</div>
+													</li>
+													<li>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="Columbia">
+															<label class="form-check-label" for="Columbia">Columbia (38)</label>
+														</div>
+													</li>
+													<li>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="JhonPlayers">
+															<label class="form-check-label" for="JhonPlayers">Jhon Players (48)</label>
+														</div>
+													</li>
+													<li>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="Diesel">
+															<label class="form-check-label" for="Diesel">Diesel (64)</label>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<hr>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-xl-9">
+								<div class="product-wrapper">
+									<div class="toolbox d-flex align-items-center mb-3 gap-2">
+										<div class="d-flex flex-wrap flex-grow-1 gap-1">
+											<div class="d-flex align-items-center flex-nowrap">
+												<p class="mb-0 font-13 text-nowrap text-white">Сортировать по:</p>
+												<select class="form-select ms-3 rounded-0">
+													<option value="menu_order" selected="selected">По умолчанию</option>
+													<option value="popularity">Популярности</option>
+													<option value="rating">Рейтинг</option>
+													<option value="price">По цене: по возростанию</option>
+													<option value="price-desc">По цене: по убыванию</option>
+												</select>
+											</div>
+										</div>
+										<div class="d-flex flex-wrap">
+											<div class="d-flex align-items-center flex-nowrap">
+												<p class="mb-0 font-13 text-nowrap text-white">Показано</p>
+												<select class="form-select ms-3 rounded-0">
+													<option>9</option>
+													<option>12</option>
+													<option>16</option>
+													<option>20</option>
+													<option>50</option>
+													<option>100</option>
+												</select>
+											</div>
+										</div>
+										
+									</div>
+									<div class="container">
+						
 						<hr/>
 
 
@@ -20,7 +124,7 @@
 									<div class="card rounded-0 product-card">
 										
 										<a href="{{ product.get_absolute_url }}">
-											<img src="{{product.image.url}}" class="card-img-top" alt="..." width="140" height="210">
+											<img src="{{product.image.url}}" class="card-img-top" alt="..." style="width: 180px; height: 180px;">
 										</a>
 										<div class="card-body">
 											<div class="product-info">
@@ -50,6 +154,41 @@
 							</div>
 						</div>
 					</div>
+									
+									<hr>
+									<nav class="d-flex justify-content-between" aria-label="Page navigation">
+										<ul class="pagination">
+											<li class="page-item"><a class="page-link" href="javascript:;"><i class='bx bx-chevron-left'></i> Prev</a>
+											</li>
+										</ul>
+										<ul class="pagination">
+											<li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">2</a>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">3</a>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">4</a>
+											</li>
+											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">5</a>
+											</li>
+										</ul>
+										<ul class="pagination">
+											<li class="page-item"><a class="page-link" href="javascript:;" aria-label="Next">Next <i class='bx bx-chevron-right'></i></a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+						<!--end row-->
+					</div>
+					
 </section>
 
 {% endblock content %}
+
+
+<section class="py-4">
+					
+				</section>
