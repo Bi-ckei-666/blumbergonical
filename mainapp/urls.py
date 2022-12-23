@@ -17,7 +17,7 @@ from .views import (
 
 #from mainapp import views
 
-
+app_name = 'mainapp'
 
 
 

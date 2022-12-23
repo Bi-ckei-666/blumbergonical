@@ -26,6 +26,8 @@ from .utils import recalc_cart
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
+from cart.forms import CartAddProductForm
+
 '''
 def other_page(request, page):
     try:
@@ -51,7 +53,7 @@ class ContactView( CartMixin, View):
             'categories': categories
                         
         }
-        return render(request, 'contact.html', context)
+        return render(request, 'mainapp/contact.html', context)
 
 
 
@@ -77,7 +79,7 @@ class BaseView( CartMixin, View):
         }
         print(len(product_for_main_page))
         print(product_for_main_page)
-        return render(request, 'index.html', context)
+        return render(request, 'mainapp/index.html', context)
 
 class AllCategoryView( CartMixin, View): #каталог категорий товаров
     
@@ -93,7 +95,7 @@ class AllCategoryView( CartMixin, View): #каталог категорий то
             'categories': categories
                         
         }
-        return render(request, 'all_category.html', context)
+        return render(request, 'mainapp/all_category.html', context)
 
 
 class ProductListView(DetailView, CartMixin):
@@ -107,7 +109,7 @@ class ProductListView(DetailView, CartMixin):
         if category_slug:
             category = get_object_or_404(Category, slug=category_slug)
             products = Product.filter(category=category)
-        return render(request, 'category_detail', {'products': products, 'category': category, 'categories': categories,  'cart': self.cart})
+        return render(request, 'mainapp/category_detail', {'products': products, 'category': category, 'categories': categories,  'cart': self.cart})
 
 
 
@@ -119,14 +121,16 @@ class ProductDetailView(DetailView, CartMixin):
 
         
         products = get_object_or_404(Product, id=id, slug=slug, available=True)
+        cart_product_form = CartAddProductForm()
 
         context = {
                 
             'cart': self.cart,
-            'products' : products
+            'products' : products,
+            'cart_product_form' : cart_product_form
             } 
 
-        render(request, 'product_detail', context)
+        render(request, 'mainapp/product_detail.html', context)
 
 '''
 class CategoryDetailView( DetailView, CartMixin):
@@ -272,7 +276,7 @@ class SearchView(CartMixin , View):
             
         }
         
-        return render(request, 'search.html', context)
+        return render(request, 'mainapp/search.html', context)
         
       
        
