@@ -11,7 +11,8 @@ from .views import (
     MakeOrderView,
     ContactView,
     AllCategoryView,
-    SearchView
+    SearchView,
+    NewsView
     
 )
 
@@ -33,7 +34,8 @@ urlpatterns = [
     path('make-order/', MakeOrderView.as_view(), name='make_order'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('all_category/', AllCategoryView.as_view(), name='all_category'),
-    path('search/', SearchView.as_view(), name='search')
+    path('search/', SearchView.as_view(), name='search'),
+    path('blog/', NewsView.as_view(), name='blog')
     
 ]
 

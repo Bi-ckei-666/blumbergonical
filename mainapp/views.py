@@ -56,7 +56,21 @@ class ContactView( CartMixin, View):
         return render(request, 'mainapp/contact.html', context)
 
 
+class NewsView( CartMixin, View):
 
+    def get(self, request, *args, **kwargs):
+            
+        categories = Category.objects.all()
+        news_post = News.objects.all()
+         
+        context = {
+            'cart': self.cart,
+            'categories': categories,
+            'news_post' : news_post
+            
+                        
+        }
+        return render(request, 'mainapp/blog.html', context)
 
 
 class BaseView( CartMixin, View):
@@ -79,6 +93,7 @@ class BaseView( CartMixin, View):
         }
         print(len(product_for_main_page))
         print(product_for_main_page)
+        print('запуск главное страницы')
         return render(request, 'mainapp/index.html', context)
 
 class AllCategoryView( CartMixin, View): #каталог категорий товаров
