@@ -4,22 +4,20 @@
 {% block content %}}
 		<!--end top header wrapper-->
 		<!--start page wrapper -->
-		<div class="page-wrapper">
-			<div class="page-content">
-
+		
 				<!--start breadcrumb-->
 				<section class="py-3 border-bottom d-none d-md-flex">
 					<div class="container">
 						<div class="page-breadcrumb d-flex align-items-center">
-							<div class="breadcrumb-title pe-3">Blog</div>
+							<div class="breadcrumb-title pe-3">Новости</div>
 							<div class="ms-auto">
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb mb-0 p-0">
-										<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+										<li class="breadcrumb-item"><a href="{% url 'mainapp:index.html' %}"><i class="bx bx-home-alt"></i> Главная</a>
 										</li>
-										<li class="breadcrumb-item"><a href="javascript:;">Blog</a>
+										<li class="breadcrumb-item"><a href="javascript:;">Новости</a>
 										</li>
-										<li class="breadcrumb-item active" aria-current="page">Blog Posts</li>
+										
 									</ol>
 								</nav>
 							</div>
@@ -28,45 +26,39 @@
 				</section>
 				<!--end breadcrumb-->
 
+
+				
 				<!--start page content-->
 				<section class="py-4">
 					<div class="container">
 						<div class="row">
 							<div class="col-12 col-lg-9">
 								<div class="blog-right-sidebar p-3">
+									
+
+									{% for post in news_post %}
 									<div class="card">
-										<img src="assets/images/posts/01.png" class="card-img-top" alt="">
-										<div class="card-body">
-											<div class="list-inline">	<a href="javascript:;" class="list-inline-item"><i class='bx bx-user me-1'></i>By Admin</a>
-												<a href="javascript:;" class="list-inline-item"><i class='bx bx-comment-detail me-1'></i>16 Comments</a>
-												<a href="javascript:;" class="list-inline-item"><i class='bx bx-calendar me-1'></i>November 5, 2021</a>
+										<div class="row">
+											<div class="col">
+												<img src="{{post.image.url}}" class="card-img-top" alt="">
 											</div>
-											<h4 class="mt-4">Post Title Here</h4>
-											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>	<a href="single.html" class="btn btn-light btn-ecomm">Read More <i class='bx bx-chevrons-right' ></i></a>
-										</div>
-									</div>
-									<div class="card">
-										<img src="assets/images/posts/02.png" class="card-img-top" alt="">
-										<div class="card-body">
-											<div class="list-inline">	<a href="javascript:;" class="list-inline-item"><i class='bx bx-user me-1'></i>By Admin</a>
-												<a href="javascript:;" class="list-inline-item"><i class='bx bx-comment-detail me-1'></i>16 Comments</a>
-												<a href="javascript:;" class="list-inline-item"><i class='bx bx-calendar me-1'></i>November 5, 2021</a>
+											<div>
+												<div class="card-body">
+													<div class="list-inline">	<a href="javascript:;" class="list-inline-item"><i class='bx bx-user me-1'></i>пользователь: Администратор</a>
+															
+														<a href="javascript:;" class="list-inline-item"><i class='bx bx-calendar me-1'></i>November 5, 2021</a>
+													</div>
+													<h4 class="mt-4">{{post.title}}</h4>
+													<p>{{post.description}}</p>	
+												</div>
 											</div>
-											<h4 class="mt-4">Post Title Here</h4>
-											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>	<a href="single.html" class="btn btn-light btn-ecomm">Read More <i class='bx bx-chevrons-right' ></i></a>
+											
 										</div>
+
 									</div>
-									<div class="card">
-										<img src="assets/images/posts/03.png" class="card-img-top" alt="">
-										<div class="card-body">
-											<div class="list-inline">	<a href="javascript:;" class="list-inline-item"><i class='bx bx-user me-1'></i>By Admin</a>
-												<a href="javascript:;" class="list-inline-item"><i class='bx bx-comment-detail me-1'></i>16 Comments</a>
-												<a href="javascript:;" class="list-inline-item"><i class='bx bx-calendar me-1'></i>November 5, 2021</a>
-											</div>
-											<h4 class="mt-4">Post Title Here</h4>
-											<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>	<a href="single.html" class="btn btn-light btn-ecomm">Read More <i class='bx bx-chevrons-right' ></i></a>
-										</div>
-									</div>
+
+									{% endfor %}
+									
 									<hr>
 									<nav class="d-flex justify-content-between" aria-label="Page navigation">
 										<ul class="pagination">
@@ -118,8 +110,7 @@
 					</div>
 				</section>
 				<!--end start page content-->
-			</div>
-		</div>
+			
 		<!--end page wrapper -->
 		<!--start footer section-->
 {% endblock content %}

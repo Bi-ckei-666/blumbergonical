@@ -94,6 +94,7 @@ class Product(models.Model):
 	price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
 	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
 	characteristiks = models.TextField(verbose_name='описание', null=True)
+	date_created = models.DateTimeField(auto_now_add = True)
 	property1 = models.CharField(max_length=255, verbose_name="свойство_№1", blank=True)
 	property2 = models.CharField(max_length=255, verbose_name="свойство_№2", blank=True)
 	property3 = models.CharField(max_length=255, verbose_name="свойство_№3", blank=True)
@@ -150,7 +151,7 @@ class CartProduct(models.Model):
 
 class Cart(models.Model):
 
-	owner = models.ForeignKey('Customer', null=True, verbose_name='Владелец', on_delete=models.CASCADE)
+	owner = models.ForeignKey('Customer', null=True, verbose_name='Покупатель', on_delete=models.CASCADE)
 	product = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
 	total_product = models.PositiveIntegerField(default=0)
 	final_price = models.DecimalField(max_digits=9, default=0, decimal_places=2, verbose_name='Общая Цена')

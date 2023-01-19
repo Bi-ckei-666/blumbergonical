@@ -80,9 +80,9 @@
 
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
-								<form action="{% url 'mainapp:search' %}" method="get" class="w-100">
-									<input type="text" name = 'q' class="form-control w-100" placeholder="Поиск...">
-										<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+								<form action="{% url 'mainapp:search' %}" method="get" class="w-100 rounded-0">
+									<input type="text" name = 'q' class="form-control form-control-lg" placeholder="Поиск...">
+									<!--<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>-->
 								</form>
 							</div>
 						</div>
@@ -269,6 +269,10 @@
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:all_category' %}">Каталог категорий</a> 
 							</li>
+							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:blog' %}">Новости</a> 
+							</li>
+
+							<!--
 							<li class="nav-item dropdown">	<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">Аккаунт<i class='bx bx-chevron-down'></i></a>
 								<ul class="dropdown-menu">
 									<li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a>
@@ -282,7 +286,9 @@
 									<li><a class="dropdown-item" href="account-user-details.html">Дополнительная информация</a>
 									</li>
 								</ul>
-							</li>
+							</li>-->
+
+
 						</ul>
 					</nav>
 				</div>
@@ -292,7 +298,8 @@
 		<!--start slider section-->
 
 		{% block content %}
-		<section class="slider-section" >
+
+		<!--<section class="slider-section" >
 			<div class="first-slider" >
 				<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
 					<ol class="carousel-indicators">
@@ -354,9 +361,9 @@
 					</a>
 				</div>
 			</div>
-
 		
-		</section>
+		
+		</section>-->
 		<!--end slider section-->
 		<!--start page wrapper -->
 		<div class="page-wrapper">
