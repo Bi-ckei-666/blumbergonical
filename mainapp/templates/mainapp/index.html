@@ -50,6 +50,8 @@
 							</li>
 							<li class="nav-item">	<a class="nav-link" href="javascript:;">Помощь & FAQs</a>
 							</li>
+							<li class="nav-item">	<a class="nav-link" href="{% url 'mainapp:cart' %}">корзина</a>
+							</li>
 						</ul>
 						
 						<!--<ul class="navbar-nav social-link ms-lg-2 ms-auto">
@@ -241,8 +243,7 @@
 														<h5 class="mb-0 ms-auto">$189.00</h5>
 													</div>
 												</a>
-												<div class="d-grid p-3 border-top">	<a href="{% url 'cart:cart_detail' %}" class="btn btn-light btn-ecomm">CHECKOUT</a>
-												</div>
+												
 											</div>
 										</li>
 									</ul>
@@ -468,7 +469,7 @@
 					<div class="container">
 						<div class="d-flex align-items-center">
 							<h5 class="text-uppercase mb-0">Последние новости</h5>
-							<a href="blog.html" class="btn btn-light ms-auto rounded-0">Все новости<i class='bx bx-chevron-right'></i></a>
+							<a href="{% url 'mainapp:blog' %}" class="btn btn-light ms-auto rounded-0">Все новости<i class='bx bx-chevron-right'></i></a>
 						</div>
 						<hr/>
 						<div class="product-grid">

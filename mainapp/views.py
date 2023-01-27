@@ -18,7 +18,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Category, Product, Customer, Cart, CartProduct, LatestProducts, News
+from .models import Category, Product, Customer, Cart, CartProduct, News
 from .mixins import CartMixin
 from .forms import OrderForm
 from .utils import recalc_cart 
@@ -26,7 +26,6 @@ from .utils import recalc_cart
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
-from cart.forms import CartAddProductForm
 
 '''
 def other_page(request, page):
@@ -80,19 +79,16 @@ class BaseView( CartMixin, View):
         
         categories = Category.objects.all()
         products = Product.objects.all()
-        product_for_main_page = LatestProducts.objects.get_products_for_main_page()
-        news_post = News.objects.order_by('title')[:2]
+        news_post = News.objects.all()
         
        
         context = {
             'categories': categories,
             'cart': self.cart,
             'products' : products,
-            'product_for_main_page' : product_for_main_page,
             'news_post' : news_post
         }
-        print(len(product_for_main_page))
-        print(product_for_main_page)
+        
         print('запуск главное страницы')
         return render(request, 'mainapp/index.html', context)
 
@@ -128,24 +124,23 @@ class ProductListView(DetailView, CartMixin):
 
 
 
-
 class ProductDetailView(DetailView, CartMixin):
     model = Product
 
     def product_detail(request, id, slug):
 
-        
-        products = get_object_or_404(Product, id=id, slug=slug, available=True)
-        cart_product_form = CartAddProductForm()
-
-        context = {
+            products = get_object_or_404(Product, id=id, slug=slug, available=True)
+            context = {
                 
             'cart': self.cart,
-            'products' : products,
-            'cart_product_form' : cart_product_form
+            'products' : products
             } 
 
-        render(request, 'mainapp/product_detail.html', context)
+            render(request, 'mainapp/product_detail.html', context)
+
+
+        
+
 
 '''
 class CategoryDetailView( DetailView, CartMixin):
@@ -170,19 +165,26 @@ class CategoryDetailView( DetailView, CartMixin):
 class AddToCartView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
-        ct_model, product_slug = kwargs.get('id'), kwargs.get('slug')
-      
-        content_type = ContentType.objects.get(model=ct_model)
-        product = content_type.model_class().objects.get(slug=product_slug)
+
+        product_id, product_slug = kwargs.get('id'), kwargs.get('slug') 
+
+        product = Product.objects.get(id=request.GET.get('id'))
+        #product_iden = Product.objects.get(product_id)
+        #product = product_iden.model_class().objects.get(slug=product_slug)
+        print(Product.price)
+
+        #content_type = ContentType.objects.get(model=product_id)
+        #product = content_type.model_class().objects.get(slug=product_slug)
        
-        cart_product, created = CartProduct.objects.get_or_create(user=self.cart.owner, cart=self.cart, content_type=content_type, object_id=product.id, final_price=product.price)
-       
-       
+        cart_product, created = CartProduct.objects.get_or_create(user=self.cart.owner, cart=self.cart, product_id=product, final_price=product.price)
+
         if created:
             self.cart.product.add(cart_product)
         recalc_cart(self.cart)
         messages.add_message(request, messages.INFO, "Товар успешно добавлен")
-        return HttpResponseRedirect('/cart/')
+        
+
+        return HttpResponseRedirect('mainapp/cart/')
 
 class DeleteFromCartView(CartMixin, View):
 
@@ -201,7 +203,7 @@ class DeleteFromCartView(CartMixin, View):
 
        
         messages.add_message(request, messages.INFO, "Товар успешно удален")
-        return HttpResponseRedirect('/cart/')
+        return HttpResponseRedirect('mainapp/cart')
 
 class ChangeQTYView(CartMixin, View):
 
@@ -218,7 +220,7 @@ class ChangeQTYView(CartMixin, View):
         recalc_cart(self.cart)
         messages.add_message(request, messages.INFO, "Кол-во успешно изменено")
 
-        return HttpResponseRedirect('/cart/')
+        return HttpResponseRedirect('mainapp/cart/')
 
 class CartView(CartMixin, View):
 
@@ -229,7 +231,7 @@ class CartView(CartMixin, View):
             'cart': self.cart,
             'categories': categories
         }
-        return render(request, 'cart.html', context)
+        return render(request, 'mainapp/cart/', context)
 
 
 class CheckoutView(CartMixin, View):

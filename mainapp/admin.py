@@ -42,10 +42,10 @@ class CategoryAdmin(DraggableMPTTAdmin):
 
 
 class ProductAdmin(admin.ModelAdmin):
-        list_display = ['title', 'category', 'slug', 'price']
+    list_display = ['title', 'category', 'slug', 'price']
      
-        list_editable = ['price']
-       
+    list_editable = ['price']
+
 
 
 

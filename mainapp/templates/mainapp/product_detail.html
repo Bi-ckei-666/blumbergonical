@@ -24,12 +24,13 @@
         <p>Описание: {{ product.description }}</p>
         <p>Количество {{ product.count_view }}</p>
 
-        <a href=""><button class="btn btn-danger">добавить в карзину</button></a>
- 		<form action="{% url 'cart:cart_add' product.id %}" method="post">
-            {{ cart_product_form }}
+        <!--<a href=""><button class="btn btn-danger">добавить в карзину</button></a>-->
+ 		
+
             {% csrf_token %}
-            <input type="submit" value="добавить в корзину">
-        </form>
+
+
+        <a href="{% url 'mainapp:add_to_cart' %}"><button class="btn btn-primary">Добавить в корзину</button></a>
     </div>
 
     {% load specifications %}

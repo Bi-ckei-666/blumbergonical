@@ -29,8 +29,8 @@ def get_models_for_count(*model_names):
 	return [models.Count(model_name) for model_name in model_names]
 
 def get_product_url(obj, viewname):
-    ct_model = obj.__class__._meta.model_name
-    return reverse(viewname, kwargs={'id': id, 'slug': obj.slug})
+    product_id = obj.__class__._meta.model_name
+    return reverse(viewname, kwargs={'product_id': obj.id, 'slug': obj.slug})
 
 
 
@@ -43,24 +43,6 @@ class MaxResalutionErrorException():
 
 
 
-
-class LatestProductsManager:
-
-
-	@staticmethod
-	def get_products_for_main_page(*args, **kwargs):
-		products = []
-		ct_models = ContentType.objects.filter(model__in=args)
-		for ct_model in ct_models:
-			model_products = ct_model.model_class()._base_manager.all().order_by('-id')
-			products.extend(model_products)
-		return products
-
-
-
-class LatestProducts:
-
-	objects = LatestProductsManager()
 
 
 
@@ -86,8 +68,10 @@ class Category(MPTTModel):
 
 class Product(models.Model):
 
+	
 	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
 	title = models.CharField(max_length=255, verbose_name="наименование")
+	identifications = models.PositiveIntegerField(default=1, verbose_name='индификатор', blank=True)
 	slug = models.SlugField(unique=True)
 	image = models.ImageField(verbose_name='Изображение')
 	description = models.TextField(verbose_name='описание', null=True)
@@ -125,9 +109,10 @@ class CartProduct(models.Model):
 
 	user = models.ForeignKey('Customer', null=True, verbose_name='Покупатель', on_delete=models.CASCADE)
 	cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE, related_name="related_products")
-	content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-	object_id = models.PositiveIntegerField()
-	content_object = GenericForeignKey('content_type', 'object_id')
+	product_id = models.PositiveIntegerField()
+	#content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+	#object_id = models.PositiveIntegerField()
+	#content_object = GenericForeignKey('content_type', 'object_id')
 	qty = models.PositiveIntegerField(default=1)
 	final_price = models.DecimalField(max_digits=9, default=0, decimal_places=2, verbose_name='Общая Цена')
 

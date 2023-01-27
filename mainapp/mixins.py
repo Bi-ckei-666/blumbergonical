@@ -7,29 +7,6 @@ from django.views.generic import View
 from .models import Category, Customer, Cart
 
 
-'''
-class CategoryDetailMixin(SingleObjectMixin):
-
-	CATEGORY_SLUG2PRODUCT_MODEL = {
-		'Nonstationarywire': NonStationaryWire,
-		'Lamps': Lampa
-		
-	}
-	
-	def get_context_data(self, **kwargs):	
-
-		if isinstance(self.get_object(), Category):
-			model = self.CATEGORY_SLUG2PRODUCT_MODEL[self.get_object().slug]
-			context = super().get_context_data(**kwargs)
-			context['categories'] = Category.objects.all()
-			context['category_products'] = model.objects.all()
-			return context	
-	
-		context = super().get_context_data(**kwargs)
-		context['categories'] = Category.objects.filter(slug = 'name')
-		return context
-
-	'''
 	
        
 class CartMixin(View):
