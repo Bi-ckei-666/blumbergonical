@@ -18,10 +18,10 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
 
-from .models import Category, Product, Customer, Cart, CartProduct, News
-from .mixins import CartMixin
-from .forms import OrderForm
-from .utils import recalc_cart 
+from .models import Category, Product, Customer, News
+#from .mixins import CartMixin
+#from .forms import OrderForm
+#from .utils import recalc_cart 
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -39,23 +39,24 @@ def other_page(request, page):
 '''
 
 
+                            # представление кантактов (страница о нас)
 
-
-class ContactView( CartMixin, View):
+class ContactView( View):
 
     def get(self, request, *args, **kwargs):
             
         categories = Category.objects.all()
          
         context = {
-            'cart': self.cart,
             'categories': categories
                         
         }
         return render(request, 'mainapp/contact.html', context)
 
+                            
 
-class NewsView( CartMixin, View):
+                            #представление новостного блога
+class NewsView( View):
 
     def get(self, request, *args, **kwargs):
             
@@ -63,7 +64,6 @@ class NewsView( CartMixin, View):
         news_post = News.objects.all()
          
         context = {
-            'cart': self.cart,
             'categories': categories,
             'news_post' : news_post
             
@@ -71,8 +71,11 @@ class NewsView( CartMixin, View):
         }
         return render(request, 'mainapp/blog.html', context)
 
+                            
 
-class BaseView( CartMixin, View):
+
+                            #представление главной страницы
+class BaseView( View):
 
   
     def get(self, request, *args, **kwargs):
@@ -84,15 +87,22 @@ class BaseView( CartMixin, View):
        
         context = {
             'categories': categories,
-            'cart': self.cart,
             'products' : products,
             'news_post' : news_post
         }
         
         print('запуск главное страницы')
         return render(request, 'mainapp/index.html', context)
+                            
 
-class AllCategoryView( CartMixin, View): #каталог категорий товаров
+
+                            #представление страници всех категорий (каталог категорий)
+
+
+                             
+
+                            #каталог категорий товаров 
+class AllCategoryView( View): 
     
 
     def get(self, request, *args, **kwargs):
@@ -102,29 +112,16 @@ class AllCategoryView( CartMixin, View): #каталог категорий то
 
 
         context = {
-            'cart': self.cart,
             'categories': categories
                         
         }
         return render(request, 'mainapp/all_category.html', context)
 
 
-class ProductListView(DetailView, CartMixin):
-    model = Category
-    
-    def product_list(request, category_slug=None):
-        category = None
-        categories = Category.objects.all()
-        products = Product.objects.filter(available=True)
 
-        if category_slug:
-            category = get_object_or_404(Category, slug=category_slug)
-            products = Product.filter(category=category)
-        return render(request, 'mainapp/category_detail', {'products': products, 'category': category, 'categories': categories,  'cart': self.cart})
-
-
-
-class ProductDetailView(DetailView, CartMixin):
+                            
+                            #представление страници одного продукта 
+class ProductDetailView(DetailView):
     model = Product
 
     def product_detail(request, id, slug):
@@ -132,51 +129,56 @@ class ProductDetailView(DetailView, CartMixin):
             products = get_object_or_404(Product, id=id, slug=slug, available=True)
             context = {
                 
-            'cart': self.cart,
+            
             'products' : products
             } 
 
             render(request, 'mainapp/product_detail.html', context)
 
 
-        
+                            
 
+                            #представление поиска 
+class SearchView(View):
 
-'''
-class CategoryDetailView( DetailView, CartMixin):
-
-    model = Category
-    queryset = Category.objects.all()
-    context_object_name = 'category'
-    template_name = 'category_detail.html'
-    slug_url_kwarg = 'slug'
-
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context['cart'] = self.cart
-
-
-        return context
-
-'''
-
-class AddToCartView(CartMixin, View):
+    model = Product
 
     def get(self, request, *args, **kwargs):
 
-        product_id, product_slug = kwargs.get('id'), kwargs.get('slug') 
+       
+        query = self.request.GET.get('q')
 
-        product = Product.objects.get(id=request.GET.get('id'))
+        products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
+        categories = Category.objects.all()
+
+        context = {
+            'categories': categories,
+            'products' : products
+            
+        }
+        
+        return render(request, 'mainapp/search.html', context)
+
+
+
+                                #представление корзины (старое)
+
+'''
+class AddToCartView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        #product_id, product_slug = kwargs.get('id'), kwargs.get('slug') 
+
+        
         #product_iden = Product.objects.get(product_id)
         #product = product_iden.model_class().objects.get(slug=product_slug)
         print(Product.price)
 
         #content_type = ContentType.objects.get(model=product_id)
         #product = content_type.model_class().objects.get(slug=product_slug)
-       
-        cart_product, created = CartProduct.objects.get_or_create(user=self.cart.owner, cart=self.cart, product_id=product, final_price=product.price)
+                                                                                    #product_id=product,
+        cart_product, created = CartProduct.objects.get_or_create(user=self.cart.owner, cart=self.cart, final_price=Product.objects.filter('price')
 
         if created:
             self.cart.product.add(cart_product)
@@ -186,7 +188,7 @@ class AddToCartView(CartMixin, View):
 
         return HttpResponseRedirect('mainapp/cart/')
 
-class DeleteFromCartView(CartMixin, View):
+class DeleteFromCartView(View):
 
     def get(self, request, *args, **kwargs):
         ct_model, product_slug = kwargs.get('id'), kwargs.get('slug')
@@ -205,7 +207,7 @@ class DeleteFromCartView(CartMixin, View):
         messages.add_message(request, messages.INFO, "Товар успешно удален")
         return HttpResponseRedirect('mainapp/cart')
 
-class ChangeQTYView(CartMixin, View):
+class ChangeQTYView(View):
 
     def post(self, request, *args, **kwargs):
         ct_model, product_slug = kwargs.get('id'), kwargs.get('slug')
@@ -222,7 +224,7 @@ class ChangeQTYView(CartMixin, View):
 
         return HttpResponseRedirect('mainapp/cart/')
 
-class CartView(CartMixin, View):
+class CartView(View):
 
     def get(self, request, *args, **kwargs):
         
@@ -234,7 +236,7 @@ class CartView(CartMixin, View):
         return render(request, 'mainapp/cart/', context)
 
 
-class CheckoutView(CartMixin, View):
+class CheckoutView(View):
 
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
@@ -246,7 +248,7 @@ class CheckoutView(CartMixin, View):
         }
         return render(request, 'checkout.html', context)
 
-class MakeOrderView(CartMixin, View):
+class MakeOrderView(View):
 
     @transaction.atomic
     def post(self, request, *args, **kwargs):
@@ -274,26 +276,10 @@ class MakeOrderView(CartMixin, View):
         return HttpResponseRedirect('/checkout/')
    
 
-class SearchView(CartMixin , View):
+'''
 
-    model = Product
 
-    def get(self, request, *args, **kwargs):
-
-       
-        query = self.request.GET.get('q')
-
-        products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
-        categories = Category.objects.all()
-
-        context = {
-            'categories': categories,
-            'cart': self.cart,
-            'products' : products
-            
-        }
-        
-        return render(request, 'mainapp/search.html', context)
+                                           
         
       
        

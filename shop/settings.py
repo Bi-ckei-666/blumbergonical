@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'mainapp',
     'crispy_forms',
     'mptt',
+    'cart',
+    'accounts',
     
 ]
 
@@ -69,12 +71,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'cart.context_processors.counter',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'shop.wsgi.application'
+
+AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Database

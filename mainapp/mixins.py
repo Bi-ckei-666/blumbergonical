@@ -4,10 +4,10 @@ from django.views.generic import View
 
 
 
-from .models import Category, Customer, Cart
+from .models import Category, Customer
 
 
-	
+'''	
        
 class CartMixin(View):
 
@@ -31,7 +31,9 @@ class CartMixin(View):
 		self.cart = cart
 		
 		return super().dispatch(request, *args, **kwargs)
-			
+		
+
+'''	
 
 
 # Послание в миксынах!!!

@@ -105,6 +105,38 @@ class Product(models.Model):
 
 
 
+class Customer(models.Model):
+
+
+	user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
+	phone = models.CharField(max_length=20, verbose_name='Номер телефона', null=True, blank=True)
+	address = models.CharField(max_length=255, verbose_name='Адрес', null=True, blank=True)
+	
+
+	def __str__(self):
+		return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
+
+	class Meta:
+		verbose_name = 'Покупателя'
+		verbose_name_plural = 'Покупатели'
+
+
+class News(models.Model): #модель для написания постов на главное странице
+	title = models.CharField(max_length=255, verbose_name='Наименование новости')
+	image = models.ImageField(verbose_name='Изображение')
+	description = models.TextField(verbose_name='текст новости', null=True)
+	
+	def __str__(self):
+		return self.title
+
+	class Meta:
+		verbose_name = 'Пост'
+		verbose_name_plural = 'Посты'
+
+
+
+
+'''
 class CartProduct(models.Model):
 
 	user = models.ForeignKey('Customer', null=True, verbose_name='Покупатель', on_delete=models.CASCADE)
@@ -131,9 +163,6 @@ class CartProduct(models.Model):
 		verbose_name_plural = 'Товары в корзине'
 
 
-
-
-
 class Cart(models.Model):
 
 	owner = models.ForeignKey('Customer', null=True, verbose_name='Покупатель', on_delete=models.CASCADE)
@@ -153,28 +182,13 @@ class Cart(models.Model):
 		verbose_name_plural = 'Корзина'
 
 
-
+'''
 	
 
 
 
  
-class Customer(models.Model):
-
-
-	user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.PROTECT)
-	phone = models.CharField(max_length=20, verbose_name='Номер телефона', null=True, blank=True)
-	address = models.CharField(max_length=255, verbose_name='Адрес', null=True, blank=True)
-	orders = models.ManyToManyField('Order', verbose_name='Заказы полкупателя', related_name='related_customer', blank=True)
-
-
-	def __str__(self):
-		return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
-
-	class Meta:
-		verbose_name = 'Покупателя'
-		verbose_name_plural = 'Покупатели'
-
+'''
 
 class Order(models.Model):
 
@@ -225,19 +239,7 @@ class Order(models.Model):
 
 
 
-class News(models.Model): #модель для написания постов на главное странице
-	title = models.CharField(max_length=255, verbose_name='Наименование новости')
-	image = models.ImageField(verbose_name='Изображение')
-	description = models.TextField(verbose_name='текст новости', null=True)
-	
-	def __str__(self):
-		return self.title
-
-	class Meta:
-		verbose_name = 'Пост'
-		verbose_name_plural = 'Посты'
-
-
+'''
 	
 
 
