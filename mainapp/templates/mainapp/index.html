@@ -100,7 +100,7 @@
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav ms-auto">
-										<li class="nav-item"><a href="{% url 'accounts:register' %}" class="nav-link cart-link"><i class='bx bx-user'></i></a>
+										<li class="nav-item"><a href="{% url 'accounts:sing_in' %}" class="nav-link cart-link"><i class='bx bx-user'></i></a>
 										</li>
 										<!--<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
 										</li>-->
@@ -271,6 +271,8 @@
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:all_category' %}">Каталог категорий</a> 
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:blog' %}">Новости</a> 
+							</li>
+							<li class="nav-item"> <a class="nav-link" href="{% url 'accounts:dashboard' %}">Мой аккаунт</a> 
 							</li>
 
 							<!--

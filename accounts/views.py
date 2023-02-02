@@ -15,16 +15,16 @@ from django.utils.encoding import force_bytes
 from django.utils.encoding import force_str
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
-#from .token import account_activation_token
+from .token import account_activation_token
 from django.conf import settings
 
 import uuid
 
 from cart.views import _cart_id
 from cart.models import Cart, CartItem
-#from orders.models import Order
+from order.models import Order
 from .models import UserProfile
-#from orders.models import OrderProduct
+from order.models import OrderProduct
 
 def register(request):
     if request.method == "POST":
@@ -51,7 +51,7 @@ def register(request):
             # USER ACTIVATION
             current_site = get_current_site(request)
             subject = 'Please activate your account'
-            message = render_to_string('mainapp/email_activate/account_verification_email.html', {
+            message = render_to_string('mainapp/account_verifications_meil.html', {
                 'user': user,
                 'domain': current_site,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
@@ -139,15 +139,15 @@ def login(request):
             return redirect('accounts:dashboard')
         else:
             messages.error(request, 'Your email or password is wrong!')
-            return redirect('accounts:login')
-    return render(request, 'mainapp/login.html')
+            return redirect('accounts:sing_in')
+    return render(request, 'mainapp/sing_in.html')
 
 
-@login_required(login_url = 'accounts:login')
+@login_required(login_url = 'accounts:sing_in')
 def logout(request):
     auth.logout(request)
     messages.success(request, "You've successfully logged out . Come back soon!")
-    return redirect('accounts:login')
+    return redirect('accounts:sing_in')
 
 
 def activate(request, uidb64, token):
@@ -161,12 +161,12 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         messages.success(request, "Your account is activated, log in and let's go.")
-        return redirect('accounts:login')
+        return redirect('accounts:sing_in')
     else:
         messages.error(request, "Invalid activation link, Try again!")
         return redirect('accounts:register')
 
-@login_required(login_url = 'accounts:login')
+@login_required(login_url = 'accounts:sing_in')
 def dashboard(request):
     orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
     profile = UserProfile.objects.get(user_id=request.user.id)
@@ -177,7 +177,7 @@ def dashboard(request):
         'profile':profile,
         
     }
-    return render(request, 'mainapp/dashboard/dashboard.html', context)
+    return render(request, 'mainapp/dashboard.html', context)
 
 
 

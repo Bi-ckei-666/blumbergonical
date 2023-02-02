@@ -1,0 +1,138 @@
+
+{% extends 'mainapp/index.html' %}
+
+{% block content %}
+
+
+
+
+<!--start shop cart-->
+				
+<section class="">
+					<div class="container">
+						<div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
+							<div class="row row-cols-1 row-cols-xl-2 w-100">
+								<div class="col mx-auto">
+									<div class="card">
+										<div class="card-body">
+											<div class="border p-4 rounded">
+												<div class="text-center">
+													<h3 class="">Ввойти</h3>
+												
+												</div>
+												
+												<div class="form-body">
+													
+						
+													<form class="login100-form validate-form row g-3" action="{% url 'accounts:sing_in' %}" method="POST">
+														{% csrf_token %}
+														<div class="text-center">
+															<h4><span style="color:#f4cca4;font-weight: 800;"  class="login100-form-title p-b-48">
+																<span style="color:#d99879">Ner -</span> Energo
+															</span></h4>
+														</div>
+														<div class="col-12">
+															
+															<label for="inputEmailAddress" class="form-label">Ваш Email</label>
+														
+															<div class="wrap-input100 validate-input">
+																<input class="input100 form-control" id="inputEmailAddress" type="text" name="email">
+																<span class="focus-input100" data-placeholder="Email"></span>
+															</div>
+
+														
+														</div>
+														<div class="col-12">
+															<label for="inputChoosePassword" class="form-label">Введите пароль</label>
+
+															<input class="input100" type="password" name="password">
+
+															<div class="wrap-input100 validate-input" data-validate="Enter password">
+							
+
+															<div class="input-group wrap-input100 validate-input" id="show_hide_password">
+																<input type="password" name="password" class="input100 form-control border-end-0" id="inputChoosePassword" placeholder="пароль"> <!--<i class='bx bx-hide'></i>--><span class="focus-input100"  data-placeholder="Password"></span>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-check form-switch">
+																<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+																<label class="form-check-label" for="flexSwitchCheckChecked">запомнить меня</label>
+															</div>
+														</div>
+														
+														<br>
+														<div class="container-login100-form-btn col-12 text-center">
+															<div class="wrap-login100-form-btn">
+																<div class="login100-form-bgbtn d-grid"></div>
+															
+																<button type="submit" class="login100-form-btn btn btn-light"><i class="bx bxs-lock-open"></i>Войти</button>
+															</div>
+														</div>
+														<div class="container-login100-form-btn">
+
+
+														<br>
+									                    <span>
+									                        У вас нет аккаунта?
+									                    </span>
+									                    <a style="font-size:17px; color:#d99879" class="txt2" href="{% url 'accounts:register' %}">
+									                        Регистрация
+									                    </a>
+									                    <hr>
+									                    
+									                    <a style="font-size:17px; color:#d99879" href="">
+									                        Забыли пароль?
+									                    </a>	
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--end row-->
+						</div>
+					</div>
+				</section>
+
+			<!--	<section class="py-0 py-lg-5">
+					<div class="container">
+						<form class="login100-form validate-form" action="{% url 'accounts:sing_in' %}" method="POST">
+						{% csrf_token %}
+						<span style="color:#f4cca4;font-weight: 800;"  class="login100-form-title p-b-48">
+							<span style="color:#d99879">E -</span> S H O P
+						</span>
+						<span style="color:#f4cca4" class="login100-form-title p-b-26">
+							Login
+						</span>
+						{% include "mainapp/alerts.html" %}
+						<br>
+						<div class="wrap-input100 validate-input">
+							<input class="input100" type="text" name="email">
+							<span class="focus-input100" data-placeholder="Email"></span>
+						</div>
+
+						<div class="wrap-input100 validate-input" data-validate="Enter password">
+							<span class="btn-show-pass">
+								<i class="zmdi zmdi-eye"></i>
+							</span>
+							<input class="input100" type="password" name="password">
+							<span class="focus-input100" data-placeholder="Password"></span>
+						</div>
+	                    
+						<div class="container-login100-form-btn">
+							<div class="wrap-login100-form-btn">
+								<div class="login100-form-bgbtn"></div>
+								<button class="login100-form-btn">
+									Login
+								</button>
+							</div>
+						</div>-->
+
+					
+				</section>
+				<!--end shop cart-->
+
+
+{% endblock content %}

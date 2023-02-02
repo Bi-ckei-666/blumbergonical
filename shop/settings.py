@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'mptt',
     'cart',
     'accounts',
+    'order'
     
 ]
 
@@ -148,3 +149,14 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST= 'smtp.mail.ru'
+EMAIL_USE_TLS = True
+EMAIL_PORT= 2525 
+EMAIL_HOST_USER = 'bi-ckei-666@mail.ru'
+EMAIL_HOST_PASSWORD = 'f9fajpg2bB8YiP8XmMxR'
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

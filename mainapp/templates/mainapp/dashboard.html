@@ -1,0 +1,77 @@
+{% extends 'mainapp/index.html' %}
+
+
+{% block title %}Панель инструментов{% endblock title %}
+
+
+
+{% block content %}
+
+<section class="py-3 border-bottom d-none d-md-flex">
+	<div class="container">
+		<div class="page-breadcrumb d-flex align-items-center">
+			<h3 class="breadcrumb-title pe-3">Панель инструментов</h3>
+			<div class="ms-auto">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0 p-0">
+						<li class="breadcrumb-item"><a href="{% url 'mainapp:index.html' %}"><i class="bx bx-home-alt"></i> Главная</a>
+										</li>
+						<li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Аккаунт</a>
+										</li>
+						<li class="breadcrumb-item active" aria-current="page">Панель инструментов</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+{% include "mainapp/alerts.html" %}
+				<section class="py-4">
+					<div class="container">
+						<h3 class="d-none">Аккаунт</h3>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-lg-4">
+										<div class="card shadow-none mb-3 mb-lg-0">
+											<div class="card-body">
+												<div class="list-group list-group-flush">	<a href="account-dashboard.html" class="list-group-item active d-flex justify-content-between align-items-center">Панель инструментов <i class='bx bx-tachometer fs-5'></i></a>
+													<a href="account-orders.html" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Заказы <i class='bx bx-cart-alt fs-5'></i></a>
+													
+													<a href="account-addresses.html" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Адресс <i class='bx bx-home-smile fs-5'></i></a>
+
+													<a href="account-payment-methods.html" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Способ оплаты <i class='bx bx-credit-card fs-5'></i></a>
+													<a href="account-user-details.html" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Данные пользователя<i class='bx bx-user-circle fs-5'></i></a>
+													<a href="#" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">выйти<i class='bx bx-log-out fs-5'></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-8">
+										<div class="card shadow-none mb-0">
+											<div class="card-body">
+												<p>Привет <strong>{{user.full_name | title}}</strong> (not <strong>Madison Ruiz?</strong>  <a href="javascript:;">Logout</a>)</p>
+												<p>Панель инструментов дает возможность следить за вашими заказами, упралять покупками и настраивать данные пользователя</p>
+
+												<br>
+			                                    <p style="font-size:16px;" class="mb-0"><span style="float:left"><b>User Name :</b></span> <span style="float:right">{{user.username}}</span></p><br><hr>
+			                                    <p style="font-size:16px;" class="mb-0"><span style="float:left"><b>Email :</b></span> <span style="float:right">{{user.email}}</span></p><br><hr>
+			                                    <p style="font-size:16px;" class="mb-0"><span style="float:left"><b>Phone Number :</b></span> <span style="float:right">{{user.Phone_number}}</span></p><br><hr>
+                                    
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--end row-->
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+
+
+{% endblock content %}
