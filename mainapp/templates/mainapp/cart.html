@@ -1,140 +1,120 @@
-{% extends 'index.html' %}
+{% extends 'mainapp/index.html' %}
 
 {% block content %}
  
-	
-	{% if messages %}
-		{% for message in messages %}
 
-		<div class="alert alert-saccess alert-dismissible fade show" role="alert">
-			<strong>{{ message }}</strong>
-			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-			<span aria-hidden="true">&times;</span>
+
+ {% if not cart_items %}
+		<div style="font-size:18px; margin-bottom:300px;margin-top:30px" class="container alert alert-info text-center" role="alert">
+		<b>Your Cart Is Empty,&nbsp;&nbsp; <a href="{% url 'mainapp:index.html' %}" style="color:#21094e;text-decoration: underline;">Вернуться к покупкам<a></b>
 		</div>
+{% else %}
 
-		{% endfor %}
-	{% endif %}
-	<h3 class="text-center mt-5 mb-5" >Ваша корзина {% if not cart.product.count %}пуста{% endif %}</h3>
-	{% if cart.product.count%}
-	
-	<section class="py-4">
+
+
+<!--start page wrapper -->
+		<div class="page-wrapper">
+			<div class="page-content">
+				<!--start breadcrumb-->
+				<section class="py-3 border-bottom d-none d-md-flex">
+					<div class="container">
+						<div class="page-breadcrumb d-flex align-items-center">
+							<h3 class="breadcrumb-title pe-3">Shop Cart</h3>
+							<div class="ms-auto">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb mb-0 p-0">
+										<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+										</li>
+										<li class="breadcrumb-item"><a href="javascript:;">Shop</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">Shop Cart</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</section>
+				<!--end breadcrumb-->
+				<!--start shop cart-->
+				<section class="py-4">
+					
 					<div class="container">
 						<div class="shop-cart">
 							<div class="row">
 								<div class="col-12 col-xl-8">
 									<div class="shop-cart-list mb-3 p-3">
-										
-										{% for item in cart.product.all %}
-
+										{% for cart_item in cart_items %}
+										<!--начало одного продукта-->
 										<div class="row align-items-center g-3">
 											<div class="col-12 col-lg-6">
 												<div class="d-lg-flex align-items-center gap-2">
+													
 													<div class="cart-img text-center text-lg-start">
-														<img src="{{ item.content_object.image.url }}" width="130" alt="">
+														<img src="{{cart_item.product.image.url}}" width="130" alt="">
 													</div>
 													<div class="cart-detail text-center text-lg-start">
-														<h6 class="mb-2">{{ item.content_object.title }}</h6>
+														<h6 class="mb-2">{{ cart_item.product.title }}</h6>
 														
-														<h5 class="mb-0">{{ item.content_object.price }} руб.</</h5>
+														<h5 class="mb-0">{{cart_item.product.price}}</h5>
+													</div>
+													<div class="cart-detail text-center text-lg-start">
+														<form style="" action="{% url 'cart:add_cart' cart_item.product.id %}" method="POST">
+															{% csrf_token %}
+															<div class="cart-action text-center">
+															
+																<input class="form-control rounded-0" type="number" value="{{cart_item.quantity}}" min="1">
+															</div>
+														</form>
+
 													</div>
 												</div>
-											</div>
-											<div class="col-12 col-lg-3">
-												<div class="cart-action text-center">
-													<form action="{% url 'change_qty' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" method="POST">
-											  			{% csrf_token %}
-											  			<input type="number" class="form-control" name="qty" style="width: 70px;" min="1" value="{{ item.qty }}">
-											  			<br>
-											  			<input type="submit" class="btn btn-primary" value="Изменить кол-во">
-											  			
-											  		</form>
-												</div>
+											
+											
+												
+													
+												
 											</div>
 											<div class="col-12 col-lg-3">
 												<div class="text-center">
-													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="{% url 'delete_from_cart' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Удалить </a>
+													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i>Удалить</a>
 														
 													</div>
 												</div>
 											</div>
 										</div>
-
-										
 										<div class="my-4 border-top"></div>
 										{% endfor %}
+
+										<a href="javascript:;">
+											<div class="text-center cart-footer d-flex align-items-center">
+												<h5 class="mb-0">ВСЕГО</h5>
+												<h5 class="mb-0 ms-auto"></h5>
+											</div>
+										</a>
+										
+										<div class="my-4 border-top"></div>
+
+										<!-- нижняя строка отчистки страницы-->
+										<div class="d-lg-flex align-items-center gap-2">	<a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-shopping-bag'></i> Продолжить покупки</a>
+											<a href="javascript:;" class="btn btn-light btn-ecomm ms-auto"><i class='bx bx-x-circle'></i> Clear Cart</a>
+											<a href="javascript:;" class="btn btn-white btn-ecomm"><i class='bx bx-refresh'></i> Update Cart</a>
+										</div>
+
+
 									</div>
 								</div>
+
 							</div>
 							<!--end row-->
-
-							<tr>
-								<td colspan="2"></td>
-								<td>Итого {{ cart.total_product }} </td>
-								<br>
-								<td><strong>{{ cart.final_price }} руб.</strong></td>
-								<br>
-								<td><a href="{% url 'checkout' %}"><button class="btn btn-primary">Перейти к оформлению</button></a></td>
-							</tr>
 						</div>
 					</div>
 				</section>
-
-
-
-
-
-	<!--<table class="table-cart" >
-		<thead>
-			<tr>
-				<th scope="col">Наименование</th>
-				<th scope="col">Изображение</th>
-				<th scope="col">Цена</th>
-				<th scope="col">Кол-во</th>
-					<th scope="col">Общая цена</th> 
-				<th scope="col">Действие</th>
-			</tr>
-		</thead>
-		<tbody>
-	  	{% for item in cart.product.all %}
-	  	<tr>
-		  	<th scope="row">{{ item.content_object.title }}</th>
-		  	<td class="w-25"><img src="{{ item.content_object.image.url }}" class="img-fluid" style="width: 80px; height: 80px;" ></td>
-		  	<td>{{ item.content_object.price }} руб.</td>
-		  	<td>
-		  		<form action="{% url 'change_qty' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" method="POST">
-		  			{% csrf_token %}
-		  			<input type="number" class="form-control" name="qty" style="width: 70px;" min="1" value="{{ item.qty }}">
-		  			<br>
-		  			<input type="submit" class="btn btn-primary" value="Изменить кол-во">
-		  			
-		  		</form>
-		  			
-		  	</td>
-		  		<td>{{ item.final_price }} руб</td>
-		  	<td>
-		  		<a href="{% url 'delete_from_cart' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}"><button class="btn btn-danger">Удалить из корзины</button>
-		  	</td>
-		</tr>
-		{% endfor %}
-
-			<tr>
-				<td colspan="2"></td>
-				<td>Итого</td>
-				<td>{{ cart.total_product }}</td>
-				<td><strong>{{ cart.final_price }} руб.</strong></td>
-				<td><a href="{% url 'checkout' %}"><button class="btn btn-primary">Перейти к оформлению</button></a></td>
-			</tr>
-
-		</tbody>
-	</table>-->
-
-
+				<!--end shop cart-->
+			</div>
+		</div>
+		<!--end page wrapper -->
 {% endif %}
-
-
+		
 {% endblock content %}
-
-
-
 
 

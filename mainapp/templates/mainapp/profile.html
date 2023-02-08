@@ -1,0 +1,97 @@
+{% extends 'mainapp/index.html' %}
+
+
+{% block title %}Профиль{% endblock title %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+<section class="py-3 border-bottom d-none d-md-flex">
+	<div class="container">
+		<div class="page-breadcrumb d-flex align-items-center">
+			<h3 class="breadcrumb-title pe-3">Изменение профиля</h3>
+			<div class="ms-auto">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb mb-0 p-0">
+						<li class="breadcrumb-item"><a href="{% url 'mainapp:index.html' %}"><i class="bx bx-home-alt"></i> Главная</a>
+										</li>
+						<li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Аккаунт</a>
+										</li>
+						<li class="breadcrumb-item active" aria-current="page">Ред. Профиль</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--start shop cart-->
+{% include "mainapp/alerts.html" %}
+				<section class="py-4">
+					<div class="container">
+						<h3 class="d-none">Account</h3>
+						<div class="card">
+							<form action="{% url 'accounts:profile' %}" method="POST">
+								<div class="card-body">
+									<div class="row">
+										{% csrf_token %}
+										<div class="col-lg-4">
+											<div class="card shadow-none mb-3 mb-lg-0">
+												<div class="card-body">
+													<div class="list-group list-group-flush">	
+														<a href="{% url 'accounts:dashboard' %}" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Панель инструментов <i class='bx bx-tachometer fs-5'></i></a>
+
+														<a href="account-orders.html" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Заказы <i class='bx bx-cart-alt fs-5'></i></a>
+														
+														
+
+														<!--<a href="account-payment-methods.html" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">Способ оплаты <i class='bx bx-credit-card fs-5'></i></a>-->
+														
+														<a href="{% url 'accounts:profile' %}" class="list-group-item active d-flex justify-content-between align-items-center">Профиль пользователя<i class='bx bx-user-circle fs-5'></i></a>
+														<a href="#" class="list-group-item d-flex justify-content-between align-items-center bg-transparent">выйти<i class='bx bx-log-out fs-5'></i></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-8">
+											<div class="card shadow-none mb-0">
+												<div class="card-body">
+													<form class="row g-3">
+														<div class="col-md-6">
+															<label class="form-label">Имя</label>
+															
+															{{user_form.first_name}}
+														</div>
+														<div class="col-md-6">
+															<label class="form-label">Фамилия</label>
+															{{user_form.last_name}}
+														</div>
+														<div class="col-12">
+															<label class="form-label">Номер телефона</label>
+															{{user_form.Phone_number}}
+														</div>
+														
+														<div class="col-12">
+															
+															<input style="float:right;width:20%;" type="submit" value="Изменить" class="btn btn-light">
+
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--end row-->
+								</div>
+							</form>
+						</div>
+					</div>
+				</section>
+				<!--end shop cart-->
+
+
+{% endblock content %}

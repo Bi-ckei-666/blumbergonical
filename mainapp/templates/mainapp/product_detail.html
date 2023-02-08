@@ -30,10 +30,10 @@
             {% csrf_token %}
 
 
-        <a href=""><button class="btn btn-primary">Добавить в корзину</button></a>
+        <a href="{% url 'cart:add_cart' product_id=product.id %}"><button class="btn btn-primary">Добавить в корзину</button></a>
     </div>
 
-    {% load specifications %}
+    
     <div class="characteristic">
 	   <p class='mt-4'> Характеристики </p>
        <table class="table w-100" >
@@ -59,7 +59,7 @@
            </tr>
        </table>
     </div>
-</div>	
+</div>
 
 
 {% endblock content %}

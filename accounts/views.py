@@ -202,8 +202,8 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Your profile has been updated.')
-            return redirect('accounts:edit_profile')
+            messages.success(request, 'Ваш аккаунт обновлен!')
+            return redirect('accounts:profile')
     else:
         user_form = UserForm(instance=request.user)
         profile_form = UserProfileForm(instance=userprofile)
@@ -212,7 +212,7 @@ def edit_profile(request):
         'profile_form': profile_form,
         'userprofile': userprofile,
     }
-    return render(request, 'mainapp/dashboard/edit_profile.html', context)
+    return render(request, 'mainapp/profile.html', context)
 
 
 @login_required(login_url = 'accounts:login')
