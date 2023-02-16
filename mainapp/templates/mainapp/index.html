@@ -100,8 +100,15 @@
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav ms-auto">
+										{% if user.is_authenticated %}
+										
+										
+										<li class="nav-item"><a href="{% url 'accounts:logout' %}" class="nav-link cart-link"><i class='bx bx-log-out'></i></a>
+										</li>
+										{% else %}
 										<li class="nav-item"><a href="{% url 'accounts:sing_in' %}" class="nav-link cart-link"><i class='bx bx-user'></i></a>
 										</li>
+										{% endif %}
 										<!--<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
 										</li>-->
 										<li class="nav-item dropdown dropdown-large">

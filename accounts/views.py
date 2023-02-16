@@ -143,7 +143,7 @@ def login(request):
     return render(request, 'mainapp/sing_in.html')
 
 
-@login_required(login_url = 'accounts:sing_in')
+@login_required(login_url = 'mainapp/sing_in.html')
 def logout(request):
     auth.logout(request)
     messages.success(request, "You've successfully logged out . Come back soon!")
