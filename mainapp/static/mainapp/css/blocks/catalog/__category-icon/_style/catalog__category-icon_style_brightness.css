@@ -1,0 +1,7 @@
+.catalog__category-icon_style_brightness {
+  background-image: url(../../../../images/brightness.svg);
+}
+
+.catalog__category_active .catalog__category-icon_style_brightness {
+  background-image: url(../../../../images/brightness_active.svg);
+}

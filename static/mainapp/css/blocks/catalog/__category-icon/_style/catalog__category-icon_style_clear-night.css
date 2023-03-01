@@ -1,0 +1,7 @@
+.catalog__category-icon_style_clear-night {
+  background-image: url(../../../../images/clear-night.svg);
+}
+
+.catalog__category_active .catalog__category-icon_style_clear-night {
+  background-image: url(../../../../images/clear-night_active.svg);
+}

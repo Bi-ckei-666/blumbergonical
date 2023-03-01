@@ -4,6 +4,8 @@
 {% block content %}
 
 
+
+
         <!--start breadcrumb-->
         <section class="py-3 border-bottom d-none d-md-flex">
           <div class="container">
@@ -24,154 +26,188 @@
         </section>
         <!--end breadcrumb-->
 
+        <style>
+          .category {
+
+          }
+        </style>
+        
         <!--start shop categories-->
         <section class="py-4">
           <div class="container">
             <div class="product-categories">
 
               <!-- первая строка каталогов категорий-->
-              
+   
               <div class="row row-cols-1 row-cols-lg-3">
                 
                 <div class="col">
-                  <div class=" button card rounded-0 product-card" rel="block-1" id="block-dis">
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75" data-bs-toggle="modal" data-bs-target="#QuickViewProduct-1">
                     <a href="javascript:;">
                       <img src="/media/shop-categories/electro.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-
                     <div class=" list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Высоковольтное и щитовое оборудование  </h6>
-                      </a>  
+                      <h6 class="mb-0 text-uppercase text-center">Высоковольтное и щитовое оборудование  </h6>
                     </div>
                   </div>   
                 </div>
 
+                <div class="modal fade" id="QuickViewProduct-1">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                        <div class="row row-cols-1 row-cols-lg-2" >
 
-                <div class="col">
-                  <div class="button card rounded-0 product-card " rel="block-2">
-                    <a href="javascript:;">
-                      <img src="/media/shop-categories/batery.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
-                    </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Генераторы электроэнергии и элементы питания</h6>
-                      </a> 
-                    </div>
-                  </div>         
-                </div>
+                          <div class="col">
+                            <h6>высоковольтное оборудование</h6>
+                            <ul style="list-style: none;">  
+                              
+                              <li class="li_allcategory"><a class="" href="/search/?q=Изоляторы высоковольтные">Изоляторы высоковольтные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Комплектные трансформаторные подстанции">Комплектные трансформаторные подстанции</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Оборудование высоковольтное коммутационное">Оборудование высоковольтное коммутационное</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Оборудование для ЛЭП">Оборудование для ЛЭП</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Трансформаторы высоковольтные силовые">Трансформаторы высоковольтные силовые</a></li>
+                            </ul>
+                          </div>
+                          
+                          <div class="col">
 
+                            <h6>щитовое оборудование</h6>
+                            <ul style="list-style: none;"> 
 
-                <div class="col">
-                  <div class="button card rounded-0 product-card " rel="block-3">
-                    <a href="javascript:;">
-                      <img src="/media/shop-categories/montage.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
-                    </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Изделия для электромонтажа</h6>
-                      </a> 
+                            
+                              
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары и комплектующие для щитов и шкафов ">Аксессуары и комплектующие для щитов и шкафов</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Клеммные зажимы">Клеммные зажимы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Климатическое оборудование для щитов и шкафов">Климатическое оборудование для щитов и шкафов</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Комплектное щитовое оборудование">Комплектное щитовое оборудование</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Корпуса щитов и шкафов">Корпуса щитов и шкафов</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы сборных шин">Системы сборных шин</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Телекоммуникационные шкафы и аксессуары">Телекоммуникационные шкафы и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Шинопровод">Шинопровод</a></li>  
+                              <li class="li_allcategory"><a class="" href="/search/?q=Шкафы сборной конструкции">Шкафы сборной конструкции</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Щиты и панели для счетчиков электроэнергии">Щиты и панели для счетчиков электроэнергии</a></li>
+                            </ul>
+                          </div>
+                          
+                        </div>
+                        <!--end row-->
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                  <div class="block card" id="block-1" style="width: 100%; display: none;">
-                      
-                    <div class="row row-cols-1 row-cols-lg-2" >
-
-                      <div class="col">  
-                        <div><h6>высоковольтное оборудование</h6></div>
-                      
-                        <div><a class="" href="/search/?q=Изоляторы высоковольтные">Изоляторы высоковольтные</a></div>
-                        <div><a class="" href="/search/?q=Комплектные трансформаторные подстанции">Комплектные трансформаторные подстанции</a></div>
-                        <div><a class="" href="/search/?q=Оборудование высоковольтное коммутационное">Оборудование высоковольтное коммутационное</a></div>
-                        <div><a class="" href="/search/?q=Оборудование для ЛЭП">Оборудование для ЛЭП</a></div>
-                        <div><a class="" href="/search/?q=Трансформаторы высоковольтные силовые">Трансформаторы высоковольтные силовые</a></div>
-                      </div>
-
-                      
-                      <div class="col">
-                        <div><h6>щитовое оборудование</h6></div>
-                        
-                          <div><a class="" href="/search/?q=Аксессуары и комплектующие для щитов и шкафов ">Аксессуары и комплектующие для щитов и шкафов</a></div>
-                          <div><a class="" href="/search/?q=Клеммные зажимы">Клеммные зажимы</a></div>
-                          <div><a class="" href="/search/?q=Климатическое оборудование для щитов и шкафов">Климатическое оборудование для щитов и шкафов</a></div>
-                          <div><a class="" href="/search/?q=Комплектное щитовое оборудование">Комплектное щитовое оборудование</a></div>
-                          <div><a class="" href="/search/?q=Корпуса щитов и шкафов">Корпуса щитов и шкафов</a></div>
-                          <div><a class="" href="/search/?q=Системы сборных шин">Системы сборных шин</a></div>
-                          <div><a class="" href="/search/?q=Телекоммуникационные шкафы и аксессуары">Телекоммуникационные шкафы и аксессуары</a></div>
-                          <div><a class="" href="/search/?q=Шинопровод">Шинопровод</a></div>  
-                          <div><a class="" href="/search/?q=Шкафы сборной конструкции">Шкафы сборной конструкции</a></div>
-                          <div><a class="" href="/search/?q=Щиты и панели для счетчиков электроэнергии">Щиты и панели для счетчиков электроэнергии</a></div>
-                      </div>
-                      
+                <div class="col">
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-2">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/electro.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Генераторы электроэнергии и элементы питания</h6>
                     </div>
+                  </div>   
                 </div>
-                
-                <div class="block card " id="block-2" style="width: 100%; display: none;">
-                  <div class="row row-cols-1 row-cols-lg-3" >
-                    <div class="col">  
-                      <div><h6>Батарейки, аккумуляторы, зарядные устройства</h6></div>
-                      
-                      <div><a class="" href="/search/?q=Аккумуляторы">Аккумуляторы</a></div>
-                      <div><a class="" href="/search/?q=Батарейки">Батарейки</a></div>
-                      <div><a class="" href="/search/?q=Зарядные устройства">Зарядные устройства</a></div>
 
-                    </div>
-                    <div class="col">
-                      <div><h6>Генераторы электроэнергии</h6></div>
-                      <div><a class="" href="/search/?q=Бензо-дизельные генераторы">Бензо-дизельные генераторы</a></div>
-                      <div><a class="" href="/search/?q=Ветряные генераторы">Ветряные генераторы</a></div>
-                      <div><a class="" href="/search/?q=Фотоэлектрические установки">Фотоэлектрические установки</a></div>
+                <div class="modal fade" id="QuickViewProduct-2">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                        <div class="row row-cols-1 row-cols-lg-3" >
+                          <div class="col">  
+                          
+                            <h6>Батарейки, аккумуляторы, зарядные устройства</h6>
+                            <ul style="list-style: none;"> 
 
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аккумуляторы">Аккумуляторы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Батарейки">Батарейки</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Зарядные устройства">Зарядные устройства</a></li>
+                            </ul>
+
+                          </div>
+                          <div class="col">
+                            <h6>Генераторы электроэнергии</h6>
+                            <ul style="list-style: none;"> 
+
+                              <li class="li_allcategory"><a class="" href="/search/?q=Бензо-дизельные генераторы">Бензо-дизельные генераторы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Ветряные генераторы">Ветряные генераторы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Фотоэлектрические установки">Фотоэлектрические установки</a></li>
+                            </ul>
+
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>  
+                </div>
 
-                <div class="block card" id="block-3" style="width: 100%; display: none;">
-                      
-                    <div class="row row-cols-1 row-cols-lg-3" >
-                      <div class="col">  
-                        <div><h6>Арматура кабельная/Изоляционные материалы</h6></div>
-                     
-                        <div><a class="" href="/search/?q=Аксессуары для светильников">Аксессуары для светильников</a></div>
-                        <div><a class="" href="/search/?q=Аксессуары кабельные">Аксессуары кабельные</a></div>
-                        <div><a class="" href="/search/?q=Кабельные наконечники и соединители (гильзы)">Кабельные наконечники и соединители (гильзы)</a></div>
-                        <div><a class="" href="/search/?q=Муфты кабельные">Муфты кабельные</a></div>
-                        <div><a class="" href="/search/?q=Термоусаживаемые и изоляционные материалы">Термоусаживаемые и изоляционные материалы</a></div>
-                        <div><a class="" href="/search/?q=Указатели напряжения и устройства безопасности">Указатели напряжения и устройства безопасности</a></div>
-                      </div>
-
-                      <div class="col">
-                        <div><h6>Изделия крепежные, метизы</h6></div>
-           
-                        <div><a class="" href="/search/?q=Анкерный крепеж">Анкерный крепеж</a></div>
-                        <div><a class="" href="/search/?q=Болты, винты">Болты, винты</a></div>
-                        <div><a class="" href="/search/?q=Втулки, резьбовые шпильки">Втулки, резьбовые шпильки</a></div>
-                        <div><a class="" href="/search/?q=Гайки, шайбы">Гайки, шайбы</a></div>
-                        <div><a class="" href="/search/?q=Гвозди">Гвозди</a></div>
-                        <div><a class="" href="/search/?q=Дюбели, Шурупы, саморезы">Дюбели, Шурупы, саморезы</a></div>
-                        <div><a class="" href="/search/?q=Заклепки">Заклепки</a></div>
-                        <div><a class="" href="/search/?q=Система хранения и транспортировки">Система хранения и транспортировки</a></div>
-                        <div><a class="" href="/search/?q=Строительные смеси, герметик, клей, растворитель">Строительные смеси, герметик, клей, растворитель</a></div>
-                        <div><a class="" href="/search/?q=Такелаж">Такелаж</a></div>
-                      </div>
-                      <div class="col">
-                        <div><h6>Коробки, клеммы и сопутствующие товары</h6></div>
-     
-                        <div><a class="" href="/search/?q=Клеммные зажимы">Клеммные зажимы</a></div>
-                        <div><a class="" href="/search/?q=Коробки распределительные/ установочные и аксессуары">Коробки распределительные/ установочные и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Системы сборных шин">Системы сборных шин</a></div>
-                        <hr>
-                        <div><h6>Разъемы, соединители</h6></div>
-                        
-                        <div><a class="" href="/search/?q=Разъемы силовые">Разъемы силовые</a></div>
-                        <div><a class="" href="/search/?q=Система штекерного монтажа электросети зданий">Система штекерного монтажа электросети зданий</a></div>
-                        <div><a class="" href="/search/?q=Устройства промышленные, специальныеУстройства промышленные, специальные">Устройства промышленные, специальные</a></div>
-                        <div><a class="" href="/search/?q=Электрические соединители различного назначения">Электрические соединители различного назначения</a></div>               
-                      </div>
-                      
+                <div class="col">
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-3">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/electro.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Изделия для электромонтажа</h6>
                     </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-3">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button> 
+                        <div class="row row-cols-1 row-cols-lg-3" >
+                          <div class="col">  
+                            <h6>Арматура кабельная/Изоляционные материалы</h6>
+                            <ul style="list-style: none;"> 
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары для светильников">Аксессуары для светильников</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары кабельные">Аксессуары кабельные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабельные наконечники и соединители (гильзы)">Кабельные наконечники и соединители (гильзы)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Муфты кабельные">Муфты кабельные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Термоусаживаемые и изоляционные материалы">Термоусаживаемые и изоляционные материалы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Указатели напряжения и устройства безопасности">Указатели напряжения и устройства безопасности</a></li>
+                            </ul>
+
+                          </div>
+
+                          <div class="col">
+                            <h6>Изделия крепежные, метизы</h6>
+                            <ul style="list-style: none;"> 
+                              <li class="li_allcategory"><a class="" href="/search/?q=Анкерный крепеж">Анкерный крепеж</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Болты, винты">Болты, винты</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Втулки, резьбовые шпильки">Втулки, резьбовые шпильки</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Гайки, шайбы">Гайки, шайбы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Гвозди">Гвозди</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Дюбели, Шурупы, саморезы">Дюбели, Шурупы, саморезы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Заклепки">Заклепки</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система хранения и транспортировки">Система хранения и транспортировки</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Строительные смеси, герметик, клей, растворитель">Строительные смеси, герметик, клей, растворитель</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Такелаж">Такелаж</a></li>
+                            </ul>
+                          </div>
+                          <div class="col">
+                            <h6>Коробки, клеммы и сопутствующие товары</h6>
+                            <ul style="list-style: none;"> 
+                              <li class="li_allcategory"><a class="" href="/search/?q=Клеммные зажимы">Клеммные зажимы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Коробки распределительные/ установочные и аксессуары">Коробки распределительные/ установочные и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы сборных шин">Системы сборных шин</a></li>
+                            </ul>
+                            <hr>
+                            <h6>Разъемы, соединители</h6>
+                            <ul style="list-style: none;">
+                              
+                              <li class="li_allcategory"><a class="" href="/search/?q=Разъемы силовые">Разъемы силовые</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система штекерного монтажа электросети зданий">Система штекерного монтажа электросети зданий</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Устройства промышленные, специальныеУстройства промышленные, специальные">Устройства промышленные, специальные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Электрические соединители различного назначения">Электрические соединители различного назначения</a></li>  
+                            </ul>             
+                          </div>   
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -179,547 +215,646 @@
               <div class="row row-cols-1 row-cols-lg-3">
 
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel="block-4">
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-4">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/instrument.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/electro.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Инструменты, техника</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Инструменты, техника     </h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-4">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                      
+                        <div class="row row-cols-1 row-cols-lg-3" >
+
+                          <div class="col">  
+                            <h6>Бытовая техника и электроника</h6>
+                            <ul style="list-style: none;">
+                          
+                              <li class="li_allcategory"><a class="" href="/search/?q=Бытовая техника крупная">Бытовая техника крупная</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Бытовая техника мелкая">Бытовая техника мелкая</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Бытовая электроника">Бытовая электроника</a></li>
+                            </ul>
+                            
+                          </div>
+
+                          <div class="col">
+                            <h6>Инструмент, измерительные приборы и средства защиты</h6>
+                            <ul style="list-style: none;">
+
+                              <li class="li_allcategory"><a class="" href="/search/?q=Инструмент ручной, средства для монтажа">Инструмент ручной, средства для монтажа</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Инструменты для опрессовки, резки, снятия изоляции">Инструменты для опрессовки, резки, снятия изоляции</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Клеммные зажимы, распределительные блоки">Клеммные зажимы, распределительные блоки</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Оборудование для протяжки кабеля">Оборудование для протяжки кабеля</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Предохранители">Предохранители</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Рабочая одежда, средства защиты">Рабочая одежда, средства защиты</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Указатели напряжения и устройства безопасности">Указатели напряжения и устройства безопасности</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Электроизмерительные приборы">Электроизмерительные приборы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Электроинструменты и аксессуары для них">Электроинструменты и аксессуары для них</a></li>
+                            </ul>
+
+                          </div>
+                          <div class="col">
+                            <h6>Оборудование паяльное и сварочное</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Газосварочное оборудование">Газосварочное оборудование</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Оборудование паяльное">Оборудование паяльное</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Средства защиты сварщика">Средства защиты сварщика</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Электросварочное оборудование">Электросварочное оборудование</a></li>
+                            </ul>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+ 
+                <div class="col">
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-5">
+                    <a href="javascript:;">
+                      <img src="/media/shop-categories/kabelenes_sys.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                    </a>
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Кабеленесущие системы</h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-5">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                        <div class="row row-cols-1 row-cols-lg-3" >
+
+                          <div class="col">  
+                            <h6>Системы для прокладки кабеля</h6>
+                            <ul style="list-style: none;"> 
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары для металлических лотков универсальные">Аксессуары для металлических лотков универсальные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабель-каналы монтажные и аксессуары">Кабель-каналы монтажные и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабель-каналы напольные и аксессуары">Кабель-каналы напольные и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабель-каналы настенные (парапетные, для монтажа ЭУИ) и аксессуары">Кабель-каналы настенные (парапетные, для монтажа ЭУИ) и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабель-каналы перфорированные и аксессуары">Кабель-каналы перфорированные и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабель-каналы плинтусные и аксессуары">Кабель-каналы плинтусные и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабель-каналы угловые и аксессуары">Кабель-каналы угловые и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лоток кабельный лестничный">Лоток кабельный лестничный</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лоток кабельный листовой">Лоток кабельный листовой</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лоток кабельный проволочный">Лоток кабельный проволочный</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Огнестойкие кабель-каналы">Огнестойкие кабель-каналы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Рукава для защиты кабеля">Рукава для защиты кабеля</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система гибких кабель-каналов">Система гибких кабель-каналов</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы монтажные несущие">Системы монтажные несущие</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Трубы для прокладки кабеля">Трубы для прокладки кабеля</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Указатели напряжения и устройства безопасности">Указатели напряжения и устройства безопасности</a></li>
+                            </ul>
+                          </div>
+                          <div class="col">
+                            <h6>Системы напольных и подпольных каналов, электромонтажных колон</h6>
+
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабельные каналы для установки под полом">Кабельные каналы для установки под полом</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабельные каналы напольной установки">Кабельные каналы напольной установки</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лючки и аксессуары">Лючки и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Несущая система фальш полов">Несущая система фальш полов</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Электромонтажные колонны">Электромонтажные колонны</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel="block-5">
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-6">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/kabelenes_sys.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/kabeli.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Кабеленесущие системы</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Кабели, провода и аксессуары</h6>
                     </div>
-                  </div>
+                  </div>   
                 </div>
 
-                <div class="col">
-                  <div class="button card rounded-0 product-card" rel="block-6">
-                    <a href="javascript:;">
-                      <img src="/media/shop-categories/kabeli.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
-                    </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Кабели, провода и аксессуары</h6>
-                      </a> 
+                <div class="modal fade" id="QuickViewProduct-6">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                      <div class="modal-content bg-dark-4 rounded-0 border-0">
+                        <div class="modal-body">
+                          <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button> 
+                          <div class="row row-cols-1 row-cols-lg-3" >
+
+                            <div class="col">  
+                              <h6>Кабели и провода</h6>
+                              <ul style="list-style: none;">
+                            
+                                <li class="li_allcategory"><a class="" href="/search/?q=Кабели и провода для нестационарной прокладки">Кабели и провода для нестационарной прокладки</a></li>
+                                <li class="li_allcategory"><a class="" href="/search/?q=Кабели и провода связи">Кабели и провода связи</a></li>
+                                <li class="li_allcategory"><a class="" href="/search/?q=Кабели и провода силовые для стационарной прокладки">Кабели и провода силовые для стационарной прокладки</a></li>
+                                <li class="li_allcategory"><a class="" href="/search/?q=Кабели контрольные">Кабели контрольные</a></li>
+                                <li class="li_allcategory"><a class="" href="/search/?q=Кабели специального назначения">Кабели специального назначения</a></li>
+                                <li class="li_allcategory"><a class="" href="/search/?q=Провода и шнуры различного назначения">Провода и шнуры различного назначения</a></li>
+                              </ul>
+                            </div>
+
+                            <div class="col">
+                              <h6>Системы ввода и крепления для кабеля</h6>
+                              <ul style="list-style: none;">
+
+                                <li class="li_allcategory"><a class="" href="/search/?q=Вводы кабельные и аксессуары">Вводы кабельные и аксессуары</a></li>
+                                <li class="li_allcategory"><a class="" href="/search/?q=Изделия крепежные для кабеля">Изделия крепежные для кабеля</a></li>
+                              </ul>
+                            </div> 
+                          </div>
+                        </div>
+                      </div>
                     </div>
+
                   </div>
-                </div>
               </div>
-
-              <div class="block card" id="block-4" style="width: 100%; display: none;">
-                      
-                    <div class="row row-cols-1 row-cols-lg-3" >
-
-                      <div class="col">  
-                        <div><h6>Бытовая техника и электроника</h6></div>
-                      
-                        <div><a class="" href="/search/?q=Бытовая техника крупная">Бытовая техника крупная</a></div>
-                        <div><a class="" href="/search/?q=Бытовая техника мелкая">Бытовая техника мелкая</a></div>
-                        <div><a class="" href="/search/?q=Бытовая электроника">Бытовая электроника</a></div>
-                        
-                      </div>
-
-                      <div class="col">
-                        <div><h6>Инструмент, измерительные приборы и средства защиты</h6></div>
-                        <div><a class="" href="/search/?q=Инструмент ручной, средства для монтажа">Инструмент ручной, средства для монтажа</a></div>
-                        <div><a class="" href="/search/?q=Инструменты для опрессовки, резки, снятия изоляции">Инструменты для опрессовки, резки, снятия изоляции</a></div>
-                        <div><a class="" href="/search/?q=Клеммные зажимы, распределительные блоки">Клеммные зажимы, распределительные блоки</a></div>
-                        <div><a class="" href="/search/?q=Оборудование для протяжки кабеля">Оборудование для протяжки кабеля</a></div>
-                        <div><a class="" href="/search/?q=Предохранители">Предохранители</a></div>
-                        <div><a class="" href="/search/?q=Рабочая одежда, средства защиты">Рабочая одежда, средства защиты</a></div>
-                        <div><a class="" href="/search/?q=Указатели напряжения и устройства безопасности">Указатели напряжения и устройства безопасности</a></div>
-                        <div><a class="" href="/search/?q=Электроизмерительные приборы">Электроизмерительные приборы</a></div>
-                        <div><a class="" href="/search/?q=Электроинструменты и аксессуары для них">Электроинструменты и аксессуары для них</a></div>
-
-                      </div>
-                      <div class="col">
-                        <div><h6>Оборудование паяльное и сварочное</h6></div>
-                        <div><a class="" href="/search/?q=Газосварочное оборудование">Газосварочное оборудование</a></div>
-                        <div><a class="" href="/search/?q=Оборудование паяльное">Оборудование паяльное</a></div>
-                        <div><a class="" href="/search/?q=Средства защиты сварщика">Средства защиты сварщика</a></div>
-                        <div><a class="" href="/search/?q=Электросварочное оборудование">Электросварочное оборудование</a></div>
-                        
-                      </div>
-
-                      
-                    </div>
-                </div>
-              <div class="block card" id="block-5" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-3" >
-
-                      <div class="col">  
-                        <div><h6>Системы для прокладки кабеля</h6></div>
-                      
-                        <div><a class="" href="/search/?q=Аксессуары для металлических лотков универсальные">Аксессуары для металлических лотков универсальные</a></div>
-                        <div><a class="" href="/search/?q=Кабель-каналы монтажные и аксессуары">Кабель-каналы монтажные и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Кабель-каналы напольные и аксессуары">Кабель-каналы напольные и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Кабель-каналы настенные (парапетные, для монтажа ЭУИ) и аксессуары">Кабель-каналы настенные (парапетные, для монтажа ЭУИ) и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Кабель-каналы перфорированные и аксессуары">Кабель-каналы перфорированные и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Кабель-каналы плинтусные и аксессуары">Кабель-каналы плинтусные и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Кабель-каналы угловые и аксессуары">Кабель-каналы угловые и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Лоток кабельный лестничный">Лоток кабельный лестничный</a></div>
-                        <div><a class="" href="/search/?q=Лоток кабельный листовой">Лоток кабельный листовой</a></div>
-                        <div><a class="" href="/search/?q=Лоток кабельный проволочный">Лоток кабельный проволочный</a></div>
-                        <div><a class="" href="/search/?q=Огнестойкие кабель-каналы">Огнестойкие кабель-каналы</a></div>
-                        <div><a class="" href="/search/?q=Рукава для защиты кабеля">Рукава для защиты кабеля</a></div>
-                        <div><a class="" href="/search/?q=Система гибких кабель-каналов">Система гибких кабель-каналов</a></div>
-                        <div><a class="" href="/search/?q=Системы монтажные несущие">Системы монтажные несущие</a></div>
-                        <div><a class="" href="/search/?q=Трубы для прокладки кабеля">Трубы для прокладки кабеля</a></div>
-                        <div><a class="" href="/search/?q=Указатели напряжения и устройства безопасности">Указатели напряжения и устройства безопасности</a></div>
-
-                      </div>
-
-                      <div class="col">
-                        <div><h6>Системы напольных и подпольных каналов, электромонтажных колон</h6></div>
-                        <div><a class="" href="/search/?q=Кабельные каналы для установки под полом">Кабельные каналы для установки под полом</a></div>
-                        <div><a class="" href="/search/?q=Кабельные каналы напольной установки">Кабельные каналы напольной установки</a></div>
-                        <div><a class="" href="/search/?q=Лючки и аксессуары">Лючки и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Несущая система фальш полов">Несущая система фальш полов</a></div>
-                        <div><a class="" href="/search/?q=Электромонтажные колонны">Электромонтажные колонны</a></div>
-                      </div>
-                      
-
-                      
-                    </div>
-                </div>
-              <div class="block card" id="block-6" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-3" >
-
-                      <div class="col">  
-                        <div><h6>Кабели и провода</h6></div>
-                      
-                        <div><a class="" href="/search/?q=Кабели и провода для нестационарной прокладки">Кабели и провода для нестационарной прокладки</a></div>
-                        <div><a class="" href="/search/?q=Кабели и провода связи">Кабели и провода связи</a></div>
-                        <div><a class="" href="/search/?q=Кабели и провода силовые для стационарной прокладки">Кабели и провода силовые для стационарной прокладки</a></div>
-                        <div><a class="" href="/search/?q=Кабели контрольные">Кабели контрольные</a></div>
-                        <div><a class="" href="/search/?q=Кабели специального назначения">Кабели специального назначения</a></div>
-                        <div><a class="" href="/search/?q=Провода и шнуры различного назначения">Провода и шнуры различного назначения</a></div>
-
-                      </div>
-
-                      <div class="col">
-                        <div><h6>Системы ввода и крепления для кабеля</h6></div>
-                        <div><a class="" href="/search/?q=Вводы кабельные и аксессуары">Вводы кабельные и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Изделия крепежные для кабеля">Изделия крепежные для кабеля</a></div>
-                        
-                      </div> 
-                    </div>
-                </div>
 
               <!-- третья строка каталогов категорий-->
               <div class="row row-cols-1 row-cols-lg-3">
+                
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel='block-7'>
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-7">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/wind.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/wind.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Климатические и инженерные системы</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Климатические и инженерные системы</h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-7">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                        <div class="row row-cols-1 row-cols-lg-2" >
+
+                          <div class="col">  
+                            <h6>Отопительные приборы, вентиляция, технологические и инженерные системы</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Вентиляторы">Вентиляторы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Водонагреватели">Водонагреватели</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Водоснабжение">Водоснабжение</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабель нагревательный и аксессуары">Кабель нагревательный и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кондиционеры и аксессуары">Кондиционеры и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Оборудование для сауны (бани)">Оборудование для сауны (бани)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система водяного отопления">Система водяного отопления</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система электрического отопления">Система электрического отопления</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы альтернативного отопления">Системы альтернативного отопления</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы вентиляции">Системы вентиляции</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Терморегуляторы, термостаты, приборы управления обогревом">Терморегуляторы, термостаты, приборы управления обогревом</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Электрические приводы и двигатели">Электрические приводы и двигатели</a></li>
+                            </ul>
+                            
+                          </div>
+
+                          <div class="col">
+                            <h6>Сантехника</h6>
+                            <ul style="list-style: none;">
+
+                              <li class="li_allcategory"><a class="" href="/search/?q=Арматура трубная, распределение, контроль давления">Арматура трубная, распределение, контроль давления</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Канализационная система">Канализационная система</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Компенсаторы сантехнические">Компенсаторы сантехнические</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Муфты, фитинги сантехнические">Муфты, фитинги сантехнические</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Радиаторы, конвекторы">Радиаторы, конвекторы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Трубы">Трубы</a></li>
+                            </ul>
+                          </div> 
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel='block-8'>
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-8">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/rele.png" class="card-img-top border-bottom mx-auto d-block " style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/rele.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Низковольтное и промышленное электрооборудование</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">изковольтное и промышленное электрооборудование</h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-8">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                    
+                        <div class="row row-cols-1 row-cols-lg-3" >
+
+                          <div class="col">  
+                            <h6>Датчики/сенсоры</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары к датчикам">Аксессуары к датчикам</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Бесконтактные датчики">Бесконтактные датчики</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Датчики физических величин (напряжения, тока и т.п.)">Датчики физических величин (напряжения, тока и т.п.)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Позиционные датчики">Позиционные датчики</a></li>
+                            </ul>
+                          </div>
+
+                          <div class="col">
+                            <h6>Низковольтное оборудование</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатели дифференцальные модульные">Выключатели дифференцальные модульные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатели нагрузки (рубильники)">Выключатели нагрузки (рубильники)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатель автоматический модульный">Выключатель автоматический модульный</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатель автоматический силовой">Выключатель автоматический силовой</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Дополнительные устройства модульной системы">Дополнительные устройства модульной системы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Источники питания, трансформаторы">Источники питания, трансформаторы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кнопки управления">Кнопки управления</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Контакторы, пускатель магнитный">Контакторы, пускатель магнитный</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Низковольтные устройства различного назначения и аксессуары">Низковольтные устройства различного назначения и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Переключатели">Переключатели</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Посты управления и джойстики">Посты управления и джойстики</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Предохранители">Предохранители</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Преобразователи частоты, устройства плавного пуска">Преобразователи частоты, устройства плавного пуска</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Приборы измерения и учета">Приборы измерения и учета</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Сигнальные колонны">Сигнальные колонны</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Сигнальные лампы и зуммеры">Сигнальные лампы и зуммеры</a></li>
+                            </ul>
+                          </div> 
+
+                          <div class="col">
+                            <h6>Промышленные контроллеры и автоматизация производства</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Логические контроллеры и аксессуары">Логические контроллеры и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Программное обеспечение">Программное обеспечение</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Промышленная сеть">Промышленная сеть</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Средства человеко-машинного интерфейса">Средства человеко-машинного интерфейса</a></li>
+                            </ul> 
+                            <hr>
+                            <h6>Реле</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Измерительные реле">Измерительные реле</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Исполнительные реле">Исполнительные реле</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Реле времени, таймеры">Реле времени, таймеры</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Реле контроля">Реле контроля</a></li>
+                            </ul>
+                          </div> 
+                          
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel='block-9'>
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-9">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/svetilniki.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/svetilniki.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Освещение</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Освещение</h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-9">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                    
+                        <div class="row row-cols-1 row-cols-lg-2" >
+
+                          <div class="col">  
+                            <h6>Лампы (источники света)</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лампы газоразрядные">Лампы газоразрядные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лампы галогенные">Лампы галогенные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лампы люминесцентные">Лампы люминесцентные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лампы накаливания">Лампы накаливания</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лампы светодиодные">Лампы светодиодные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лампы специального назначения">Лампы специального назначения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Светодиоды">Светодиоды</a></li>
+                            </ul>
+                          </div>
+                          <div class="col">
+                            <h6>Светотехника</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аварийное освещение и световые указатели">Аварийное освещение и световые указатели</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары для светильников">Аксессуары для светильников</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аппаратура пускорегулирующая">Аппаратура пускорегулирующая</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Взрывозащищенные световые приборы">Взрывозащищенные световые приборы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Иллюминационное, декоративное освещение">Иллюминационное, декоративное освещение </a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Лента светодиодная и комплектующие">Лента светодиодная и комплектующие</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Опоры, мачты освещения">Опоры, мачты освещения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Прожекторы и светильники направленного света">Прожекторы и светильники направленного света</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Светильники для освещения высоких пролётов и туннелей">Светильники для освещения высоких пролётов и туннелей</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Светильники линейные, для модульных и магистральных систем освещения">Светильники линейные, для модульных и магистральных систем освещения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Светильники наружного освещения">Светильники наружного освещения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Светильники настенно-потолочные">Светильники настенно-потолочные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Светильники настольные, напольные, станочные">Светильники настольные, напольные, станочные</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Фонари и переносные световые приборы">Фонари и переносные световые приборы</a></li>
+                            </ul>    
+                          </div> 
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
-                  <div class="block card" id="block-7" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-2" >
-
-                      <div class="col">  
-                        <div><h6>Отопительные приборы, вентиляция, технологические и инженерные системы</h6></div>
-                      
-                        <div><a class="" href="/search/?q=Вентиляторы">Вентиляторы</a></div>
-                        <div><a class="" href="/search/?q=Водонагреватели">Водонагреватели</a></div>
-                        <div><a class="" href="/search/?q=Водоснабжение">Водоснабжение</a></div>
-                        <div><a class="" href="/search/?q=Кабель нагревательный и аксессуары">Кабель нагревательный и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Кондиционеры и аксессуары">Кондиционеры и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Оборудование для сауны (бани)">Оборудование для сауны (бани)</a></div>
-                        <div><a class="" href="/search/?q=Система водяного отопления">Система водяного отопления</a></div>
-                        <div><a class="" href="/search/?q=Система электрического отопления">Система электрического отопления</a></div>
-                        <div><a class="" href="/search/?q=Системы альтернативного отопления">Системы альтернативного отопления</a></div>
-                        <div><a class="" href="/search/?q=Системы вентиляции">Системы вентиляции</a></div>
-                        <div><a class="" href="/search/?q=Терморегуляторы, термостаты, приборы управления обогревом">Терморегуляторы, термостаты, приборы управления обогревом</a></div>
-                        <div><a class="" href="/search/?q=Электрические приводы и двигатели">Электрические приводы и двигатели</a></div>
-                        
-                      </div>
-
-                      <div class="col">
-                        <div><h6>Сантехника</h6></div>
-                        <div><a class="" href="/search/?q=Арматура трубная, распределение, контроль давления">Арматура трубная, распределение, контроль давления</a></div>
-                        <div><a class="" href="/search/?q=Канализационная система">Канализационная система</a></div>
-                        <div><a class="" href="/search/?q=Компенсаторы сантехнические">Компенсаторы сантехнические</a></div>
-                        <div><a class="" href="/search/?q=Муфты, фитинги сантехнические">Муфты, фитинги сантехнические</a></div>
-                        <div><a class="" href="/search/?q=Радиаторы, конвекторы">Радиаторы, конвекторы</a></div>
-                        <div><a class="" href="/search/?q=Трубы">Трубы</a></div>
-                      </div> 
-                    </div>
-                  </div>
-                  <div class="block card" id="block-8" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-3" >
-
-                      <div class="col">  
-                        <div><h6>Датчики/сенсоры</h6></div>
-                      
-                        <div><a class="" href="/search/?q=Аксессуары к датчикам">Аксессуары к датчикам</a></div>
-                        <div><a class="" href="/search/?q=Бесконтактные датчики">Бесконтактные датчики</a></div>
-                        <div><a class="" href="/search/?q=Датчики физических величин (напряжения, тока и т.п.)">Датчики физических величин (напряжения, тока и т.п.)</a></div>
-                        <div><a class="" href="/search/?q=Позиционные датчики">Позиционные датчики</a></div>
-                       
-                      </div>
-
-                      <div class="col">
-                        <div><h6>Низковольтное оборудование</h6></div>
-                        <div><a class="" href="/search/?q=Выключатели дифференцальные модульные">Выключатели дифференцальные модульные</a></div>
-                        <div><a class="" href="/search/?q=Выключатели нагрузки (рубильники)">Выключатели нагрузки (рубильники)</a></div>
-                        <div><a class="" href="/search/?q=Выключатель автоматический модульный">Выключатель автоматический модульный</a></div>
-                        <div><a class="" href="/search/?q=Выключатель автоматический силовой">Выключатель автоматический силовой</a></div>
-                        <div><a class="" href="/search/?q=Дополнительные устройства модульной системы">Дополнительные устройства модульной системы</a></div>
-                        <div><a class="" href="/search/?q=Источники питания, трансформаторы">Источники питания, трансформаторы</a></div>
-                        <div><a class="" href="/search/?q=Кнопки управления">Кнопки управления</a></div>
-                        <div><a class="" href="/search/?q=Контакторы, пускатель магнитный">Контакторы, пускатель магнитный</a></div>
-                        <div><a class="" href="/search/?q=Низковольтные устройства различного назначения и аксессуары">Низковольтные устройства различного назначения и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Переключатели">Переключатели</a></div>
-                        <div><a class="" href="/search/?q=Посты управления и джойстики">Посты управления и джойстики</a></div>
-                        <div><a class="" href="/search/?q=Предохранители">Предохранители</a></div>
-                        <div><a class="" href="/search/?q=Преобразователи частоты, устройства плавного пуска">Преобразователи частоты, устройства плавного пуска</a></div>
-                        <div><a class="" href="/search/?q=Приборы измерения и учета">Приборы измерения и учета</a></div>
-                        <div><a class="" href="/search/?q=Сигнальные колонны">Сигнальные колонны</a></div>
-                        <div><a class="" href="/search/?q=Сигнальные лампы и зуммеры">Сигнальные лампы и зуммеры</a></div>
-                      </div> 
-
-                      <div class="col">
-                        <div><h6>Промышленные контроллеры и автоматизация производства</h6></div>
-                        <div><a class="" href="/search/?q=Логические контроллеры и аксессуары">Логические контроллеры и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Программное обеспечение">Программное обеспечение</a></div>
-                        <div><a class="" href="/search/?q=Промышленная сеть">Промышленная сеть</a></div>
-                        <div><a class="" href="/search/?q=Средства человеко-машинного интерфейса">Средства человеко-машинного интерфейса</a></div>
-                        
-
-                      </div> 
-                      <div class="col">
-                        <div><h6>Реле</h6></div>
-                        <div><a class="" href="/search/?q=Измерительные реле">Измерительные реле</a></div>
-                        <div><a class="" href="/search/?q=Исполнительные реле">Исполнительные реле</a></div>
-                        <div><a class="" href="/search/?q=Реле времени, таймеры">Реле времени, таймеры</a></div>
-                        <div><a class="" href="/search/?q=Реле контроля">Реле контроля</a></div>
-                      </div> 
-                    </div>
-                  </div>
-                  <div class="block card" id="block-9" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-2" >
-
-                      <div class="col">  
-                        <div><h6>Лампы (источники света)</h6></div>
-                      
-                        <div><a class="" href="/search/?q=Лампы газоразрядные">Лампы газоразрядные</a></div>
-                        <div><a class="" href="/search/?q=Лампы галогенные">Лампы галогенные</a></div>
-                        <div><a class="" href="/search/?q=Лампы люминесцентные">Лампы люминесцентные</a></div>
-                        <div><a class="" href="/search/?q=Лампы накаливания">Лампы накаливания</a></div>
-                        <div><a class="" href="/search/?q=Лампы светодиодные">Лампы светодиодные</a></div>
-                        <div><a class="" href="/search/?q=Лампы специального назначения">Лампы специального назначения</a></div>
-                        <div><a class="" href="/search/?q=Светодиоды">Светодиоды</a></div>
-
-                        
-                      </div>
-                      <div class="col">
-                        <div><h6>Светотехника</h6></div>
-                        <div><a class="" href="/search/?q=Аварийное освещение и световые указатели">Аварийное освещение и световые указатели</a></div>
-                        <div><a class="" href="/search/?q=Аксессуары для светильников">Аксессуары для светильников</a></div>
-                        <div><a class="" href="/search/?q=Аппаратура пускорегулирующая">Аппаратура пускорегулирующая</a></div>
-                        <div><a class="" href="/search/?q=Взрывозащищенные световые приборы">Взрывозащищенные световые приборы</a></div>
-                        <div><a class="" href="/search/?q=Иллюминационное, декоративное освещение">Иллюминационное, декоративное освещение </a></div>
-                        <div><a class="" href="/search/?q=Лента светодиодная и комплектующие">Лента светодиодная и комплектующие</a></div>
-                        <div><a class="" href="/search/?q=Опоры, мачты освещения">Опоры, мачты освещения</a></div>
-                        <div><a class="" href="/search/?q=Прожекторы и светильники направленного света">Прожекторы и светильники направленного света</a></div>
-                        <div><a class="" href="/search/?q=Светильники для освещения высоких пролётов и туннелей">Светильники для освещения высоких пролётов и туннелей</a></div>
-                        <div><a class="" href="/search/?q=Светильники линейные, для модульных и магистральных систем освещения">Светильники линейные, для модульных и магистральных систем освещения</a></div>
-                        <div><a class="" href="/search/?q=Светильники наружного освещения">Светильники наружного освещения</a></div>
-                        <div><a class="" href="/search/?q=Светильники настенно-потолочные">Светильники настенно-потолочные</a></div>
-                        <div><a class="" href="/search/?q=Светильники настольные, напольные, станочные">Светильники настольные, напольные, станочные</a></div>
-                        <div><a class="" href="/search/?q=Фонари и переносные световые приборы">Фонари и переносные световые приборы</a></div>
-                        
-                      </div> 
-                    </div>
-                  </div>
-
-                </div>
-
               </div>
 
               <!-- четвертая строка каталогов категорий-->
               <div class="row row-cols-1 row-cols-lg-3">
 
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel='block-10'>
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-10">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/montage.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/montage.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Связь, телекоммуникации</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Связь, телекоммуникации</h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-10">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                    
+                        <div class="row row-cols-1 row-cols-lg-3" >
+
+                          <div class="col">
+                            <h6>Антенны и спутниковые технологии</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Антенны и аксессуары">Антенны и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кабельные технологии">Кабельные технологии</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Спутниковые технологии">Спутниковые технологии</a></li>
+                            </ul>
+
+                          </div> 
+                          <div class="col">
+                            <h6>Домашние системы контроля доступа и комфорта</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Домофонные системы">Домофонные системы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Звонки дверные и аксессуары">Звонки дверные и аксессуары</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система управления комфортом 'Умный дом'">Система управления комфортом "Умный дом"</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Средства коммуникации">Средства коммуникации</a></li>
+                            </ul>
+                            
+                          </div> 
+                          <div class="col">
+                            <h6>Структурированные кабельные системы</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Активное оборудование для СКС">Активное оборудование для СКС</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Изделия монтажные для СКС">Изделия монтажные для СКС</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Компоненты системы на основе медных кабелей">Компоненты системы на основе медных кабелей</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Компоненты системы на основе оптических кабелей">Компоненты системы на основе оптических кабелей</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Специальный инструмент для оптоволоконной технологии">Специальный инструмент для оптоволоконной технологии</a></li>
+                            </ul>
+
+                          </div> 
+
+                          <div class="col">
+                            <h6>Телефонные системы, техника для офиса</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Телефонные системы">Телефонные системы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Техника для офиса">Техника для офиса</a></li>
+                            </ul>
+                            
+                            
+                            
+                          </div> 
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel='block-11'>
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-11">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/saved.png" class="card-img-top border-bottom mx-auto d-block " style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/saved.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Устройства и средства безопасности</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Устройства и средства безопасности</h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-11">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                    
+                        <div class="row row-cols-1 row-cols-lg-3" >
+                          <div class="col">
+                            <h6>Системы пожарной, охранной сигнализации и аварийного оповещения</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Оборудование для видеонаблюдения">Оборудование для видеонаблюдения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы аварийного оповещения">Системы аварийного оповещения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы охранной сигнализации">Системы охранной сигнализации</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Системы пожарной сигнализации">Системы пожарной сигнализации</a></li>
+                            </ul>
+                             
+                          </div> 
+                          <div class="col">
+                            <h6>Средства пожаротушения и первой помощи</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система водяного пожаротушения">Система водяного пожаротушения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Средства первой помощи">Средства первой помощи</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Средства пожаротушения">Средства пожаротушения</a></li>
+                            </ul>
+                            
+                          </div> 
+                          <div class="col">
+                            <h6>Устройства заземления, молниезащиты и защиты от перенапряжений</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Устройства заземления">Устройства заземления</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Устройства защиты от перенапряжений">Устройства защиты от перенапряжений</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Элементы молниезащиты">Элементы молниезащиты</a></li>
+                            </ul> 
+                          </div> 
+                           <div class="col">
+                            <h6>Устройства оптической и акустической сигнализации</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Взрывозащищенное оборудование">Взрывозащищенное оборудование</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Общепромышленное оборудование">Общепромышленное оборудование</a></li>
+                            </ul>
+
+                          </div> 
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+
                 <div class="col">
-                  <div class="button card rounded-0 product-card" rel='block-12'>
+                  <div type="button" class=" btn btn-link btn-ecomm card rounded-0 product-card w-100 h-75 " data-bs-toggle="modal" data-bs-target="#QuickViewProduct-12">
                     <a href="javascript:;">
-                      <img src="/media/shop-categories/rozetki.png" class="card-img-top border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
+                      <img src="/media/shop-categories/rozetki.png" class="card-img-top  border-bottom mx-auto d-block" style="width: 100px; height: 100px;" alt="...">
                     </a>
-                    <div class="list-group list-group-flush">
-                      <a href="javascript:;" class="list-group-item bg-transparent">
-                        <h6 class="mb-0 text-uppercase text-center">Электроустановочные изделия</h6>
-                      </a> 
+                    <div class=" list-group list-group-flush">
+                      <h6 class="mb-0 text-uppercase text-center">Электроустановочные изделия</h6>
+                    </div>
+                  </div>   
+                </div>
+
+                <div class="modal fade" id="QuickViewProduct-12">
+                  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
+                    <div class="modal-content bg-dark-4 rounded-0 border-0">
+                      <div class="modal-body">
+                        <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                    
+                        <div class="row row-cols-1 row-cols-lg-3" >
+
+
+                          <div class="col">
+                            <h6>Аксессуары для электроустановочных изделий</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Адаптер переходный для электроустановочных устройств">Адаптер переходный для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары для розетки/вилки с защитным контактом стандарта SCHUKO">Аксессуары для розетки/вилки с защитным контактом стандарта SCHUKO</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары для электроустановочных устройств">Аксессуары для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Ввод кабельный для электроустановочных изделий">Ввод кабельный для электроустановочных изделий</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Вставка светящаяся для электроустановочных устройств">Вставка светящаяся для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Держатель для модульных бытовых коммутационных аппаратов">Держатель для модульных бытовых коммутационных аппаратов</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Заглушка для розеток, для защиты детей">Заглушка для розеток, для защиты детей</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Запчасти для электроустановочных устройств">Запчасти для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Крышка блока световой сигнализации">Крышка блока световой сигнализации</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Материалы монтажные для маркировки">Материалы монтажные для маркировки</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Поле для маркировки для электроустановочных устройств">Поле для маркировки для электроустановочных устройств</a></li>
+                            </ul>
+     
+                          </div> 
+
+                          <div class="col">
+                            <h6>Электроустановочные устройства различного назначения</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Блок управления жалюзи">Блок управления жалюзи</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Вызов /блок управления для больничных учреждений">Вызов /блок управления для больничных учреждений</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Индикатор указания потребления электроэнергии">Индикатор указания потребления электроэнергии</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Контроллер для управления системой освещения">Контроллер для управления системой освещения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Коробка монтажная для подключения электроприборов (электроплиты)">Коробка монтажная для подключения электроприборов (электроплиты)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Мультивставка / разъем для передачи данных и для подключения техники связи">Мультивставка / разъем для передачи данных и для подключения техники связи</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Разъем питания">Разъем питания</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Реле разделительное для жалюзи">Реле разделительное для жалюзи</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Сигнал световой информационный для электроустановочных устройств">Сигнал световой информационный для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система акустическая для электроустановочных устройств">Система акустическая для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Стойка электропитания (миниколонны)">Стойка электропитания (миниколонны)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Устройство передачи данных об электроэнергии">Устройство передачи данных об электроэнергии</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Электропитание USB">Электропитание USB</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Элемент интеллектуального управления">Элемент интеллектуального управления</a></li>
+                            </ul>
+
+                          </div> 
+
+                          <div class="col">
+                            <h6>Блоки комбинированные</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Блок 'Выключатель-розетка'">Блок 'Выключатель-розетка'</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Блок выключателей/кнопок/розеток">Блок выключателей/кнопок/розеток</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Коробка распределительная для установки в полой стене с предварительно установленным коммутационным устройством">Коробка распределительная для установки в полой стене с предварительно установленным коммутационным устройством</a></li>
+                            </ul>
+                            <hr>
+                            <h6>Вилки</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Вилка с защитным контактом бытовая SCHUKO">Вилка с защитным контактом бытовая SCHUKO</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Вилка с защитным контактом для приборов стандарта SCHUKO">Вилка с защитным контактом для приборов стандарта SCHUKO</a></li>
+                            </ul>
+
+                          </div>
+                          
+                          <div class="col">
+                            <h6>Выключатели, переключатели, диммеры</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатели, переключатели">Выключатели, переключатели</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатель с электронной коммутацией">Выключатель с электронной коммутацией</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатель шнуровой/диммер">Выключатель шнуровой/диммер</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Диммер">Диммер</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Кнопка нажимная">Кнопка нажимная</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Крышка для выключателя, кнопки, регулятора освещенности, диммера, переключателя жалюзи">Крышка для выключателя, кнопки, регулятора освещенности, диммера, переключателя жалюзи</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Переключатель жалюзи">Переключатель жалюзи</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Переключатель кнопочный миниатюрный">Переключатель кнопочный миниатюрный</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Переключатель трехступенчатый">Переключатель трехступенчатый</a></li>
+                            </ul>
+      
+                          </div> 
+                          <div class="col">
+                            <h6>Датчики движения, детекторы освещенности, таймеры</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Аксессуары для датчика движения">Аксессуары для датчика движения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Выключатель сумеречный (фотореле)">Выключатель сумеречный (фотореле)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Датчик движения комплектный">Датчик движения комплектный</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Механизм датчика движения">Механизм датчика движения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Реле времени механическое для электроустановочных устройств">Реле времени механическое для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Розеточный таймер">Розеточный таймер</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Система датчиков движения">Система датчиков движения</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Таймер электронный для электроустановочных устройств">Таймер электронный для электроустановочных устройств</a></li>
+                            </ul>
+     
+                          </div> 
+                          <div class="col">
+                            <h6>Дистанционное управление для ЭУИ</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=ередатчик/пульт дистанционного управления для электроустановочных устройств">Передатчик/пульт дистанционного управления для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Приемник радиосигнала">Приемник радиосигнала</a></li>      
+                            </ul>             
+
+
+                          </div>  
+                          <div class="col">
+                            <h6>Рамки, декоративные элементы, основания для ЭУИ</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Вставка/крышка для коммуникационных технологий">Вставка/крышка для коммуникационных технологий</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Корпус накладной для открытого монтажа электроустановочных устройств">Корпус накладной для открытого монтажа электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Основание для открытого монтажа">Основание для открытого монтажа</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Рамка декоративная для электроустановочных устройств">Рамка декоративная для электроустановочных устройств</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Элемент декоративный для электроустановочных устройств">Элемент декоративный для электроустановочных устройств</a></li>
+                            </ul>
+
+                          </div>
+                          <div class="col">
+                            <h6>Розетки</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Колодка удлинителя">Колодка удлинителя</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Настольный розеточный блок">Настольный розеточный блок</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Розетка для электробритвы">Розетка для электробритвы</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Розетка медная коммуникационная (витая пара)">Розетка медная коммуникационная (витая пара)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Розетка с заземлением стандарта SCHUKO">Розетка с заземлением стандарта SCHUKO</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Розетка силовая (штепсельная)">Розетка силовая (штепсельная)</a></li>
+                            </ul>
+
+
+                          </div>  
+                          <div class="col">
+                            <h6>Удлинители, блоки розеток, разветвители, переходники</h6>
+                            <ul style="list-style: none;">
+                              <li class="li_allcategory"><a class="" href="/search/?q=Блок распределения питания (PDU)">Блок распределения питания (PDU)</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Блок розеток, удлинитель">Блок розеток, удлинитель</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Переходник розетки мультистандартный">Переходник розетки мультистандартный</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Сетевой шнур питания">Сетевой шнур питания</a></li>
+                              <li class="li_allcategory"><a class="" href="/search/?q=Удлинитель кабельный на катушке/барабане">Удлинитель кабельный на катушке/барабане</a></li>
+                            </ul>
+
+                          </div>  
+                           
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+            <!--end row-->
               </div>
-                  <div class="block card" id="block-10" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-3" >
-
-                      <div class="col">
-                        <div><h6>Антенны и спутниковые технологии</h6></div>
-                        <div><a class="" href="/search/?q=Антенны и аксессуары">Антенны и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Кабельные технологии">Кабельные технологии</a></div>
-                        <div><a class="" href="/search/?q=Спутниковые технологии">Спутниковые технологии</a></div>
-
-                      </div> 
-                      <div class="col">
-                        <div><h6>Домашние системы контроля доступа и комфорта</h6></div>
-                        <div><a class="" href="/search/?q=Домофонные системы">Домофонные системы</a></div>
-                        <div><a class="" href="/search/?q=Звонки дверные и аксессуары">Звонки дверные и аксессуары</a></div>
-                        <div><a class="" href="/search/?q=Система управления комфортом 'Умный дом'">Система управления комфортом "Умный дом"</a></div>
-                        <div><a class="" href="/search/?q=Средства коммуникации">Средства коммуникации</a></div>
-                        
-                      </div> 
-                      <div class="col">
-                        <div><h6>Структурированные кабельные системы</h6></div>
-                        <div><a class="" href="/search/?q=Активное оборудование для СКС">Активное оборудование для СКС</a></div>
-                        <div><a class="" href="/search/?q=Изделия монтажные для СКС">Изделия монтажные для СКС</a></div>
-                        <div><a class="" href="/search/?q=Компоненты системы на основе медных кабелей">Компоненты системы на основе медных кабелей</a></div>
-                        <div><a class="" href="/search/?q=Компоненты системы на основе оптических кабелей">Компоненты системы на основе оптических кабелей</a></div>
-                        <div><a class="" href="/search/?q=Специальный инструмент для оптоволоконной технологии">Специальный инструмент для оптоволоконной технологии</a></div>
-
-                      </div> 
-
-                      <div class="col">
-                        <div><h6>Телефонные системы, техника для офиса</h6></div>
-                        <div><a class="" href="/search/?q=Телефонные системы">Телефонные системы</a></div>
-                        <div><a class="" href="/search/?q=Техника для офиса">Техника для офиса</a></div>
-                        
-                        
-                        
-                      </div> 
-                    </div>
-                  </div>
-                  <div class="block card" id="block-11" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-3" >
-                      <div class="col">
-                        <div><h6>Системы пожарной, охранной сигнализации и аварийного оповещения</h6></div>
-                        <div><a class="" href="/search/?q=Оборудование для видеонаблюдения">Оборудование для видеонаблюдения</a></div>
-                        <div><a class="" href="/search/?q=Системы аварийного оповещения">Системы аварийного оповещения</a></div>
-                        <div><a class="" href="/search/?q=Системы охранной сигнализации">Системы охранной сигнализации</a></div>
-                        <div><a class="" href="/search/?q=Системы пожарной сигнализации">Системы пожарной сигнализации</a></div>
-                         
-                      </div> 
-                      <div class="col">
-                        <div><h6>Средства пожаротушения и первой помощи</h6></div>
-                        <div><a class="" href="/search/?q=Система водяного пожаротушения">Система водяного пожаротушения</a></div>
-                        <div><a class="" href="/search/?q=Средства первой помощи">Средства первой помощи</a></div>
-                        <div><a class="" href="/search/?q=Средства пожаротушения">Средства пожаротушения</a></div>
-                        
-                      </div> 
-                      <div class="col">
-                        <div><h6>Устройства заземления, молниезащиты и защиты от перенапряжений</h6></div>
-                        <div><a class="" href="/search/?q=Устройства заземления">Устройства заземления</a></div>
-                        <div><a class="" href="/search/?q=Устройства защиты от перенапряжений">Устройства защиты от перенапряжений</a></div>
-                        <div><a class="" href="/search/?q=Элементы молниезащиты">Элементы молниезащиты</a></div> 
-                      </div> 
-                       <div class="col">
-                        <div><h6>Устройства оптической и акустической сигнализации</h6></div>
-                        
-                        <div><a class="" href="/search/?q=Взрывозащищенное оборудование">Взрывозащищенное оборудование</a></div>
-                        <div><a class="" href="/search/?q=Общепромышленное оборудование">Общепромышленное оборудование</a></div>
-
-                      </div> 
-
-                      
-                    </div>
-                  </div>
-                  <div class="block card" id="block-12" style="width: 100%; display: none;">
-                    
-                    <div class="row row-cols-1 row-cols-lg-3" >
-
-
-                      <div class="col">
-                        <div><h6>Аксессуары для электроустановочных изделий</h6></div>
-                        <div><a class="" href="/search/?q=Адаптер переходный для электроустановочных устройств">Адаптер переходный для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Аксессуары для розетки/вилки с защитным контактом стандарта SCHUKO">Аксессуары для розетки/вилки с защитным контактом стандарта SCHUKO</a></div>
-                        <div><a class="" href="/search/?q=Аксессуары для электроустановочных устройств">Аксессуары для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Ввод кабельный для электроустановочных изделий">Ввод кабельный для электроустановочных изделий</a></div>
-                        <div><a class="" href="/search/?q=Вставка светящаяся для электроустановочных устройств">Вставка светящаяся для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Держатель для модульных бытовых коммутационных аппаратов">Держатель для модульных бытовых коммутационных аппаратов</a></div>
-                        <div><a class="" href="/search/?q=Заглушка для розеток, для защиты детей">Заглушка для розеток, для защиты детей</a></div>
-                        <div><a class="" href="/search/?q=Запчасти для электроустановочных устройств">Запчасти для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Крышка блока световой сигнализации">Крышка блока световой сигнализации</a></div>
-                        <div><a class="" href="/search/?q=Материалы монтажные для маркировки">Материалы монтажные для маркировки</a></div>
-                        <div><a class="" href="/search/?q=Поле для маркировки для электроустановочных устройств">Поле для маркировки для электроустановочных устройств</a></div>
- 
-                      </div> 
-                      <div class="col">
-                        <div><h6>Блоки комбинированные</h6></div>
-                        <div><a class="" href="/search/?q=Блок 'Выключатель-розетка'">Блок 'Выключатель-розетка'</a></div>
-                        <div><a class="" href="/search/?q=Блок выключателей/кнопок/розеток">Блок выключателей/кнопок/розеток</a></div>
-                        <div><a class="" href="/search/?q=Коробка распределительная для установки в полой стене с предварительно установленным коммутационным устройством">Коробка распределительная для установки в полой стене с предварительно установленным коммутационным устройством</a></div>
-
-                      </div>
-                      <div class="col">
-                        <div><h6>Вилки</h6></div>
-                        <div><a class="" href="/search/?q=Вилка с защитным контактом бытовая SCHUKO">Вилка с защитным контактом бытовая SCHUKO</a></div>
-                        <div><a class="" href="/search/?q=Вилка с защитным контактом для приборов стандарта SCHUKO">Вилка с защитным контактом для приборов стандарта SCHUKO</a></div>
-
-                      </div> 
-                      <div class="col">
-                        <div><h6>Выключатели, переключатели, диммеры</h6></div>
-                        <div><a class="" href="/search/?q=Выключатели, переключатели">Выключатели, переключатели</a></div>
-                        <div><a class="" href="/search/?q=Выключатель с электронной коммутацией">Выключатель с электронной коммутацией</a></div>
-                        <div><a class="" href="/search/?q=Выключатель шнуровой/диммер">Выключатель шнуровой/диммер</a></div>
-                        <div><a class="" href="/search/?q=Диммер">Диммер</a></div>
-                        <div><a class="" href="/search/?q=Кнопка нажимная">Кнопка нажимная</a></div>
-                        <div><a class="" href="/search/?q=Крышка для выключателя, кнопки, регулятора освещенности, диммера, переключателя жалюзи">Крышка для выключателя, кнопки, регулятора освещенности, диммера, переключателя жалюзи</a></div>
-                        <div><a class="" href="/search/?q=Переключатель жалюзи">Переключатель жалюзи</a></div>
-                        <div><a class="" href="/search/?q=Переключатель кнопочный миниатюрный">Переключатель кнопочный миниатюрный</a></div>
-                        <div><a class="" href="/search/?q=Переключатель трехступенчатый">Переключатель трехступенчатый</a></div>
-  
-                      </div> 
-                      <div class="col">
-                        <div><h6>Датчики движения, детекторы освещенности, таймеры</h6></div>
-                        <div><a class="" href="/search/?q=Аксессуары для датчика движения">Аксессуары для датчика движения</a></div>
-                        <div><a class="" href="/search/?q=Выключатель сумеречный (фотореле)">Выключатель сумеречный (фотореле)</a></div>
-                        <div><a class="" href="/search/?q=Датчик движения комплектный">Датчик движения комплектный</a></div>
-                        <div><a class="" href="/search/?q=Механизм датчика движения">Механизм датчика движения</a></div>
-                        <div><a class="" href="/search/?q=Реле времени механическое для электроустановочных устройств">Реле времени механическое для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Розеточный таймер">Розеточный таймер</a></div>
-                        <div><a class="" href="/search/?q=Система датчиков движения">Система датчиков движения</a></div>
-                        <div><a class="" href="/search/?q=Таймер электронный для электроустановочных устройств">Таймер электронный для электроустановочных устройств</a></div>
- 
-                      </div> 
-                      <div class="col">
-                        <div><h6>Дистанционное управление для ЭУИ</h6></div>
-                        <div><a class="" href="/search/?q=ередатчик/пульт дистанционного управления для электроустановочных устройств">Передатчик/пульт дистанционного управления для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Приемник радиосигнала">Приемник радиосигнала</a></div>                   
-
-
-                      </div>  
-                      <div class="col">
-                        <div><h6>Рамки, декоративные элементы, основания для ЭУИ</h6></div>
-                        <div><a class="" href="/search/?q=Вставка/крышка для коммуникационных технологий">Вставка/крышка для коммуникационных технологий</a></div>
-                        <div><a class="" href="/search/?q=Корпус накладной для открытого монтажа электроустановочных устройств">Корпус накладной для открытого монтажа электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Основание для открытого монтажа">Основание для открытого монтажа</a></div>
-                        <div><a class="" href="/search/?q=Рамка декоративная для электроустановочных устройств">Рамка декоративная для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Элемент декоративный для электроустановочных устройств">Элемент декоративный для электроустановочных устройств</a></div>
-
-                      </div>
-                      <div class="col">
-                        <div><h6>Розетки</h6></div>
-                        <div><a class="" href="/search/?q=Колодка удлинителя">Колодка удлинителя</a></div>
-                        <div><a class="" href="/search/?q=Настольный розеточный блок">Настольный розеточный блок</a></div>
-                        <div><a class="" href="/search/?q=Розетка для электробритвы">Розетка для электробритвы</a></div>
-                        <div><a class="" href="/search/?q=Розетка медная коммуникационная (витая пара)">Розетка медная коммуникационная (витая пара)</a></div>
-                        <div><a class="" href="/search/?q=Розетка с заземлением стандарта SCHUKO">Розетка с заземлением стандарта SCHUKO</a></div>
-                        <div><a class="" href="/search/?q=Розетка силовая (штепсельная)">Розетка силовая (штепсельная)</a></div>
-
-
-                      </div>  
-                      <div class="col">
-                        <div><h6>Удлинители, блоки розеток, разветвители, переходники</h6></div>
-                        <div><a class="" href="/search/?q=Блок распределения питания (PDU)">Блок распределения питания (PDU)</a></div>
-                        <div><a class="" href="/search/?q=Блок розеток, удлинитель">Блок розеток, удлинитель</a></div>
-                        <div><a class="" href="/search/?q=Переходник розетки мультистандартный">Переходник розетки мультистандартный</a></div>
-                        <div><a class="" href="/search/?q=Сетевой шнур питания">Сетевой шнур питания</a></div>
-                        <div><a class="" href="/search/?q=Удлинитель кабельный на катушке/барабане">Удлинитель кабельный на катушке/барабане</a></div>
-
-                      </div>  
-                      <div class="col">
-                        <div><h6>Электроустановочные устройства различного назначения</h6></div>
-                        <div><a class="" href="/search/?q=Блок управления жалюзи">Блок управления жалюзи</a></div>
-                        <div><a class="" href="/search/?q=Вызов /блок управления для больничных учреждений">Вызов /блок управления для больничных учреждений</a></div>
-                        <div><a class="" href="/search/?q=Индикатор указания потребления электроэнергии">Индикатор указания потребления электроэнергии</a></div>
-                        <div><a class="" href="/search/?q=Контроллер для управления системой освещения">Контроллер для управления системой освещения</a></div>
-                        <div><a class="" href="/search/?q=Коробка монтажная для подключения электроприборов (электроплиты)">Коробка монтажная для подключения электроприборов (электроплиты)</a></div>
-                        <div><a class="" href="/search/?q=Мультивставка / разъем для передачи данных и для подключения техники связи">Мультивставка / разъем для передачи данных и для подключения техники связи</a></div>
-                        <div><a class="" href="/search/?q=Разъем питания">Разъем питания</a></div>
-                        <div><a class="" href="/search/?q=Реле разделительное для жалюзи">Реле разделительное для жалюзи</a></div>
-                        <div><a class="" href="/search/?q=Сигнал световой информационный для электроустановочных устройств">Сигнал световой информационный для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Система акустическая для электроустановочных устройств">Система акустическая для электроустановочных устройств</a></div>
-                        <div><a class="" href="/search/?q=Стойка электропитания (миниколонны)">Стойка электропитания (миниколонны)</a></div>
-                        <div><a class="" href="/search/?q=Устройство передачи данных об электроэнергии">Устройство передачи данных об электроэнергии</a></div>
-                        <div><a class="" href="/search/?q=Электропитание USB">Электропитание USB</a></div>
-                        <div><a class="" href="/search/?q=Элемент интеллектуального управления">Элемент интеллектуального управления</a></div>
-
-                      </div>  
-                    </div>
-                  </div>
-
-
-
-
-              <!--end row-->
-            
 
             </div>
           </div>
@@ -740,9 +875,12 @@
           } else {
               block.style.display = 'none';
           }
+
+
       })
   })
 </script>
+
       
 
 {% endblock content %}

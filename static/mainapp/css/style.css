@@ -1,0 +1,24 @@
+@import url(normalize.css);
+@import url(blocks/page/page.css);
+@import url(blocks/catalog/catalog.css);
+@import url(blocks/catalog/__category/catalog__category.css);
+@import url(blocks/catalog/__category/_active/catalog__category_active.css);
+@import url(blocks/catalog/__category-icon/catalog__category-icon.css);
+@import url(blocks/catalog/__category-icon/_style/catalog__category-icon_style_clear-day.css);
+@import url(blocks/catalog/__category-icon/_style/catalog__category-icon_style_clear-night.css);
+@import url(blocks/catalog/__category-icon/_style/catalog__category-icon_style_brightness.css);
+@import url(blocks/catalog/__lists-container/catalog__lists-container.css);
+@import url(blocks/catalog/__lists-container/_opened/catalog__lists-container_opened.css);
+@import url(blocks/catalog/__list-group/catalog__list-group.css);
+@import url(blocks/catalog/__list/catalog__list.css);
+@import url(blocks/catalog/__list-heading/catalog__list-heading.css);
+@import url(blocks/catalog/__item/catalog__item.css);
+@import url(blocks/catalog/__link/catalog__link.css);
+@import url(blocks/btn/btn.css);
+@import url(blocks/btn/_style/btn_style_close.css);
+
+
+.li_allcategory{
+	padding: 3px;
+	
+}

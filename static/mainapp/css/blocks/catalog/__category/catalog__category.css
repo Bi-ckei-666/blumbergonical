@@ -1,0 +1,32 @@
+.catalog__category {
+  background: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: center;
+  column-gap: 20px;
+  font-size: 18px;
+  transition: box-shadow .3s ease-in-out, background .25s ease-in-out;
+  position: relative;
+}
+
+.catalog__category::after {
+  visibility: hidden;
+  content: '';
+  border: solid 15px transparent;
+  border-top: solid 10px transparent;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: block;
+  box-sizing: border-box;
+  bottom: -25px;
+  left: 50px;
+  transition: visibility .2s, border-top-color .1s linear .1s;
+}
+
+.catalog__category:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
