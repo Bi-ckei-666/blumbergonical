@@ -420,7 +420,7 @@
 												</div>
 												<div class="product-action mt-2">
 													<div class="d-grid gap-2">
-														<a href="" class="btn btn-light btn-ecomm" >
+														<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm" >
 															<i class='bx bxs-cart-add'></i>
 															Добавить в корзину
 														</a>	

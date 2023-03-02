@@ -123,7 +123,7 @@ def add_cart(request, product_id):
                 cart_item.variation.add(*product_variation)
             cart_item.save()
 
-        return redirect('mainapp/cart.html')
+        return redirect('cart:cart')
 
 def remove_cart(request, product_id, cart_item_id):
     product = get_object_or_404(Product, id=product_id)
@@ -141,7 +141,7 @@ def remove_cart(request, product_id, cart_item_id):
     except:
         pass
 
-    return redirect('mainapp/cart.html')
+    return redirect('cart:cart')
 
 
 def remove_cart_item(request, product_id, cart_item_id):
@@ -152,7 +152,7 @@ def remove_cart_item(request, product_id, cart_item_id):
         cart = Cart.objects.get(cart_id=_cart_id(request))
         cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
     cart_item.delete()
-    return redirect('mainapp/cart.html')
+    return redirect('cart:cart')
 
 def cart(request, total_price=0, quantity=0, cart_items=None):
     grand_total = 0

@@ -6,26 +6,23 @@
 
  {% if not cart_items %}
 		<div style="font-size:18px; margin-bottom:300px;margin-top:30px" class="container alert alert-info text-center" role="alert">
-		<b>Your Cart Is Empty,&nbsp;&nbsp; <a href="{% url 'mainapp:index.html' %}" style="color:#21094e;text-decoration: underline;">Вернуться к покупкам<a></b>
+		<b>Ваша корзина пуста,&nbsp;&nbsp; <a href="{% url 'mainapp:index.html' %}" style="color:#21094e;text-decoration: underline;">Вернуться к покупкам<a></b>
 		</div>
 {% else %}
 
 
 
 <!--start page wrapper -->
-		<div class="page-wrapper">
-			<div class="page-content">
+
 				<!--start breadcrumb-->
 				<section class="py-3 border-bottom d-none d-md-flex">
 					<div class="container">
 						<div class="page-breadcrumb d-flex align-items-center">
-							<h3 class="breadcrumb-title pe-3">Shop Cart</h3>
+							<h3 class="breadcrumb-title pe-3">Корзина</h3>
 							<div class="ms-auto">
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb mb-0 p-0">
-										<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
-										</li>
-										<li class="breadcrumb-item"><a href="javascript:;">Shop</a>
+										<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Магазин</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">Shop Cart</li>
 									</ol>
@@ -45,25 +42,31 @@
 									<div class="shop-cart-list mb-3 p-3">
 										{% for cart_item in cart_items %}
 										<!--начало одного продукта-->
-										<div class="row align-items-center g-3">
-											<div class="col-12 col-lg-6">
+										<div class="row align-items-center g-6">
+											<div class="col-3 col-lg-9">
 												<div class="d-lg-flex align-items-center gap-2">
 													
 													<div class="cart-img text-center text-lg-start">
-														<img src="{{cart_item.product.image.url}}" width="130" alt="">
+														<a href="{{ product.get_absolute_url }}">
+														<img style="width:130px; padding-left: 15px" src="{{cart_item.product.image.url}}"alt=""></a>
 													</div>
-													<div class="cart-detail text-center text-lg-start">
-														<h6 class="mb-2">{{ cart_item.product.title }}</h6>
+													<div class="cart-detail text-center text-lg-start" style="padding-left: 20px; padding-right: 20px; position: center;">
+														<h4 class="mb-2">{{ cart_item.product.title }}</h4>
 														
-														<h5 class="mb-0">{{cart_item.product.price}}</h5>
+														<h4 class="mb-0">{{cart_item.product.price}}</h4>
 													</div>
-													<div class="cart-detail text-center text-lg-start">
+													<div class="plus-minus">
 														<form style="" action="{% url 'cart:add_cart' cart_item.product.id %}" method="POST">
-															{% csrf_token %}
-															<div class="cart-action text-center">
+															<a href="{% url 'cart:remove_cart' cart_item.product.id cart_item.id %}" ><i style="text-align: center; background:#232323;color:#fff;height:35px;margin-top:-5px;width:65px; border-radius: 4px;" class="bx bx-minus "></i></a>
 															
-																<input class="form-control rounded-0" type="number" value="{{cart_item.quantity}}" min="1">
-															</div>
+															<input style=" height:35px; width: 65px;" class="form-control" value="{{cart_item.quantity}}">
+
+															{% csrf_token %}
+															{% for item in cart_item.variation.all %}
+															<input type="hidden" name="{{ item.variation_category }}" value= "{{ item.variation_value |  capfirst}}">
+															{% endfor %}
+
+															<button style="background:#232323;color:#fff; height:35px; margin-top:-3px " class="btn btn-light" type="submit" id="button-minus"> <i class="bx bx-plus"></i> </button>
 														</form>
 
 													</div>
@@ -76,43 +79,74 @@
 											</div>
 											<div class="col-12 col-lg-3">
 												<div class="text-center">
-													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i>Удалить</a>
+													<div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="{% url 'cart:remove_cart_item' cart_item.product.id cart_item.id %}" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i>Удалить</a>
 														
 													</div>
 												</div>
 											</div>
 										</div>
-										<div class="my-4 border-top"></div>
+									
 										{% endfor %}
 
-										<a href="javascript:;">
-											<div class="text-center cart-footer d-flex align-items-center">
-												<h5 class="mb-0">ВСЕГО</h5>
-												<h5 class="mb-0 ms-auto"></h5>
-											</div>
-										</a>
+
+
 										
-										<div class="my-4 border-top"></div>
+
+
+
+
+
+
+
+
+
+
 
 										<!-- нижняя строка отчистки страницы-->
-										<div class="d-lg-flex align-items-center gap-2">	<a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-shopping-bag'></i> Продолжить покупки</a>
-											<a href="javascript:;" class="btn btn-light btn-ecomm ms-auto"><i class='bx bx-x-circle'></i> Clear Cart</a>
-											<a href="javascript:;" class="btn btn-white btn-ecomm"><i class='bx bx-refresh'></i> Update Cart</a>
-										</div>
-
+										
 
 									</div>
 								</div>
 
+								<div class="col-12 col-xl-4">
+											<div class="checkout-form p-3 bg-dark-1">
+												<div class="card rounded-0 border bg-transparent mb-0 shadow-none">
+													<div class="card-body">
+														<p class="mb-2">Subtotal: <span class="float-end">$198.00</span>
+														</p>
+														<p class="mb-2">Shipping: <span class="float-end">--</span>
+														</p>
+														<p class="mb-2">Taxes: <span class="float-end">$14.00</span>
+														</p>
+														<p class="mb-0">Discount: <span class="float-end">--</span>
+														</p>
+														<div class="my-3 border-top"></div>
+														<h5 class="mb-0">Общая стоимость: <span class="float-end">{{order_total}}</span></h5>
+														<div class="my-4"></div>
+														<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
 							</div>
+
+							<div class="d-lg-flex align-items-center gap-2">	<a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-shopping-bag'></i> Продолжить покупки</a>
+								<a href="javascript:;" class="btn btn-light btn-ecomm ms-auto"><i class='bx bx-x-circle'></i> Очистить корзину</a>
+											
+							</div>
+
 							<!--end row-->
 						</div>
 					</div>
 				</section>
 				<!--end shop cart-->
-			</div>
-		</div>
-		<!--end page wrapper -->
+
+
+
+
+
 {% endif %}
 		
 {% endblock content %}

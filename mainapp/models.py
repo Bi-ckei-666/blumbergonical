@@ -134,6 +134,15 @@ class News(models.Model): #модель для написания постов �
 		verbose_name_plural = 'Посты'
 
 
+class Variation(models.Model):
+	product = models.ForeignKey(Product, on_delete=models.CASCADE)
+	variation_value = models.CharField(max_length=100)
+	is_active = models.BooleanField(default=True)
+	created = models.DateTimeField(auto_now_add=True)
+
+
+	def __str__(self):
+		return self.variation_value
 
 
 '''
