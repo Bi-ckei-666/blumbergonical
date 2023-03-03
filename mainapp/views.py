@@ -61,7 +61,7 @@ class NewsView( View):
     def get(self, request, *args, **kwargs):
             
         categories = Category.objects.all()
-        news_post = News.objects.all()
+        news_post = News.objects.all() [::-1]
          
         context = {
             'categories': categories,

@@ -36,10 +36,10 @@ def add_cart(request, product_id):
             ex_var_list = []
             id = []
 
-            #for item in cart_item:
-              #  existing_variation = item.variation.all()
-                #ex_var_list.append(list(existing_variation))
-               # id.append(item.id)
+            for item in cart_item:
+                existing_variation = item.variation.all()
+                ex_var_list.append(list(existing_variation))
+                id.append(item.id)
 
             if product_variation in ex_var_list:
                 # increase the cart item quantity
@@ -67,6 +67,9 @@ def add_cart(request, product_id):
             cart_item.save()
 
         return redirect('cart:cart')
+
+
+
 
     # if the user is not authencated
     else:        

@@ -125,6 +125,7 @@ class News(models.Model): #модель для написания постов �
 	title = models.CharField(max_length=255, verbose_name='Наименование новости')
 	image = models.ImageField(verbose_name='Изображение')
 	description = models.TextField(verbose_name='текст новости', null=True)
+	date_created = models.DateTimeField(auto_now_add = True)
 	
 	def __str__(self):
 		return self.title

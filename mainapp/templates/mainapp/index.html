@@ -46,16 +46,14 @@
 						<div class="shiping-title text-uppercase font-13 text-white d-none d-sm-flex">Добро пожаловать в интернет-магазин электрики</div>
 						<ul class="navbar-nav ms-auto d-none d-lg-flex">
 							
-							<li class="nav-item"> <a class="nav-link" href="about-us.html">О насt</a>
+							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:contact' %}">О нас</a>
 							</li>
-							<li class="nav-item"> <a class="nav-link" href="blog.html">Блог</a>
+							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:blog' %}">Блог</a>
 							</li>
 							<li class="nav-item">	<a class="nav-link" href="contact-us.html">Контакты</a>
 							</li>
-							<li class="nav-item">	<a class="nav-link" href="javascript:;">Помощь & FAQs</a>
-							</li>
-							<li class="nav-item">	<a class="nav-link" href="">корзина</a>
-							</li>
+							
+							
 						</ul>
 						
 						<!--<ul class="navbar-nav social-link ms-lg-2 ms-auto">
@@ -116,144 +114,45 @@
 										<!--<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
 										</li>-->
 										<li class="nav-item dropdown dropdown-large">
-											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown">	<span class="alert-count">8</span>
+											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown">	<span class="alert-count">{{quantityyy}}</span>
 												<i class='bx bx-shopping-bag'></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-end">
 												<a href="javascript:;">
 													<div class="cart-header">
-														<p class="cart-header-title mb-0">8 ITEMS</p>
-														<p class="cart-header-clear ms-auto mb-0">VIEW CART</p>
+														<p class="cart-header-title mb-0">Товаров - {{quantityyy}}</p>
+														<p class="cart-header-clear ms-auto mb-0">Обзор корзины</p>
 													</div>
 												</a>
+												{% for cart_item in cart_items %}
 												<div class="cart-list">
-													<a class="dropdown-item" href="javascript:;">
+													<a class="dropdown-item" href="">
 														<div class="d-flex align-items-center">
 															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men White T-Shirt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
+																<h6 class="cart-product-title">{{ cart_item.product.title }} - ({{cart_item.quantity}})</h6>
+																<p class="cart-product-price">{{cart_item.product.price}}</p>
 															</div>
 															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
+																
 																<div class="cart-product">
-																	<img src="/media/products/01.png" class="" alt="product image">
+																	<img src="{{cart_item.product.image.url}}" class="" alt="product image">
 																</div>
+																
 															</div>
+
 														</div>
 													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Puma Sports Shoes</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="/media/products/05.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Women Red Sneakers</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="/media/products/17.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Black Headphone</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="/media/products/10.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Blue Girl Shoes</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="/media/products/08.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men Leather Belt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="/media/products/18.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Men Yellow T-Shirt</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="/media/products/04.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
-													<a class="dropdown-item" href="javascript:;">
-														<div class="d-flex align-items-center">
-															<div class="flex-grow-1">
-																<h6 class="cart-product-title">Pool Charir</h6>
-																<p class="cart-product-price">1 X $29.00</p>
-															</div>
-															<div class="position-relative">
-																<div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
-																</div>
-																<div class="cart-product">
-																	<img src="/media/products/16.png" class="" alt="product image">
-																</div>
-															</div>
-														</div>
-													</a>
+													
 												</div>
+												{% endfor %}
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
-														<h5 class="mb-0">TOTAL</h5>
-														<h5 class="mb-0 ms-auto">$189.00</h5>
+														<h5 class="mb-0">Всего</h5>
+														<h5 class="mb-0 ms-auto">${{ totalll }}</h5>
 													</div>
 												</a>
+												<div class="d-grid p-3 border-top">	<a href="{% url 'cart:cart' %}" class="btn btn-light btn-ecomm">В корзину</a>
+												</div>
 												
 											</div>
 										</li>
@@ -375,9 +274,9 @@
 					</a>
 				</div>
 			</div>
-		
-		
 		</section>-->
+
+
 		<!--end slider section-->
 		<!--start page wrapper -->
 		<div class="page-wrapper">
@@ -388,7 +287,7 @@
 					<div class="container">
 						<div class="d-flex align-items-center">
 							<h5 class="text-uppercase mb-0">ТОВАРЫ</h5>
-							<a href="javascript:;" class="btn btn-light ms-auto rounded-0">Все продукты<i class='bx bx-chevron-right'></i></a>
+							<a href="/search/?q={{products.title.all}}" class="btn btn-light ms-auto rounded-0">Все продукты<i class='bx bx-chevron-right'></i></a>
 						</div>
 						<hr/>
 
@@ -490,7 +389,7 @@
 								{% for post in news_post %}
 								<div class="item">
 									<div class="card rounded-0 product-card border">
-										<a href="javascript:;">
+										<a href="{% url 'mainapp:blog' %}">
 											<img src="{{post.image.url}}" class="card-img-top border-bottom bg-dark-1" alt="..." width="140" height="210">
 										</a>
 										<div class="card-body">
@@ -499,7 +398,7 @@
 													<h5 class="mb-3 text-capitalize">{{post.title}}</h5>
 												</a>
 											</div>
-											<p class="news-content mb-0">{{post.description}}</p>
+											<p class="news-content mb-0"></p>
 										</div>
 									</div>
 								</div>
