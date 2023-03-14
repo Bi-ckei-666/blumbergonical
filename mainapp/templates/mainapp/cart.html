@@ -22,9 +22,9 @@
 							<div class="ms-auto">
 								<nav aria-label="breadcrumb">
 									<ol class="breadcrumb mb-0 p-0">
-										<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Магазин</a>
+										<li class="breadcrumb-item"><a href="{% url 'mainapp:index.html' %}"><i class="bx bx-home-alt"></i> Магазин</a>
 										</li>
-										<li class="breadcrumb-item active" aria-current="page">Shop Cart</li>
+										<li class="breadcrumb-item active" aria-current="page">корзина</li>
 									</ol>
 								</nav>
 							</div>
@@ -122,7 +122,7 @@
 														<div class="my-3 border-top"></div>
 														<h5 class="mb-0">Общая стоимость: <span class="float-end">{{order_total}}</span></h5>
 														<div class="my-4"></div>
-														<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
+														<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Оформить заказ!</a>
 														</div>
 													</div>
 												</div>

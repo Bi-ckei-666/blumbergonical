@@ -1,9 +1,0 @@
-.catalog__category_active {
-  color: #fff;
-  background: #0e4193;
-}
-
-.catalog__category_active::after {
-  border-top-color: #0e4193;
-  visibility: visible;
-}

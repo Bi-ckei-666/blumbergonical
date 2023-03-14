@@ -1,6 +1,6 @@
-{% csrf_token %}
 
 {% load static %}
+{% csrf_token %}
 
 <!doctype html>
 <html lang="en">
@@ -18,19 +18,19 @@
 	<link href="{% static 'mainapp/plugins/OwlCarousel/css/owl.carousel.min.css' %}" rel="stylesheet" />
 	<link href="{% static 'mainapp/plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
 	<link href="{% static 'mainapp/plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
-	<link href="{% static 'mainapp/plugins/metismenu/css/metisMenu.min.css}' %}" rel="stylesheet" />
+	<link href="{% static 'mainapp/plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
+	
 
 	<!-- loader-->
 	<link href="{% static 'mainapp/css/pace.min.css' %}" rel="stylesheet" />
 	<script src="{% static 'mainapp/js/pace.min.js' %}"></script>
-	<script src="{% static 'mainapp/js/script.js' %}"></script>
+	
 	<!-- Bootstrap CSS -->
 	<link href="{% static 'mainapp/css/bootstrap.min.css' %}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{% static 'mainapp/css/app.css' %}" rel="stylesheet">
 	<link href="{% static 'mainapp/css/icons.css' %}" rel="stylesheet">
-	<link href="{% static 'mainapp/css/style.css' %}" rel="stylesheet">
-	<link href="{% static 'mainapp/css/normalize.css' %}" rel="stylesheet">
+	
 	<title>Nerenergo</title>
 </head>
 
@@ -50,7 +50,7 @@
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:blog' %}">Блог</a>
 							</li>
-							<li class="nav-item">	<a class="nav-link" href="contact-us.html">Контакты</a>
+							<li class="nav-item">	<a class="nav-link" href="{% url 'mainapp:contact' %}">Контакты</a>
 							</li>
 							
 							
@@ -86,7 +86,7 @@
 							<div class="input-group flex-nowrap px-xl-4">
 								<form action="{% url 'mainapp:search' %}" method="get" class="w-100 rounded-0">
 									<input type="text" name = 'q' class="form-control form-control-lg" placeholder="Поиск...">
-									<!--<span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>-->
+									
 								</form>
 							</div>
 						</div>
@@ -111,8 +111,6 @@
 										<li class="nav-item"><a href="{% url 'accounts:sing_in' %}" class="nav-link cart-link"><i class='bx bx-user'></i></a>
 										</li>
 										{% endif %}
-										<!--<li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
-										</li>-->
 										<li class="nav-item dropdown dropdown-large">
 											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown">	<span class="alert-count">{{quantityyy}}</span>
 												<i class='bx bx-shopping-bag'></i>
@@ -132,14 +130,6 @@
 																<h6 class="cart-product-title">{{ cart_item.product.title }} - ({{cart_item.quantity}})</h6>
 																<p class="cart-product-price">{{cart_item.product.price}}</p>
 															</div>
-															<div class="position-relative">
-																
-																<div class="cart-product">
-																	<img src="{{cart_item.product.image.url}}" class="" alt="product image">
-																</div>
-																
-															</div>
-
 														</div>
 													</a>
 													
@@ -174,8 +164,6 @@
 						<ul class="navbar-nav">
 							<li class="nav-item active"> <a class="nav-link" href="{% url 'mainapp:index.html' %}">Магазин</a> 
 							</li>
-							<!--<li class="nav-item"> <a class="nav-link" href="blog.html">Блог </a> 
-							</li> #вкладка блога на всякий случай -->
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:contact' %}">О нас</a> 
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:all_category' %}">Каталог категорий</a> 
@@ -184,24 +172,6 @@
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'accounts:dashboard' %}">Мой аккаунт</a> 
 							</li>
-
-							<!--
-							<li class="nav-item dropdown">	<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">Аккаунт<i class='bx bx-chevron-down'></i></a>
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a>
-									</li>
-									<li><a class="dropdown-item" href="account-downloads.html">Загрузки</a>
-									</li>
-									<li><a class="dropdown-item" href="account-orders.html">Покупки</a>
-									</li>
-									<li><a class="dropdown-item" href="account-payment-methods.html">Способ оплаты</a>
-									</li>
-									<li><a class="dropdown-item" href="account-user-details.html">Дополнительная информация</a>
-									</li>
-								</ul>
-							</li>-->
-
-
 						</ul>
 					</nav>
 				</div>
@@ -212,72 +182,7 @@
 
 		{% block content %}
 
-		<!--<section class="slider-section" >
-			<div class="first-slider" >
-				<div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
-					<ol class="carousel-indicators">
-						<li data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"></li>
-						<li data-bs-target="#carouselExampleDark" data-bs-slide-to="1"></li>
-						<li data-bs-target="#carouselExampleDark" data-bs-slide-to="2"></li>
-					</ol>
-					<div class="carousel-inner " style="height: 550px;">
-						<div class="carousel-item active ">
-							<div class="row d-flex align-items-center">
-								<div class="col d-none d-lg-flex justify-content-center">
-									<div class="">
-										<h3 class="h3 fw-light">NerEnergo!</h3>
-										<h1 class="h1">Нас рекомендуют друзьям</h1>
-										<p class="pb-3">Услуги монтажа и демонтажа</p>
-									</div>
-								</div>
-								<div class="col">
-									<img src="/media/slider/06.jpg" class="img-fluid" alt="..." width="700" height="700" >
-								</div>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<div class="row d-flex align-items-center">
-								<div class="col d-none d-lg-flex justify-content-center">
-									<div class="">
-										<h3 class="h3 fw-light">NerEnergo!</h3>
-										<h1 class="h1">Доверяй проверенному магазину</h1>
-										<p class="pb-3">Электрика, аксессуары и вспомогательное оборудование</p>
-									</div>
-								</div>
-								<div class="col">
-									<img src="/media/slider/05.png" class="img-fluid" alt="...">
-								</div>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<div class="row d-flex align-items-center">
-								<div class="col d-none d-lg-flex justify-content-center">
-									<div class="">
-										<h3 class="h3 fw-light">NerEnergo!</h3>
-										<h1 class="h1">Консультация по любому вопросу</h1>
-										<p class="pb-3">подготовка проектов, консультирование</p>
-										
-									</div>
-								</div>
-								<div class="col">
-									<img src="/media/slider/07.png" class="img-fluid" alt="..." width="700" height="700" >
-								</div>>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">	<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</a>
-				</div>
-			</div>
-		</section>-->
-
-
-		<!--end slider section-->
+	
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
@@ -601,44 +506,7 @@
 
 
 	
-	<!--start switcher-->
 	
-	<!--<div class="switcher-wrapper">
-		<div class="switcher-btn"> <i class='bx bx-cog bx-spin'></i>
-		</div>
-		<div class="switcher-body">
-			<div class="d-flex align-items-center">
-				<h5 class="mb-0 text-uppercase">Theme Customizer</h5>
-				<button type="button" class="btn-close ms-auto close-switcher" aria-label="Close"></button>
-			</div>
-			<hr/>
-			<p class="mb-0">Gaussian Texture</p>
-			<hr>
-			<ul class="switcher">
-				<li id="theme1"></li>
-				<li id="theme2"></li>
-				<li id="theme3"></li>
-				<li id="theme4"></li>
-				<li id="theme5"></li>
-				<li id="theme6"></li>
-			</ul>
-			<hr>
-			<p class="mb-0">Gradient Background</p>
-			<hr>
-			<ul class="switcher">
-				<li id="theme7"></li>
-				<li id="theme8"></li>
-				<li id="theme9"></li>
-				<li id="theme10"></li>
-				<li id="theme11"></li>
-				<li id="theme12"></li>
-				<li id="theme13"></li>
-				<li id="theme14"></li>
-				<li id="theme15"></li>
-			</ul>
-		</div>
-	</div>-->
-	<!--end switcher-->
 	<!-- Bootstrap JS -->
 	<script src="{% static 'mainapp/js/bootstrap.bundle.min.js' %}"></script>
 	<!--plugins-->
@@ -647,14 +515,12 @@
 	<script src="{% static 'mainapp/plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'mainapp/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
 	<script src="{% static 'mainapp/plugins/metismenu/js/metisMenu.min.js' %} "></script>
+	<script src="{% static 'mainapp/js/price-slider.js' %}"></script>
 
 	<script src="{% static 'mainapp/plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
 	<!--app JS-->
 	<script src="{% static 'mainapp/js/app.js' %}"></script>
 	<script src="{% static 'mainapp/js/index.js' %}"></script>
-
-	
-
 
 </body>
 

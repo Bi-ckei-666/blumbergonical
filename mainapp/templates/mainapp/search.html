@@ -77,7 +77,7 @@
 												</ul>
 											</div>
 											<button type="button" class="btn btn-white btn-sm text-uppercase rounded-0 font-13 fw-500">фильтр</button>
-											<hr>
+											
 
 										</div>
 									</div>
@@ -113,49 +113,51 @@
 										</div>
 										
 									</div>
-									<div class="container">
-						
-						<hr/>
+								</div>
 
 
-						<div class="product-grid">
-							<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-								{% for product in products %}
-								
-								<div class="col">
 
-									<div class="card rounded-0 product-card">
+
+												
+								<hr/>
+								<div class="product-grid">
+									<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+										{% for product in products %}
 										
-										<a href="{{ product.get_absolute_url }}">
-											<img src="{{product.image.url}}" class="card-img-top img-fluid" alt="...">
-										</a>
-										<div class="card-body">
-											<div class="product-info">
-												<a href="javascript:;">
-													<p class="product-catergory font-13 mb-1">{{product.category}}</p>
-												</a>
+										<div class="col">
+
+											<div class="card rounded-0 product-card">
+												
 												<a href="{{ product.get_absolute_url }}">
-													<h6 class="product-name mb-2">{{product.title}}</h6>
+													<img src="{{product.image.url}}" class="card-img-top img-fluid" alt="...">
 												</a>
-												<div class="d-flex align-items-center">
-													<div class="mb-1 product-price">
-														<span class="text-white fs-5">{{product.price}} Р.</span>
-													</div>
-												</div>
-												<div class="product-action mt-2">
-													<div class="d-grid gap-2">
-														<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>	<a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct"><i class='bx bx-zoom-in'></i>Quick View</a>
+												<div class="card-body">
+													<div class="product-info">
+														<a href="javascript:;">
+															<p class="product-catergory font-13 mb-1">{{product.category}}</p>
+														</a>
+														<a href="{{ product.get_absolute_url }}">
+															<h6 class="product-name mb-2">{{product.title}}</h6>
+														</a>
+														<div class="d-flex align-items-center">
+															<div class="mb-1 product-price">
+																<span class="text-white fs-5">{{product.price}} Р.</span>
+															</div>
+														</div>
+														<div class="product-action mt-2">
+															<div class="d-grid gap-2">
+																<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>	<a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct"><i class='bx bx-zoom-in'></i>Quick View</a>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
+											
 										</div>
-									</div>
-									
-								</div>
 
-								{% endfor %}
-							</div>
-						</div>
+										{% endfor %}
+									</div>
+								</div>
 					</div>
 									
 									<hr>
@@ -190,8 +192,3 @@
 </section>
 
 {% endblock content %}
-
-
-<section class="py-4">
-					
-				</section>

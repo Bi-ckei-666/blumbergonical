@@ -1,9 +1,0 @@
-.catalog__link {
-  text-decoration: none;
-  color: #000;
-  transition: color .2s ease-in-out;
-}
-
-.catalog__link:hover {
-  color: #d60808;
-}

@@ -1,7 +1,0 @@
-.catalog__lists-container {
-  grid-column: 1 / 4;
-  background: #fff;
-  column-count: 3;
-  display: none;
-  position: relative;
-}

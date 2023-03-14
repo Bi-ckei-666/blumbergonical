@@ -1,9 +1,0 @@
-.catalog__list {
-  margin: 0;
-  padding-left: 20px;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  row-gap: 15px;
-  font-size: 15px;
-}

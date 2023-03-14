@@ -66,8 +66,8 @@ def add_cart(request, product_id):
                 cart_item.variation.add(*product_variation)
             cart_item.save()
 
+        #return redirect('cart:cart')
         return redirect('cart:cart')
-
 
 
 
