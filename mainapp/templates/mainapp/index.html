@@ -1,8 +1,7 @@
-
 {% load static %}
 {% csrf_token %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,7 +18,7 @@
 	<link href="{% static 'mainapp/plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
 	<link href="{% static 'mainapp/plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
 	<link href="{% static 'mainapp/plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
-	
+	<link href="{% static 'mainapp/plugins/nouislider/css/nouislider.css' %}" rel="stylesheet" />
 
 	<!-- loader-->
 	<link href="{% static 'mainapp/css/pace.min.css' %}" rel="stylesheet" />
@@ -52,24 +51,16 @@
 							</li>
 							<li class="nav-item">	<a class="nav-link" href="{% url 'mainapp:contact' %}">Контакты</a>
 							</li>
-							
-							
+	
 						</ul>
-						
-						<!--<ul class="navbar-nav social-link ms-lg-2 ms-auto">
-							<li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-facebook'></i></a>
-							</li>
-							<li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-twitter'></i></a>
-							</li>
-							<li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-linkedin'></i></a>
-							</li>
-						</ul>-->
+
 					</nav>
 				</div>
 			</div>
 			<div class="header-content pb-3 pb-md-0">
 				<div class="container">
 					<div class="row align-items-center">
+
 						<div class="col col-md-auto">
 							<div class="d-flex align-items-center">
 								<div class="mobile-toggle-menu d-lg-none px-lg-2" data-trigger="#navbar_main"><i class='bx bx-menu'></i>
@@ -218,7 +209,7 @@
 													<h6 class="product-name mb-2">{{product.title}}</h6>
 												</a>
 												<div class="d-flex align-items-center">
-													<div class="mb-1 product-price">
+													<div class="mb-1 ">
 														<span class="text-white fs-5">{{product.price}} Р.</span>
 													</div>
 												</div>
@@ -511,6 +502,7 @@
 	<script src="{% static 'mainapp/js/bootstrap.bundle.min.js' %}"></script>
 	<!--plugins-->
 	<script src="{% static 'mainapp/js/jquery.min.js' %}"></script>
+	<script src="{% static 'mainapp/plugins/nouislider/js/nouislider.min.js' %} "></script>
 	<script src="{% static 'mainapp/plugins/simplebar/js/simplebar.min.js' %}"></script>
 	<script src="{% static 'mainapp/plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'mainapp/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>

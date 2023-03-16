@@ -86,7 +86,7 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
 		$(".filter-sidebar").addClass("d-none")
 	}),
 
-
+/*
 	
 	$(".switcher-btn").on("click", function() {
 		$(".switcher-wrapper").toggleClass("switcher-toggled")
@@ -176,3 +176,5 @@ $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
 
 
 });
+
+*/
