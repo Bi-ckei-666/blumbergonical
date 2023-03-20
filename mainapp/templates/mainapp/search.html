@@ -3,7 +3,8 @@
 {% block content %}
 
 
-<section class="py-4">
+
+				<section class="py-4">
 
 					
 					<div class="container">
@@ -142,7 +143,7 @@
 														</div>
 														<div class="product-action mt-2">
 															<div class="d-grid gap-2">
-																<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>	<a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct"><i class='bx bx-zoom-in'></i>Quick View</a>
+																<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>
 															</div>
 														</div>
 													</div>
@@ -184,6 +185,6 @@
 
 				
 					
-</section>
+				</section>
 
 {% endblock content %}
