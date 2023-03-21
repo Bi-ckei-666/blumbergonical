@@ -34,38 +34,35 @@
 </head>
 
 <body class="bg-theme9">	<b class="screen-overlay"></b>
-	<!--wrapper-->
+
+
+
 	<div class="wrapper">
-		
 		<!--start top header wrapper-->
-		
 		<div class="header-wrapper bg-dark-1">
+			<div class="header-wrapper bg-dark-1">
 			<div class="top-menu border-bottom">
 				<div class="container">
 					<nav class="navbar navbar-expand">
 						<div class="shiping-title text-uppercase font-13 text-white d-none d-sm-flex">Добро пожаловать в интернет-магазин электрики</div>
 						<ul class="navbar-nav ms-auto d-none d-lg-flex">
-								
+									
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:contact' %}">О нас</a>
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:blog' %}">Блог</a>
 							</li>
-							<li class="nav-item">	<a class="nav-link" href="{% url 'mainapp:contact' %}">Контакты</a>
-							</li>
-		
+							
 						</ul>
 
 					</nav>
 				</div>
 			</div>
-				
 			<div class="header-content pb-3 pb-md-0">
 				<div class="container">
 					<div class="row align-items-center">
-
 						<div class="col col-md-auto">
 							<div class="d-flex align-items-center">
-								<div class="mobile-toggle-menu d-lg-none px-lg-2" data-trigger="#navbar_main1"><i class='bx bx-menu'></i>
+								<div class="mobile-toggle-menu d-lg-none px-lg-2" data-trigger="#navbar_main"><i class='bx bx-menu'></i>
 								</div>
 								<div class="logo d-none d-lg-flex">
 									<a href="{% url 'mainapp:index.html' %}">
@@ -74,12 +71,10 @@
 								</div>
 							</div>
 						</div>
-
 						<div class="col-12 col-md order-4 order-md-2">
 							<div class="input-group flex-nowrap px-xl-4">
 								<form action="{% url 'mainapp:search' %}" method="get" class="w-100 rounded-0">
-									<input type="text" name = 'q' class="form-control form-control-lg" placeholder="Поиск...">
-										
+									<input type="text" name = 'q' class="form-control form-control-lg" placeholder="Поиск...">		
 								</form>
 							</div>
 						</div>
@@ -95,48 +90,43 @@
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav ms-auto">
-										{% if user.is_authenticated %}
-											
-											
-										<li class="nav-item"><a href="{% url 'accounts:logout' %}" class="nav-link cart-link"><i class='bx bx-log-out'></i></a>
+										<li class="nav-item">
+											<a href="{% if user.is_authenticated %} {% url 'accounts:logout' %} {% else %} {% url 'accounts:sing_in' %} {% endif %}" class="nav-link cart-link"><i class='{% if user.is_authenticated %} bx bx-log-out {% else %} bx bx-user {% endif %}'></i>
+											</a>
 										</li>
-										{% else %}
-										<li class="nav-item"><a href="{% url 'accounts:sing_in' %}" class="nav-link cart-link"><i class='bx bx-user'></i></a>
-										</li>
-										{% endif %}
+										
 										<li class="nav-item dropdown dropdown-large">
-											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown">	<span class="alert-count">{{quantityyy}}</span>
+											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count">{{quantityyy}}</span>
 												<i class='bx bx-shopping-bag'></i>
 											</a>
 											<div class="dropdown-menu dropdown-menu-end">
 												<a href="javascript:;">
 													<div class="cart-header">
-														<p class="cart-header-title mb-0">Товаров - {{quantityyy}}</p>
+														<p class="cart-header-title mb-0">кол-во: {{quantityyy}} </p>
 														<p class="cart-header-clear ms-auto mb-0">Обзор корзины</p>
 													</div>
 												</a>
-												{% for cart_item in cart_items %}
 												<div class="cart-list">
-													<a class="dropdown-item" href="">
+													{% for cart_item in cart_items %}
+													<a class="dropdown-item" href="javascript:;">
 														<div class="d-flex align-items-center">
 															<div class="flex-grow-1">
-																<h6 class="cart-product-title">{{ cart_item.product.title }} - ({{cart_item.quantity}})</h6>
-																<p class="cart-product-price">{{cart_item.product.price}}</p>
+																<h6 class="cart-product-title">{{ cart_item.product.title }}</h6>
+																<p class="cart-product-price">{{cart_item.quantity}} X {{cart_item.product.price}}</p>
 															</div>
+															
 														</div>
 													</a>
-														
+													{% endfor %}
 												</div>
-												{% endfor %}
 												<a href="javascript:;">
 													<div class="text-center cart-footer d-flex align-items-center">
 														<h5 class="mb-0">Всего</h5>
-														<h5 class="mb-0 ms-auto">${{ totalll }}</h5>
+														<h5 class="mb-0 ms-auto">{{ totalll }}</h5>
 													</div>
 												</a>
-												<div class="d-grid p-3 border-top">	<a href="{% url 'cart:cart' %}" class="btn btn-light btn-ecomm">В корзину</a>
+												<div class="d-grid p-3 border-top"> <a href="{% url 'cart:cart' %}" class="btn btn-light btn-ecomm">В корзину</a>
 												</div>
-													
 											</div>
 										</li>
 									</ul>
@@ -144,13 +134,12 @@
 							</div>
 						</div>
 					</div>
-						<!--end row-->
+					<!--end row-->
 				</div>
 			</div>
-
 			<div class="primary-menu border-top">
 				<div class="container">
-					<nav id="navbar_main1" class="mobile-offcanvas navbar navbar-expand-lg">
+					<nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg">
 						<div class="offcanvas-header">
 							<button class="btn-close float-end"></button>
 							<h5 class="py-2 text-white">Навигация</h5>
@@ -170,204 +159,187 @@
 					</nav>
 				</div>
 			</div>
-
-				
 		</div>
-			
 		<!--end top header wrapper-->
-		<!--start slider section-->
-
-		{% block content %}
-
-	
 		<!--start page wrapper -->
+		{% block content %}
 		<div class="page-wrapper">
 			<div class="page-content">
-
+				
 				<!--start Featured product-->
+								<!--start Featured product-->
 				<section class="py-4">
 					<div class="container">
 						<div class="d-flex align-items-center">
-							<h5 class="text-uppercase mb-0">ТОВАРЫ</h5>
+							<h5 class="text-uppercase mb-0">Продукты</h5>
 							<a href="/search/?q={{products.title.all}}" class="btn btn-light ms-auto rounded-0">Все продукты<i class='bx bx-chevron-right'></i></a>
 						</div>
 						<hr/>
-
-
-						
 						<div class="product-grid">
 							<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-								{% for product in products %}
-								
-								<div class="col">
 
-									<div class="card rounded-0 product-card">
-										
-										<a href="{{ product.get_absolute_url }}">
-											<img src="{{product.image.url}}" class="card-img-top" alt="..." width="140" height="210">
+
+								{% for product in products %}
+								<div class="col">
+									<div class="card rounded-0 product-card" style="width: 12rem;">
+										<a href="product-details.html">
+											<img src="{{product.image.url}}" style="height: 8rem; width: 12rem;" class="card-img-top" alt="...">
 										</a>
 										<div class="card-body">
 											<div class="product-info">
-												<a href="javascript:;">
-													<p class="product-catergory font-13 mb-1">{{product.category}}</p>
+												<a href="/search/?q={{ product.category }}">
+													<p class="product-catergory font-13 mb-1">{{ product.category }}</p>
 												</a>
 												<a href="{{ product.get_absolute_url }}">
-													<h6 class="product-name mb-2">{{product.title}}</h6>
+													<h6 class="product-name mb-2">{{ product.title }}</h6>
 												</a>
 												<div class="d-flex align-items-center">
-													<div class="mb-1 ">
-														<span class="text-white fs-5">{{product.price}} Р.</span>
+													<div class="mb-1 product-price">
+														<span class="text-white fs-5">{{ product.price }} Р.</span>
 													</div>
 												</div>
 												<div class="product-action mt-2">
 													<div class="d-grid gap-2">
-														<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm" >
-															<i class='bx bxs-cart-add'></i>
-															Добавить в корзину
-														</a>	
-
-														
+														<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>	
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									
 								</div>
-
 								{% endfor %}
+
 							</div>
 							<!--end row-->
-
-						
 						</div>
 					</div>
-				</section>
-				
-				<!--start News-->
-
-				<section class="py-4">
 					<div class="container">
 						<div class="d-flex align-items-center">
-							<h5 class="text-uppercase mb-0">Последние новости</h5>
+							<h5 class="text-uppercase mb-0">Новости</h5>
 							<a href="{% url 'mainapp:blog' %}" class="btn btn-light ms-auto rounded-0">Все новости<i class='bx bx-chevron-right'></i></a>
 						</div>
 						<hr/>
 						<div class="product-grid">
-							<div class="latest-news owl-carousel owl-theme">
+							<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+
+
 								{% for post in news_post %}
-								<div class="item">
-									<div class="card rounded-0 product-card border">
+								<div class="col">
+									<div class="card rounded-0 product-card" style="width: 12rem;">
 										<a href="{% url 'mainapp:blog' %}">
-											<img src="{{post.image.url}}" class="card-img-top border-bottom bg-dark-1" alt="..." width="140" height="210">
+											<img src="{{ post.image.url }}" style="height: 8rem; width: 12rem;" class="card-img-top" alt="...">
 										</a>
 										<div class="card-body">
-											<div class="news-title">
-												<a href="javascript:;">
-													<h5 class="mb-3 text-capitalize">{{post.title}}</h5>
+											<div class="product-info">
+												
+												<a href="{{post.image.url}}">
+													<h6 class="product-name mb-2">{{post.title}}</h6>
 												</a>
+												<div class="d-flex align-items-center">
+													<a href="javascript:;" class="list-inline-item"><i class='bx bx-calendar me-1'></i>{{post.date_created}}</a>
+												</div>
 											</div>
-											<p class="news-content mb-0"></p>
 										</div>
 									</div>
 								</div>
 								{% endfor %}
+
 							</div>
+							<!--end row-->
 						</div>
 					</div>
 				</section>
+				<!--end Featured product-->
 
-		{% endblock content %}
+				<hr/>
+
+				<!--start News-->
+
+				<section class="py-4">
+					
+				</section>
+
 				<!--end News-->
-				<!--start brands-->
-
-				<!--end brands-->
-
-				
-
-				<!--start footer section-->
-				<footer>
-					<section class="py-4 bg-dark-1">
-						<div class="container">
-							<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
-								<div class="col">
-									<div class="footer-section1 mb-3">
-										<h6 class="mb-3 text-uppercase">Контактная информация</h6>
-										<div class="address mb-3">
-											<p class="mb-0 text-uppercase text-white">Адрес</p>
-											<p class="mb-0 font-12">Пос. Чульман ул. советская, д.</p>
-										</div>
-										<div class="phone mb-3">
-											<p class="mb-0 text-uppercase text-white">Телефон для связи</p>
-											<p class="mb-0 font-13">+91-9910XXXX</p>
-										</div>
-										<div class="email mb-3">
-											<p class="mb-0 text-uppercase text-white">Email</p>
-											<p class="mb-0 font-13">mail@example.com</p>
-										</div>
-										<div class="working-days mb-3">
-											<p class="mb-0 text-uppercase text-white">Время работы</p>
-											<p class="mb-0 font-13">Понедельник - Пятница / 9:30 - 18:30</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<hr/>
-							<div class="row row-cols-1 row-cols-md-2 align-items-center">
-								<div class="col">
-									<p class="mb-0">Copyright © 2022. Nerenergo</p>
-								</div>
-								<div class="col text-end">
-									<div class="payment-icon">
-										<div class="row row-cols-auto g-2 justify-content-end">
-											<div class="col">
-												<img src="/media/icons/visa.png" alt="" />
-											</div>
-											<div class="col">
-												<img src="/media/icons/mastercard.png" alt="" />
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</section>
-				</footer>
-				<!--end footer section-->
-
-
 			</div>
 		</div>
+		{% endblock content %}
 		<!--end page wrapper -->
-
-
-
+		<!--start footer section-->
 		
-		<!--Start Back To Top Button--> 
+				
+		<footer >
+			<section class="py-4 bg-dark-1" style="margin-top: 25rem;">
+				<div class="container">
+					<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
+						<div class="col">
+							<div class="footer-section1 mb-3">
+								<h6 class="mb-3 text-uppercase">Контактная информация</h6>
+								<div class="address mb-3">
+									<p class="mb-0 text-uppercase text-white">Адрес</p>
+									<p class="mb-0 font-12">Пос. Чульман ул. советская, д.</p>
+								</div>
+								<div class="phone mb-3">
+									<p class="mb-0 text-uppercase text-white">Телефон для связи</p>
+									<p class="mb-0 font-13">+79774962409</p>
+								</div>
+								<div class="email mb-3">
+									<p class="mb-0 text-uppercase text-white">Email</p>
+									<p class="mb-0 font-13">mail@example.com</p>
+								</div>
+								<div class="working-days mb-3">
+									<p class="mb-0 text-uppercase text-white">Время работы</p>
+									<p class="mb-0 font-13">Понедельник - Пятница / 9:30 - 18:30</p>
+								</div>
+							</div>
+						</div>
+					</div>
+							
+					<hr/>
+					<div class="row row-cols-1 row-cols-md-2 align-items-center">
+						<div class="col">
+							<p class="mb-0">Copyright © 2022. Nerenergo</p>
+						</div>
+						<div class="col text-end">
+							<div class="payment-icon">
+								<div class="row row-cols-auto g-2 justify-content-end">
+									<div class="col">
+										<img src="/media/icons/visa.png" alt="" />
+									</div>
+									<div class="col">
+										<img src="/media/icons/mastercard.png" alt="" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+							
+				</div>
+			</section>
+		</footer>
+
+		<!--end footer section-->
+
 		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
-		<!--End Back To Top Button-->
 	</div>
-	<!--end wrapper-->
 
-
+	
 	
 	
 	<!-- Bootstrap JS -->
 	<script src="{% static 'mainapp/js/bootstrap.bundle.min.js' %}"></script>
 	<!--plugins-->
 	<script src="{% static 'mainapp/js/jquery.min.js' %}"></script>
-	<script src="{% static 'mainapp/plugins/nouislider/nouislider.min.js' %} "></script>
 	<script src="{% static 'mainapp/plugins/simplebar/js/simplebar.min.js' %}"></script>
 	<script src="{% static 'mainapp/plugins/OwlCarousel/js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'mainapp/plugins/OwlCarousel/js/owl.carousel2.thumbs.min.js' %}"></script>
 	<script src="{% static 'mainapp/plugins/metismenu/js/metisMenu.min.js' %} "></script>
-	<script src="{% static 'mainapp/js/price-slider.js' %}"></script>
-
 	<script src="{% static 'mainapp/plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+	<script src="{% static 'mainapp/plugins/nouislider/nouislider.min.js' %} "></script>
+	<script src="{% static 'mainapp/js/price-slider.js' %}"></script>
+	<script src="{% static 'mainapp/js/product-gallery.js' %}"></script>
 	<!--app JS-->
 	<script src="{% static 'mainapp/js/app.js' %}"></script>
+
 
 
 </body>

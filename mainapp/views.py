@@ -81,8 +81,8 @@ class BaseView( View):
     def get(self, request, *args, **kwargs):
         
         categories = Category.objects.all()
-        products = Product.objects.all()
-        news_post = News.objects.all()
+        products = Product.objects.all() [:8:-1]
+        news_post = News.objects.all() [:4:-1]
         
        
         context = {
@@ -150,10 +150,16 @@ class SearchView(View):
 
         products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
         categories = Category.objects.all()
+        paginator = Paginator(products, 2)
+        page = request.GET.get('page')
+        paged_products = paginator.get_page(page)
+        products_count = products.count()
 
         context = {
             'categories': categories,
-            'products' : products
+            'products' : products,
+            'paged_products' : paged_products,
+            'products_count' : products_count
             
         }
         
