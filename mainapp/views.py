@@ -139,9 +139,36 @@ class ProductDetailView(DetailView):
                             
 
                             #представление поиска 
+
+
+def search(request):
+    products_count = 0
+    products = None
+    paged_products = None
+    if 'q' in request.GET:
+        keyword = request.GET['q']
+        if keyword :
+            products = Product.objects.filter(Q(title__icontains=keyword) | Q(category__name__icontains=keyword))
+            products_count = products.count()
+            paginator = Paginator(products, 24)
+            page = request.GET.get('page')
+            paged_products = paginator.get_page(page)
+
+                
+        
+    context = {
+        'products': products,
+        'paged_products': paged_products,
+        'products_count': products_count,
+    }
+        
+    return render(request, 'mainapp/search.html', context)
+'''
+
 class SearchView(View):
 
     model = Product
+
 
     def get(self, request, *args, **kwargs):
 
@@ -150,7 +177,7 @@ class SearchView(View):
 
         products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
         categories = Category.objects.all()
-        paginator = Paginator(products, 2)
+        paginator = Paginator(products, 4)
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
         products_count = products.count()
@@ -165,7 +192,7 @@ class SearchView(View):
         
         return render(request, 'mainapp/search.html', context)
 
-
+'''
 
                                 #представление корзины (старое)
 

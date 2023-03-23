@@ -163,16 +163,16 @@
 		<!--end top header wrapper-->
 		<!--start page wrapper -->
 		{% block content %}
-		<div class="page-wrapper">
-			<div class="page-content">
+
 				
 				<!--start Featured product-->
 								<!--start Featured product-->
 				<section class="py-4">
 					<div class="container">
 						<div class="d-flex align-items-center">
-							<h5 class="text-uppercase mb-0">Продукты</h5>
-							<a href="/search/?q={{products.title.all}}" class="btn btn-light ms-auto rounded-0">Все продукты<i class='bx bx-chevron-right'></i></a>
+							<h5 class="text-uppercase mb-0">Продукты </h5>
+
+							<a href="/search/?q={% for product in products %}{{product.title}}{% endfor %}" class="btn btn-light ms-auto rounded-0">Все продукты</a>
 						</div>
 						<hr/>
 						<div class="product-grid">
@@ -216,7 +216,7 @@
 					<div class="container">
 						<div class="d-flex align-items-center">
 							<h5 class="text-uppercase mb-0">Новости</h5>
-							<a href="{% url 'mainapp:blog' %}" class="btn btn-light ms-auto rounded-0">Все новости<i class='bx bx-chevron-right'></i></a>
+							<a href="{% url 'mainapp:blog' %}" class="btn btn-light ms-auto rounded-0">Все новости</a>
 						</div>
 						<hr/>
 						<div class="product-grid">
@@ -260,15 +260,14 @@
 				</section>
 
 				<!--end News-->
-			</div>
-		</div>
+
 		{% endblock content %}
 		<!--end page wrapper -->
 		<!--start footer section-->
 		
 				
 		<footer >
-			<section class="py-4 bg-dark-1" style="margin-top: 25rem;">
+			<section class="py-4 bg-dark-1" >
 				<div class="container">
 					<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
 						<div class="col">
