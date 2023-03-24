@@ -4,8 +4,7 @@ from .views import (
     BaseView, 
     ProductDetailView,
     ContactView,
-    AllCategoryView,
-    NewsView
+    AllCategoryView
     )   
 
 #from mainapp import views
@@ -26,7 +25,7 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('all_category/', AllCategoryView.as_view(), name='all_category'),
-    path('blog/', NewsView.as_view(), name='blog')
+    path('blog/', views.getnews, name='blog')
     
 ]
 

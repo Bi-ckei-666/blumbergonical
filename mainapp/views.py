@@ -55,23 +55,25 @@ class ContactView( View):
 
                             
 
-                            #представление новостного блога
-class NewsView( View):
 
-    def get(self, request, *args, **kwargs):
+
+def getnews(request):
             
-        categories = Category.objects.all()
-        news_post = News.objects.all() [::-1]
+
+    news_post = News.objects.all() [::-1]
+    paginator = Paginator(news_post, 1)
+    page = request.GET.get('page')
+    paged_products = paginator.get_page(page)
          
-        context = {
-            'categories': categories,
-            'news_post' : news_post
+    context = {
+
+        'news_post' : news_post,
+        'paged_products': paged_products
             
                         
-        }
-        return render(request, 'mainapp/blog.html', context)
-
-                            
+    }
+    return render(request, 'mainapp/blog.html', context)
+               
 
 
                             #представление главной страницы
@@ -150,16 +152,17 @@ def search(request):
         if keyword :
             products = Product.objects.filter(Q(title__icontains=keyword) | Q(category__name__icontains=keyword))
             products_count = products.count()
-            paginator = Paginator(products, 24)
+            paginator = Paginator(products, 20)
             page = request.GET.get('page')
             paged_products = paginator.get_page(page)
 
+
+    #filter_price = Product.objects.filter(price__in=self.request.Get.getlist('price'))
                 
         
     context = {
-        'products': products,
         'paged_products': paged_products,
-        'products_count': products_count,
+        'products_count': products_count
     }
         
     return render(request, 'mainapp/search.html', context)

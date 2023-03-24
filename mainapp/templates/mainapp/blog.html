@@ -37,7 +37,7 @@
 								<div class="blog-right-sidebar p-3">
 									
 
-									{% for post in news_post %}
+									{% for post in paged_products %}
 									
 									<div class="card" >
 										<div class="row">
@@ -65,29 +65,39 @@
 									{% endfor %}
 									
 									<hr>
-									<!--
+								
+									{% if paged_products.has_other_pages %}
 									<nav class="d-flex justify-content-between" aria-label="Page navigation">
 										<ul class="pagination">
-											<li class="page-item"><a class="page-link" href="javascript:;"><i class="bx bx-chevron-left"></i> Prev</a>
+											{% if paged_products.has_previous %}
+											<li class="page-item"><a class="page-link" href="?page={{paged_products.previous_page_number}}"><i class='bx bx-chevron-left'></i> Назад</a>
 											</li>
+											{% else %}
+											<li class="page-item"><a class="page-link" href="javascript:;"><i class='bx bx-chevron-left'></i> Назад</a>
+											</li>
+											{% endif %}
 										</ul>
 										<ul class="pagination">
-											<li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span>
-											</li>
-											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">2</a>
-											</li>
-											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">3</a>
-											</li>
-											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">4</a>
-											</li>
-											<li class="page-item d-none d-sm-block"><a class="page-link" href="javascript:;">5</a>
-											</li>
+
+											{% for x in paged_products.paginator.page_range %}
+												{% if paged_products.number == x %}
+													<li class="page-item active d-none d-sm-block"><a class="page-link" href="">{{x}}</a>
+													{% else %}
+													<li class="page-item d-none d-sm-block" aria-current="page"><a class="page-link" href="?page={{x}}">{{x}}</a></li>
+													{% endif %}
+											{% endfor %}
 										</ul>
 										<ul class="pagination">
-											<li class="page-item"><a class="page-link" href="javascript:;" aria-label="Next">Next <i class="bx bx-chevron-right"></i></a>
+											{% if paged_products.has_next %}
+											<li class="page-item"><a class="page-link" href="?page={{paged_products.next_page_number}}{% if request.GET.q %}&q={{request.GET.q }}{% endif %}" aria-label="Next">Вперед <i class='bx bx-chevron-right'></i></a>
 											</li>
+											{% else %}
+											<li class="page-item"><a class="page-link" href="" aria-label="Next">Вперед <i class='bx bx-chevron-right'></i></a>
+											</li>
+											{% endif %}
 										</ul>
-									</nav>-->
+									</nav>
+									{% endif %}
 								</div>
 							</div>
 
