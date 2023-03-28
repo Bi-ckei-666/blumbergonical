@@ -165,7 +165,7 @@
 						<div class="d-flex align-items-center">
 							<h5 class="text-uppercase mb-0">Продукты </h5>
 
-							<a href="/search/?q={% for product in products %}{{product.title}}{% endfor %}" class="btn btn-light ms-auto rounded-0">Все продукты</a>
+							<a href="/search/?q={% for product in products %}{{product.title}}{% endfor %}" class="btn btn-light ms-auto rounded-0 ">Все продукты</a>
 						</div>
 						<hr/>
 						<div class="product-grid">
@@ -174,8 +174,8 @@
 
 								{% for product in products %}
 								<div class="col">
-									<div class="card rounded-0 product-card" style="width: 12rem;">
-										<a href="product-details.html">
+									<div class="card rounded-5 product-card" style="width: 12rem;">
+										<a href="{{ product.get_absolute_url }}">
 											<img src="{{product.image.url}}" style="height: 8rem; width: 12rem;" class="card-img-top" alt="...">
 										</a>
 										<div class="card-body">
@@ -191,7 +191,7 @@
 														<span class="text-white fs-5">{{ product.price }} Р.</span>
 													</div>
 												</div>
-												<div class="product-action mt-2">
+												<div class="product-action mt-1">
 													<div class="d-grid gap-2">
 														<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>	
 													</div>

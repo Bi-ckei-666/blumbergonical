@@ -67,7 +67,7 @@ def add_cart(request, product_id):
             cart_item.save()
 
         #return redirect('cart:cart')
-        return redirect('cart:cart')
+        return redirect(request.META['HTTP_REFERER'])
 
 
 
@@ -126,7 +126,7 @@ def add_cart(request, product_id):
                 cart_item.variation.add(*product_variation)
             cart_item.save()
 
-        return redirect('cart:cart')
+        return redirect(request.META['HTTP_REFERER'])
 
 def remove_cart(request, product_id, cart_item_id):
     product = get_object_or_404(Product, id=product_id)

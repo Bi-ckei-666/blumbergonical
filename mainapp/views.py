@@ -83,7 +83,7 @@ class BaseView( View):
     def get(self, request, *args, **kwargs):
         
         categories = Category.objects.all()
-        products = Product.objects.all() [:8:-1]
+        products = Product.objects.all() [:4:-1]
         news_post = News.objects.all() [:4:-1]
         
        

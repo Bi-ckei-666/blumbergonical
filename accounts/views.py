@@ -62,7 +62,8 @@ def register(request):
             send_email.send()
     
             # messages.success(request, 'Check Gmail To Active Your Account')
-            return redirect('mainapp/register/?command=verification&email='+email)
+            return redirect('accounts:sing_in')
+
 
             
             # auth.login(request, user)
