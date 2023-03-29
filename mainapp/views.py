@@ -83,7 +83,7 @@ class BaseView( View):
     def get(self, request, *args, **kwargs):
         
         categories = Category.objects.all()
-        products = Product.objects.all() [:4:-1]
+        products = Product.objects.all() [:5:-1]
         news_post = News.objects.all() [:4:-1]
         
        
@@ -142,6 +142,8 @@ class ProductDetailView(DetailView):
 
                             #представление поиска 
 
+def sort_by_price(self):
+    return Product.objects.order_by('price')
 
 def search(request):
     products_count = 0
@@ -151,18 +153,21 @@ def search(request):
         keyword = request.GET['q']
         if keyword :
             products = Product.objects.filter(Q(title__icontains=keyword) | Q(category__name__icontains=keyword))
-            products_count = products.count()
+
             paginator = Paginator(products, 20)
             page = request.GET.get('page')
             paged_products = paginator.get_page(page)
+            sort_price = sort_by_price(paged_products)
+
+
 
 
     #filter_price = Product.objects.filter(price__in=self.request.Get.getlist('price'))
-                
+
         
     context = {
         'paged_products': paged_products,
-        'products_count': products_count
+        'sort_price': sort_price
     }
         
     return render(request, 'mainapp/search.html', context)

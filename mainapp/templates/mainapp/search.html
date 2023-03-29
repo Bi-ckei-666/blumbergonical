@@ -25,129 +25,26 @@
 									<div class="card rounded-0 w-100">
 										<div class="card-body">
 											<div class="align-items-center d-flex d-xl-none">
-												<h6 class="text-uppercase mb-0">фильтры</h6>
+												
 												<div class="btn-mobile-filter-close btn-close ms-auto cursor-pointer"></div>
 											</div>
 
 											<h6 class="text-uppercase mb-0">фильтры</h6>
 											<hr>
-											<hr class="d-flex d-xl-none" />
-
-											<div class="product-brands">
-
-												
-												<div class="accordion" id="accordionExample">
-												  	<div class="accordion-item">
-													    <h2 class="accordion-header" id="headingOne">
-													      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-													        Категории
-													      </button>
-													    </h2>
-													   	<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-														    <div class="accordion-body">
-															    <ul class="list-unstyled mb-0 categories-list">
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=один_один_один ">
-																			<label class="form-check-label" for="Adidas">Высоковольтное щитовое оборудование </label>
-																			</a>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=">
-																			<label class="form-check-label" for="Armani">Генераторы электроэнергии и элементы питания</label>
-																			</a>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=">
-																			<label class="form-check-label" for="CalvinKlein">Изделия для электромонтажа </label>
-																			</a>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=">
-																			<label class="form-check-label" for="Columbia">Инструменты, техника </label>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=">
-																			<label class="form-check-label" for="JhonPlayers">Кабеленесущие системы </label>
-																			</a>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=">
-																			<label class="form-check-label" for="Diesel">Кабели, провода и аксессуары  </label>
-																			</a>	
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q="> 
-																			<label class="form-check-label" for="Diesel">Климатические и инженерные системы  </label>
-																			</a>	
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q="> 
-																			<label class="form-check-label" for="Diesel">Низковольтное и промышленное электрооборудование  </label>
-																			</a>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q="> 
-																			<label class="form-check-label" for="Diesel">Освещение  </label>
-																			</a>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=">
-																			<label class="form-check-label" for="Diesel">Связь, телекоммуникации  </label>
-																			</a>	
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q=">
-																			<label class="form-check-label" for="Diesel">Устройства и средства безопасности  </label>
-																			</a>
-																		</div>
-																	</li>
-																	<li>
-																		<div class="form-check">
-																			<a href="/search/?q="> 
-																			<label class="form-check-label" for="Diesel">Электроустановочные изделия  </label>
-																			</a>
-																		</div>
-																	</li>
-																</ul>
-													      	</div>
-												   		</div>
-												 	</div>
-												</div>
-											</div>
-											</hr>
-											<div>
-											</div>
-											<!--
+											
+											{% if sort_price %}
 											<div class="price-range">
 												<h6 class="text-uppercase mb-3">Цена</h6>
 												<div class="ms-auto">
-													<p class="mb-0">Цена: 200.00Р - Р900.00Р</p>
+													<p class="mb-0">Цена: {{min_sort_price.price}} - Р900.00 Р</p>
 												</div>
 												<div class="my-4" id="slider"></div>
 												
 											</div>
+											{% endif %}
 											<hr>
+
+											<!--
 											<div class="product-brands">
 												<h6 class="text-uppercase mb-3">Brands</h6>
 												<ul class="list-unstyled mb-0 categories-list">
@@ -222,33 +119,35 @@
 
 								</div>
 
+								{% if paged_products %}
+									
 								<div class="product-grid">
-									<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-										{% for product in paged_products %}
-										
+									<div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-5">
+										{% for product in sort_price %}
+											
 										<div class="col">
 
-											<div class="card rounded-0 product-card" style="width: 10rem;">
+											<div class="card rounded-0 product-card" style="width: 8rem;">
 												
 												<a href="{{ product.get_absolute_url }}">
-													<img src="{{product.image.url}}"  style="height: 6rem; width: 10rem;" class="card-img-top img-fluid" alt="...">
+													<img src="{{product.image.url}}"  style="height: 6rem; width: 8rem;" class="card-img-top img-fluid" alt="...">
 												</a>
 												<div class="card-body">
 													<div class="product-info">
 														<a href="javascript:;">
-															<p class="product-catergory font-13 mb-1">{{product.category}}</p>
+															<p class="product-catergory font-13 mb-1 ">{{product.category}}</p>
 														</a>
 														<a href="{{ product.get_absolute_url }}">
 															<h6 class="product-name mb-2">{{product.title}}</h6>
 														</a>
 														<div class="d-flex align-items-center">
 															<div class="mb-1 product-price">
-																<span class="text-white fs-5">{{product.price}} Р.</span>
+																<span class="text-white fs-8">{{product.price}} Р.</span>
 															</div>
 														</div>
 														<div class="product-action mt-2">
 															<div class="d-grid gap-2">
-																<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i>Добавить в корзину</a>
+																<a href="{% url 'cart:add_cart' product_id=product.id %}" class="btn btn-light btn-ecomm">	<i class='bx bxs-cart-add'></i></a>
 															</div>
 														</div>
 													</div>
@@ -258,6 +157,7 @@
 										{% endfor %}
 									</div>
 								</div>
+								{% endif %}
 								{% if paged_products.has_other_pages %}
 								<nav class="d-flex justify-content-between" aria-label="Page navigation">
 									
