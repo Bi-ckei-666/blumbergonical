@@ -32,17 +32,45 @@
 											<h6 class="text-uppercase mb-0">фильтры</h6>
 											<hr>
 											
-											{% if sort_price %}
+											
 											<div class="price-range">
 												<h6 class="text-uppercase mb-3">Цена</h6>
 												<div class="ms-auto">
-													<p class="mb-0">Цена: {{min_sort_price.price}} - Р900.00 Р</p>
+													<p class="mb-0">Цена: - Р900.00 Р</p>
 												</div>
 												<div class="my-4" id="slider"></div>
+
+											</div>
+											<hr>
+											<div>
+												{% for product in filter_P.qs %}
+												<ul class="list-unstyled mb-0 categories-list " >
+													<li>
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value="" id="Adidas">
+															<label class="form-check-label" for="Adidas">{{ product.price }} Руб.<br /></label>
+														</div>
+													</li>
+												</ul>
+
+												{% endfor %}
 												
 											</div>
-											{% endif %}
+											
+
+
 											<hr>
+
+											<form method="get">
+										        {{ filter_P.form.as_p }}
+										        <input type="submit" />
+										    </form>
+
+
+											
+											<hr>
+
+											
 
 											<!--
 											<div class="product-brands">
@@ -119,11 +147,10 @@
 
 								</div>
 
-								{% if paged_products %}
-									
+								
 								<div class="product-grid">
 									<div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 row-cols-xl-5">
-										{% for product in sort_price %}
+										{% for product in paged_products %}
 											
 										<div class="col">
 
@@ -157,7 +184,7 @@
 										{% endfor %}
 									</div>
 								</div>
-								{% endif %}
+						
 								{% if paged_products.has_other_pages %}
 								<nav class="d-flex justify-content-between" aria-label="Page navigation">
 									

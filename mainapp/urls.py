@@ -4,7 +4,8 @@ from .views import (
     BaseView, 
     ProductDetailView,
     ContactView,
-    AllCategoryView
+    AllCategoryView,
+    SearchView
     )   
 
 #from mainapp import views
@@ -22,7 +23,7 @@ urlpatterns = [
     #path('change-qty/<str:ct_model>/<str:slug>/', ChangeQTYView.as_view(), name='change_qty'),
     #path('checkout/', CheckoutView.as_view(), name='checkout'),
     #path('make-order/', MakeOrderView.as_view(), name='make_order'),
-    path('search/', views.search, name='search'),
+    path('search/', SearchView.as_view(), name='search'),
     path('contact/', ContactView.as_view(), name='contact'),
     path('all_category/', AllCategoryView.as_view(), name='all_category'),
     path('blog/', views.getnews, name='blog')

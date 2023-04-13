@@ -17,7 +17,7 @@ from django.views.generic import DetailView, View, ListView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
-
+from .filters import Filter_products
 from .models import Category, Product, Customer, News
 #from .mixins import CartMixin
 #from .forms import OrderForm
@@ -142,32 +142,32 @@ class ProductDetailView(DetailView):
 
                             #представление поиска 
 
-def sort_by_price(self):
-    return Product.objects.order_by('price')
-
+ 
+'''
 def search(request):
+    model = Product
     products_count = 0
+    filter_P = None
     products = None
     paged_products = None
     if 'q' in request.GET:
         keyword = request.GET['q']
         if keyword :
-            products = Product.objects.filter(Q(title__icontains=keyword) | Q(category__name__icontains=keyword))
 
-            paginator = Paginator(products, 20)
+            products = Product.objects.filter(Q(title__icontains=keyword) | Q(category__name__icontains=keyword))
+            filter_P = Filter_products(request.GET, queryset=products)
+            paginator = Paginator(products, 5)
             page = request.GET.get('page')
             paged_products = paginator.get_page(page)
-            sort_price = sort_by_price(paged_products)
-
-
-
-
-    #filter_price = Product.objects.filter(price__in=self.request.Get.getlist('price'))
-
+ 
         
+    
+
+
+
     context = {
         'paged_products': paged_products,
-        'sort_price': sort_price
+        'filter_P': filter_P
     }
         
     return render(request, 'mainapp/search.html', context)
@@ -184,23 +184,29 @@ class SearchView(View):
         query = self.request.GET.get('q')
 
         products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
-        categories = Category.objects.all()
+        #filter_P = Filter_products(request.GET, queryset=products)
         paginator = Paginator(products, 4)
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
-        products_count = products.count()
+
+        def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['filter_P'] = Filter_products(self.request.GET, queryset=self.get_queryset())
+            return cintext
+
+
 
         context = {
-            'categories': categories,
-            'products' : products,
             'paged_products' : paged_products,
-            'products_count' : products_count
+            'products': products
+
             
         }
+
         
         return render(request, 'mainapp/search.html', context)
 
-'''
+
 
                                 #представление корзины (старое)
 
