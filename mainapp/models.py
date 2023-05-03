@@ -7,7 +7,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
 from django.utils import timezone
 
-import django_filters
+
 
 
 from mptt.models import MPTTModel, TreeForeignKey
@@ -105,16 +105,6 @@ class Product(models.Model):
 		verbose_name = 'Продукт'
 		verbose_name_plural = 'Продукты'
 
-
-class Filter_products(django_filters.FilterSet):
-
-    price = django_filters.NumberFilter()
-    price__gt = django_filters.NumberFilter(field_name='price', lookup_expr='gt')
-    price__lt = django_filters.NumberFilter(field_name='price', lookup_expr='lt')
-
-    class Meta:
-        model = Product
-        fields = ['price']
 
 
 
