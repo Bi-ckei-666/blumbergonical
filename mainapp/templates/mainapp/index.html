@@ -1,5 +1,5 @@
 {% load static %}
-{% csrf_token %}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,10 +63,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-md order-4 order-md-2">
-							<div class="input-group flex-nowrap px-xl-4">
+						<div class="col-6 col-md order-2 order-md-1">
+							<div class="input-group flex-nowrap px-xl-1">
 								<form action="{% url 'mainapp:search' %}" method="get" class="w-100 rounded-0">
-									<input type="text" name = 'q' class="form-control form-control-lg" placeholder="Поиск...">		
+									{% csrf_token %}
+									<input type="text" name = 'q' class="form-control form-control-lg" placeholder="Поиск...">
+
 								</form>
 							</div>
 						</div>

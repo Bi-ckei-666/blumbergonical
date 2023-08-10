@@ -1,7 +1,7 @@
 from django import forms
 
 
-from .models import Order 
+'''
 
 
 class OrderForm(forms.ModelForm):
@@ -20,6 +20,7 @@ class OrderForm(forms.ModelForm):
 			'first_name', 'last_name', 'phone', 'address', 'buying_type', 'order_date', 'comment'
 			)
 
-class SearchForm(forms.ModelForm):
+'''
+class SearchForm(forms.Form):
 
-	query = forms.CharField()
+	query = forms.CharField(max_length=255)
