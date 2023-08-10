@@ -153,20 +153,41 @@ class SearchView(View):
 
         query = request.GET.get('q')
 
-        if query == None:
-            query = ''
-
         products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
-        filter_P = Filter_products(self.request.GET, queryset=products)
+        #filter_P = Filter_products(self.request.GET, queryset=products)
+        paginator = Paginator(products, 6)
+        page = request.GET.get('page')
+        paged_products = paginator.get_page(page)
 
         context = {
-             'filter_P': filter_P
+             #'filter_P': filter_P
+            'products': products,
+            'paged_products': paged_products
         }
-        print(filter_P)
-        print(products)
-        print(query)
+
 
         return render(request, 'mainapp/search.html', context)
+
+
+
+
+
+
+class PageFilterView(View):
+
+    model = Product
+
+    def filter(self, request):
+        products_filter = Product.objects.all()
+        filter_P = Filter_products(self.request.GET, queryset=products_filter)
+
+        context = {
+            'filter_P': filter_P
+        }
+
+        return render(request, 'mainapp/pageproductfilter.heml', context)
+
+
 
 '''
     def get_context_data(self, **kwargs):

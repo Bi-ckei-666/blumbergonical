@@ -5,7 +5,8 @@ from .views import (
     ProductDetailView,
     ContactView,
     AllCategoryView,
-    SearchView
+    SearchView,
+    PageFilterView
     )   
 
 #from mainapp import views
@@ -17,6 +18,7 @@ app_name = 'mainapp'
 urlpatterns = [
     path('', BaseView.as_view(), name='index.html'),
     path('search', SearchView.as_view(), name='search'),
+    path('filterpage', SearchView.as_view(), name='filterpage'),
     path('products/<id>/<slug>/', ProductDetailView.as_view(), name='product_detail'),
     #path('cart/', CartView.as_view(), name='cart'),
     #path('add-to-cart/<str:id>/<str:slug>', AddToCartView.as_view(), name='add_to_cart'),
