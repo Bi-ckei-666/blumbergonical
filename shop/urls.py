@@ -18,11 +18,15 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from mainapp.views import ProductApiView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls', namespace='mainapp')),
     path('account/', include('accounts.urls', namespace='accounts')),
     path('cart/', include('cart.urls', namespace='cart')),
+
+    path('api/v1/productlist/', ProductApiView.as_view()),
 ]
 
 

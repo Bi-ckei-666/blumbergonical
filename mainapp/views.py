@@ -1,10 +1,3 @@
-#from django.shortcuts import render
-
-# Create your views here.
-
-
-#def test_view(request):
-#	return render(request, 'base.html', {} )
 from django.db import transaction
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
@@ -17,8 +10,13 @@ from django.views.generic import DetailView, View, ListView
 from django.contrib.auth import get_user_model
 from django.contrib.auth.views import LoginView 
 
+from rest_framework import generics
+
+from .serializer import ProductSerializer
+
 from .filters import Filter_products
 from .models import Category, Product, Customer, News
+
 #from .mixins import CartMixin
 #from .forms import OrderForm
 #from .utils import recalc_cart 
@@ -139,74 +137,65 @@ class ProductDetailView(DetailView):
 
 
                             
+class ProductApiView(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer 
+
+
 
                             #представление поиска 
 
- 
-'''
-def search(request):
-    model = Product
-    products_count = 0
-    filter_P = None
-    products = None
-    paged_products = None
-    if 'q' in request.GET:
-        keyword = request.GET['q']
-        if keyword :
-
-            products = Product.objects.filter(Q(title__icontains=keyword) | Q(category__name__icontains=keyword))
-            filter_P = Filter_products(request.GET, queryset=products)
-            paginator = Paginator(products, 5)
-            page = request.GET.get('page')
-            paged_products = paginator.get_page(page)
- 
-        
-    
-
-
-
-    context = {
-        'paged_products': paged_products,
-        'filter_P': filter_P
-    }
-        
-    return render(request, 'mainapp/search.html', context)
-'''
-
 class SearchView(View):
 
-    model = Product
+    model = Product 
 
+    def get(self, request):
 
-    def get(self, request, *args, **kwargs):
-
-       
-        query = self.request.GET.get('q')
+        query = request.GET.get('q')
 
         products = Product.objects.filter(Q(title__icontains=query) | Q(category__name__icontains=query))
-        #filter_P = Filter_products(request.GET, queryset=products)
-        paginator = Paginator(products, 4)
+        #filter_P = Filter_products(self.request.GET, queryset=products)
+        paginator = Paginator(products, 6)
         page = request.GET.get('page')
         paged_products = paginator.get_page(page)
 
-        def get_context_data(self, **kwargs):
-            context = super().get_context_data(**kwargs)
-            context['filter_P'] = Filter_products(self.request.GET, queryset=self.get_queryset())
-            return cintext
-
-
-
         context = {
-            'paged_products' : paged_products,
-            'products': products
-
-            
+             #'filter_P': filter_P
+            'products': products,
+            'paged_products': paged_products
         }
 
-        
+
         return render(request, 'mainapp/search.html', context)
 
 
+
+
+
+
+class PageFilterView(View):
+
+    model = Product
+
+    def filter(self, request):
+        products_filter = Product.objects.all()
+        filter_P = Filter_products(self.request.GET, queryset=products_filter)
+
+        context = {
+            'filter_P': filter_P
+        }
+
+        return render(request, 'mainapp/pageproductfilter.heml', context)
+
+
+
+'''
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['filter_P'] = Filter_products(self.request.GET, queryset=self.get.queryset())
+        return context
+'''
 
                                 #представление корзины (старое)
 
@@ -325,6 +314,13 @@ class MakeOrderView(View):
 
 '''
 
+
+#filter_P.qs,
+        #paginator = Paginator(products, 4)
+        #page = request.GET.get('page')
+  #paged_products = paginator.get_page(page)
+           #'paged_products' : paged_products,
+            #'products': products,
 
                                            
         
