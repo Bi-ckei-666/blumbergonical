@@ -107,7 +107,7 @@
 														<div class="d-flex align-items-center">
 															<div class="flex-grow-1">
 																<h6 class="cart-product-title">{{ cart_item.product.title }}</h6>
-																<p class="cart-product-price">{{cart_item.quantity}} X {{cart_item.product.price}}</p>
+																<p class="cart-product-price">{{cart_item.quantity}} X {{cart_item.product.price}} </p>
 															</div>
 															
 														</div>
@@ -140,17 +140,17 @@
 							<h5 class="py-2 text-white">Навигация</h5>
 						</div>
 						<ul class="navbar-nav">
-							<li class="nav-item active"> <a class="nav-link" href="{% url 'mainapp:index.html' %}">Магазин</a> 
-							</li>
+							
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:contact' %}">О нас</a> 
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:all_category' %}">Каталог категорий</a> 
 							</li>
+
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:filterpage' %}">Поиск по фильтрам</a> 
 							</li>
+							<!--<li class="nav-item"> <a class="nav-link" href="{% url 'accounts:dashboard' %}">Мой аккаунт</a> 
+							</li>-->
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:blog' %}">Новости</a> 
-							</li>
-							<li class="nav-item"> <a class="nav-link" href="{% url 'accounts:dashboard' %}">Мой аккаунт</a> 
 							</li>
 						</ul>
 					</nav>
@@ -169,7 +169,7 @@
 						<div class="d-flex align-items-center">
 							<h5 class="text-uppercase mb-0">Продукты </h5>
 
-							<a href="/search/?q={% for product in products %}{{product.title}}{% endfor %}" class="btn btn-light ms-auto rounded-0 ">Все продукты</a>
+							<a href="{% url 'mainapp:filterpage' %}" class="btn btn-light ms-auto rounded-0 ">Все продукты</a>
 						</div>
 						<hr/>
 						<div class="product-grid">
@@ -193,6 +193,11 @@
 												<div class="d-flex align-items-center">
 													<div class="mb-1 product-price">
 														<span class="text-white fs-8">{{ product.price }} Р.</span>
+													</div>
+												</div>
+												<div class="d-flex align-items-center">
+													<div class="mb-1 product-price">
+														<span class="text-white fs-8">{% if product.availabillity %} В наличии {% else %} Нет в наличии {% endif %}</span>
 													</div>
 												</div>
 												<div class="product-action mt-1">

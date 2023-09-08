@@ -1,0 +1,86 @@
+{% extends 'mainapp/index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+				<section class="py-4">
+					<div class="container">
+						<div class="shop-cart">
+							<div class="row">
+								<div class="col-12 col-xl-8">
+									<div class="checkout-details">
+										<div class="card bg-transparent rounded-0 shadow-none">
+											<div class="card-body">
+												<div class="steps steps-light">
+													<a class="step-item active" href="shop-cart.html">
+														<div class="step-progress"><span class="step-count">1</span>
+														</div>
+														<div class="step-label"><i class='bx bx-cart'></i>Корзина</div>
+													</a>
+													<a class="step-item active current" href="checkout-details.html">
+														<div class="step-progress"><span class="step-count">2</span>
+														</div>
+														<div class="step-label"><i class='bx bx-user-circle'></i>Запрос</div>
+													</a>
+													
+												</div>
+											</div>
+										</div>
+										
+										<div class="card rounded-0">
+											<div class="card-body">
+												<div class="border p-3">
+													<h2 class="h5 mb-0">Данные для оформления заказа</h2>
+													<div class="my-3 border-bottom"></div>
+													<div class="form-body">
+														<form class="row g-3">
+															<div class="col-md-6">
+																<label class="form-label">Имя (ФИО)</label>
+																<input type="text" class="form-control rounded-0">
+															</div>
+															<div class="col-md-6">
+																<label class="form-label">Номер телефона</label>
+																<input type="text" class="form-control rounded-0">
+															</div>
+															
+															<div class="col-md-6">
+																<div class="d-grid">	<a href="javascript:;" class="btn btn-light btn-ecomm"><i class='bx bx-chevron-left'></i>Вернуться в корзину</a>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="d-grid">	<a href="javascript:;" class="btn btn-white btn-ecomm">Отправить запрос<i class='bx bx-chevron-right'></i></a>
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							
+                                <div class="col-12 col-xl-4">
+									<div class="checkout-form p-3 bg-dark-1">
+										<div class="card rounded-0 border bg-transparent mb-0 shadow-none">
+											<div class="card-body">
+												<!--<p class="mb-2">Предворительно: <span class="float-end"></span>
+														
+												<p class="mb-0">Скидка: <span class="float-end">0%</span>
+												</p>-->
+											
+												<h5 class="mb-0">Общая стоимость: <span class="float-end">{{totalll}}</span></h5>
+												<div class="my-4"></div>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+							<!--end row-->
+						</div>
+					</div>
+				</section>
+
+
+{% endblock content %}

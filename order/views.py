@@ -54,7 +54,7 @@ def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
         'vat' : tax,
         'order_total': total,
     }
-    return render(request, 'shop/orders/checkout/checkout.html', context)
+    return render(request, 'mainapp/order_post.html', context)
 
 
 @login_required(login_url = 'accounts:login')

@@ -78,8 +78,11 @@ class Product(models.Model):
 	image = models.ImageField(verbose_name='Изображение')
 	description = models.TextField(verbose_name='описание', null=True)
 	price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
+
 	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
-	characteristiks = models.TextField(verbose_name='описание', null=True)
+	availabillity = models.BooleanField(null=True, verbose_name="наличие")
+
+	characteristiks = models.TextField(verbose_name='описание', null=True, blank=True)
 	date_created = models.DateTimeField(auto_now_add = True)
 	property1 = models.CharField(max_length=255, verbose_name="свойство_№1", blank=True)
 	property2 = models.CharField(max_length=255, verbose_name="свойство_№2", blank=True)

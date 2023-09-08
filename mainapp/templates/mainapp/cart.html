@@ -111,14 +111,14 @@
 											<div class="checkout-form p-3 bg-dark-1">
 												<div class="card rounded-0 border bg-transparent mb-0 shadow-none">
 													<div class="card-body">
-														<p class="mb-2">Предворительно: <span class="float-end">{{order_total}}</span>
+														<p class="mb-2">Предворительно: <span class="float-end">{{ order_total }}</span>
 														
 														<p class="mb-0">Скидка: <span class="float-end">0%</span>
 														</p>
 														<div class="my-3 border-top"></div>
 														<h5 class="mb-0">Общая стоимость: <span class="float-end">{{order_total}}</span></h5>
 														<div class="my-4"></div>
-														<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Оформить заказ!</a>
+														<div class="d-grid"> <a href="{% url 'mainapp:postorder' %}" class="btn btn-white btn-ecomm">Оформить заказ!</a>
 														</div>
 													</div>
 												</div>
