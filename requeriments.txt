@@ -1,0 +1,11 @@
+django
+django_crispy_forms
+django_mptt
+django_filter
+django_rest_framework
+requests
+crispy_bootstrap4
+six
+Pillow
+gunicorn
+psycopg2-binary

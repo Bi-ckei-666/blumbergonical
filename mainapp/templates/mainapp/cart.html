@@ -66,7 +66,7 @@
 													
 													<div class="col cart-img mb-1">
 														<a href="{{ product.get_absolute_url }}">
-														<img style="width: 8rem; padding-left: 15px" src="{{cart_item.product.image.url}}"alt=""></a>
+														<img style="width: 6rem; padding-left: 15px" src="{{cart_item.product.image.url}}"alt=""></a>
 													</div>
 													<div class="col cart-detail text-center text-lg-start" style="padding-left: 20px; padding-right: 20px; position: center;">
 														<h6 class="mb-2">{{ cart_item.product.title }}</h6>
@@ -75,18 +75,18 @@
 														<h6 class="mb-0">{{cart_item.product.price}}</h6>
 													</div>
 
-													<div class="col plus-minus">
+													<div class="col plus-minus" >
 														<form style="" action="{% url 'cart:add_cart' cart_item.product.id %}" method="POST">
-															<a href="{% url 'cart:remove_cart' cart_item.product.id cart_item.id %}" ><i style="text-align: center; background:#232323;color:#fff;height:35px;margin-top:-5px;width:65px; border-radius: 4px;" class="bx bx-minus "></i></a>
+															<button style="background:#232323;color:#fff; height:35px;width: 65px; margin-top:-3px " class="btn btn-light" type="submit" id="button-minus"> <i class="bx bx-plus"></i> </button>
 															
 															<input style=" height:35px; width: 65px;" class="form-control" value="{{cart_item.quantity}}">
 
 															{% csrf_token %}
 															{% for item in cart_item.variation.all %}
-															<input type="hidden" name="{{ item.variation_category }}" value= "{{ item.variation_value |  capfirst}}">
+															<input type="hidden" name="{{ item.variation_category }}" value= "{{ item.variation_value |  capfirst}}" style="width: 50px;">
 															{% endfor %}
-
-															<button style="background:#232323;color:#fff; height:35px; margin-top:-3px " class="btn btn-light" type="submit" id="button-minus"> <i class="bx bx-plus"></i> </button>
+															
+															<a href="{% url 'cart:remove_cart' cart_item.product.id cart_item.id %}"><i style="text-align: center; background:#232323;color:#fff;height:35px;margin-bottom: 15px; width:65px; font-size: 25px; border-radius: 4px;" class=" bx bx-minus"></i></a>
 														</form>
 													</div>
 												</div>
@@ -108,22 +108,20 @@
 								</div>
 
 								<div class="col-12 col-xl-4">
-											<div class="checkout-form p-3 bg-dark-1">
-												<div class="card rounded-0 border bg-transparent mb-0 shadow-none">
-													<div class="card-body">
-														<p class="mb-2">Предворительно: <span class="float-end">{{ order_total }}</span>
-														
-														<p class="mb-0">Скидка: <span class="float-end">0%</span>
-														</p>
-														<div class="my-3 border-top"></div>
-														<h5 class="mb-0">Общая стоимость: <span class="float-end">{{order_total}}</span></h5>
-														<div class="my-4"></div>
-														<div class="d-grid"> <a href="{% url 'mainapp:postorder' %}" class="btn btn-white btn-ecomm">Оформить заказ!</a>
-														</div>
-													</div>
+									<div class="checkout-form p-3 bg-dark-1">
+										<div class="card rounded-0 border bg-transparent mb-0 shadow-none">
+											<div class="card-body">
+												<p class="mb-2">Предворительно: <span class="float-end">{{ order_total }}</span></p>		
+												<p class="mb-0">Скидка: <span class="float-end">0%</span></p>
+												<div class="my-3 border-top"></div>
+												<h5 class="mb-0">Общая стоимость: <span class="float-end">{{order_total}}</span></h5>
+												<div class="my-4"></div>
+												<div class="d-grid"> <a href="{% url 'mainapp:postorder' %}" class="btn btn-white btn-ecomm">Оформить заказ!</a>
 												</div>
 											</div>
 										</div>
+									</div>
+								</div>
 
 							</div>
 

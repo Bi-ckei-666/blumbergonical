@@ -74,6 +74,10 @@ class Account(AbstractBaseUser):
     def has_module_perms(self, add_label):
         return True
 
+    class Meta:
+        verbose_name = 'Аккаунт'
+        verbose_name_plural = 'Аккаунты'
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
@@ -85,3 +89,7 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.first_name
+
+    class Meta:
+        verbose_name = 'Профиль'
+        verbose_name_plural = 'Профили пользователей'

@@ -41,9 +41,9 @@ def checkout(request,total=0, total_price=0, quantity=0, cart_items=None):
         pass # just ignore
 
     
-    tax = round(((2 * total_price)/100), 2)
+    #tax = round(((2 * total_price)/100), 2)
     grand_total = total_price + tax
-    handing = 15.00
+    #handing = 15.00
     total = float(grand_total) + handing
     
     context = {
