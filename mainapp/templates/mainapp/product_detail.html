@@ -28,7 +28,11 @@
             	<h3>{{ product.title }}</h3>
             	<p>Цена: {{ product.price }} руб.</p>
                 <p>Описание: {{ product.description }}</p>
-                <p>Количество {{ product.count_view }}</p>
+		<p>{% if product.brand %}Брэнд: {{ product.brand }} {% else %} {% endif %} </p>
+		<p>{% if product.shtrih_code %}Штрих-код: {{ product.shtrih_code }} {% else %} {% endif %} </p>
+		<p>{% if product.articl %}Артикул: {{ product.articl }} {% else %} {% endif %} </p>
+		<p>{% if product.strana %}Страна производитель: {{ product.strana }} {% else %} {% endif %} </p>
+
                 <p>{% if product.availabillity %} В наличии {% else %} Нет в наличии {% endif %} </p>
 
                 <!--<a href=""><button class="btn btn-danger">добавить в карзину</button></a>-->
@@ -38,7 +42,7 @@
             <div class="characteristic">
                 <p class='mt-4'> Характеристики </p>
                 <table class="table w-100" >
-                    <tr>
+		    <tr>
                         <td>{{ product.property1 }}</td>
                     </tr>
                     <tr>
@@ -67,6 +71,9 @@
                     </tr>
                     <tr> 
                         <td>{{ product.property10 }}</td>
+                    </tr>
+		    <tr>
+                        <td>{{ product.characteristiks }}</td>
                     </tr>
                 </table>
             </div>

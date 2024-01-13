@@ -1,5 +1,6 @@
 
 
+
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType 
@@ -78,9 +79,12 @@ class Product(models.Model):
 	image = models.ImageField(verbose_name='Изображение')
 	description = models.TextField(verbose_name='описание', null=True)
 	price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
-
+	articl = models.IntegerField(blank=True, null=True ,verbose_name='артикул')
 	count_view = models.PositiveIntegerField(default=0, verbose_name='Количество')
 	availabillity = models.BooleanField(null=True, verbose_name="наличие")
+	brand = models.CharField(max_length=255, verbose_name="Брэнд", blank=True)
+	strana = models.CharField(max_length=255, verbose_name="Страна производитель", blank=True)
+	shtrih_code = models.CharField(max_length=255, verbose_name="Штрих-код", blank=True)
 
 	characteristiks = models.TextField(verbose_name='описание', null=True, blank=True)
 	date_created = models.DateTimeField(auto_now_add = True)

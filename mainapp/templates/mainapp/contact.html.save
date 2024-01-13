@@ -1,0 +1,81 @@
+{% extends 'mainapp/index.html' %}
+
+
+
+{% block content %}
+
+
+				<section class="py-0 py-lg-4">
+					<div class="container">
+						<h4>информация</h4>
+					        <td>
+							<tr></tr>	
+						<td/>	
+							<p>Информация об услугах</p>
+					</div>
+				</section>
+				<section class="py-4">
+					<div class="container">
+						<h4>Почему выбирают нас</h4>
+						<hr>
+						<div class="row row-cols-1 row-cols-lg-3">
+							<div class="col d-flex">
+								<div class="card rounded-0 shadow-none w-100">
+									<div class="card-body">
+										<img src="/media/icons/delivery.png" width="60" alt="">
+										<h5 class="my-3">оперативность</h5>
+										<!--<p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr in some form.</p>-->
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="card rounded-0 shadow-none w-100">
+									<div class="card-body">
+										<img src="/media/icons/money-bag.png" width="60" alt="">
+										<h5 class="my-3">гарантия</h5>
+										<!--<p class="mb-0">form.</p>-->
+									</div>
+								</div>
+							</div>
+							<div class="col d-flex">
+								<div class="card rounded-0 shadow-none w-100">
+									<div class="card-body">
+										<img src="/media/icons/support.png" width="60" alt="">
+										<h5 class="my-3">консультация по вопросам предостовляемых услуг</h5>
+										<!--<p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industr in some form.</p>-->
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end row-->
+					</div>
+				</section>
+
+
+				<section class="py-4">
+					
+
+					<div class="container">
+
+						<div style="position:relative;overflow:hidden;">
+							<!--<a href="https://yandex.ru/maps/org/rosa/124537975144/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Роса</a>-->
+							<a href="https://yandex.ru/maps/11443/sakha-(yakutia)-republic/category/hardware_store/184107711/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Магазин электрики в Республике Саха (Якутии)</a>
+							<iframe src="https://yandex.ru/map-widget/v1/-/CCUfm6EnXC" class="w-100" height="450" frameborder="1" allowfullscreen="true" style="position:relative;">
+								
+							</iframe>
+						</div>
+
+					</div>
+				</section>
+				<section class="py-4">
+					<div class="container">
+						<div class="row">
+							
+							
+						</div>
+						<!--end row-->
+					</div>
+				</section>
+
+{% endblock content %}
+			

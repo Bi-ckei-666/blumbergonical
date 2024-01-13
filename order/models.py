@@ -55,6 +55,9 @@ class Order(models.Model):
         
     def __str__(self):
         return self.first_name
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
 
 
 class OrderProduct(models.Model):
@@ -79,3 +82,7 @@ class OrderProduct(models.Model):
 
     def __str__(self):
         return self.product.name
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты в заказе'
+

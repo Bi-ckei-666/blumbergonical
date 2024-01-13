@@ -27,3 +27,7 @@ class CartItem(models.Model):
     def __unicode__(self):
         return self.product
     
+    class Meta:
+        verbose_name = 'Корзина'
+        verbose_name_plural = 'Корзины пользователей'
+

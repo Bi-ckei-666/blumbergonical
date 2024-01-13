@@ -12,7 +12,7 @@
 	
 
 	<!--favicon-->
-	<link rel="icon" href="/media/favicon-32x32.png" type="image/png" />
+	<link rel="icon" href="/media/fav.png" type="image/png" />
 	<!--plugins-->
 	<link href="{% static 'mainapp/plugins/OwlCarousel/css/owl.carousel.min.css' %}" rel="stylesheet" />
 	<link href="{% static 'mainapp/plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
@@ -30,7 +30,7 @@
 	<link href="{% static 'mainapp/css/app.css' %}" rel="stylesheet">
 	<link href="{% static 'mainapp/css/icons.css' %}" rel="stylesheet">
 	
-	<title>Nerenergo</title>
+	<title>Neruenergo</title>
 </head>
 
 <body class="bg-theme9">	<b class="screen-overlay"></b>
@@ -78,18 +78,17 @@
 
 							<div class="ms-2">
 								<p class="mb-0 font-13">связь по телефону</p>
-								<h5 class="mb-0">+79779999999</h5>
+								<h5 class="mb-0">+79244639631</h5>
 							</div>
 						</div>
 						<div class="col col-md-auto order-2 order-md-4">
 							<div class="top-cart-icons">
 								<nav class="navbar navbar-expand">
 									<ul class="navbar-nav ms-auto">
-										<li class="nav-item">
+									 	<!--<li class="nav-item">
 											<a href="{% if user.is_authenticated %} {% url 'accounts:logout' %} {% else %} {% url 'accounts:sing_in' %} {% endif %}" class="nav-link cart-link"><i class='{% if user.is_authenticated %} bx bx-log-out {% else %} bx bx-user {% endif %}'></i>
 											</a>
-										</li>
-										
+										</li>-->
 										<li class="nav-item dropdown dropdown-large">
 											<a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count">{{quantityyy}}</span>
 												<i class='bx bx-shopping-bag'></i>
@@ -141,6 +140,9 @@
 						</div>
 						<ul class="navbar-nav">
 							
+							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:index.html' %}">Магазин</a>
+                                                        </li>
+
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:contact' %}">О нас</a> 
 							</li>
 							<li class="nav-item"> <a class="nav-link" href="{% url 'mainapp:all_category' %}">Каталог категорий</a> 
@@ -178,21 +180,20 @@
 
 								{% for product in products %}
 								<div class="col">
-									<div class="card rounded-9 product-card" style="width: 8rem;">
+									<div class="card rounded-9 product-card" style="width: 12rem;">
 										<a href="{{ product.get_absolute_url }}">
-											<img src="{{product.image.url}}" style="height: 6rem; width: 8rem;" class="card-img-top" alt="...">
+											<img src="{{product.image.url}}" style="border: 1.5px #000000 solid; height: 9rem; width: 12rem;" class="card-img-top" alt="...">
 										</a>
 										<div class="card-body">
 											<div class="product-info">
-												<a href="/search/?q={{ product.category }}">
-													<p class="product-catergory font-13 mb-1">{{ product.category }}</p>
-												</a>
+																				
+											
 												<a href="{{ product.get_absolute_url }}">
 													<h6 class="product-name mb-1">{{ product.title }}</h6>
 												</a>
 												<div class="d-flex align-items-center">
 													<div class="mb-1 product-price">
-														<span class="text-white fs-8">{{ product.price }} Р.</span>
+														<span class="text-white fs-8">Цена: {{ product.price }} Р.</span>
 													</div>
 												</div>
 												<div class="d-flex align-items-center">

@@ -127,10 +127,10 @@
 										{% for product in paged_products %}
 											
 										<div class="col">
-											<div class="card rounded-0 product-card" style="width: 8rem;">
+											<div class="card rounded-0 product-card" style="width: 12rem;">
 												
 												<a href="{{ product.get_absolute_url }}">
-													<img src="{{product.image.url}}"  style="height: 6rem; width: 8rem; " class="card-img-top img-fluid" alt="...">
+													<img src="{{product.image.url}}"  style="height: 9rem; width: 12rem; " class="card-img-top img-fluid" alt="...">
 												</a>
 												<div class="card-body">
 													<div class="product-info">
@@ -142,7 +142,7 @@
 														</a>
 														<div class="d-flex align-items-center">
 															<div class="mb-1 product-price">
-																<span class="text-white fs-8">{{product.price}} Р.</span>
+																<span class="text-white fs-8">Цена: {{product.price}} Р.</span>
 															</div>
 														</div>
 														<div class="product-action mt-2">
