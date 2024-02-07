@@ -6,11 +6,14 @@ from .models import *
 
 
 class ProductSitemap(sitemaps.Sitemap):
+
+	priority = 0.5
+
 	def items(self):
 		return Product.objects.all()
 	
-class StaticViewSitemap(sitemaps.Sitemap):
 
+class StaticViewSitemap(sitemaps.Sitemap):
 	priority = 0.5
 
 	def items(self):
