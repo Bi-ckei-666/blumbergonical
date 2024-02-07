@@ -18,7 +18,16 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+from django.contrib.sitemaps.views import sitemap
+
 from mainapp.views import ProductApiView
+
+from mainapp.sitemaps import ProductSitemap, StaticViewSitemap
+
+sitemaps = {
+    'product':ProductSitemap,
+    'static_contact':StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +36,7 @@ urlpatterns = [
     path('cart/', include('cart.urls', namespace='cart')),
 
     path('api/v1/productlist/', ProductApiView.as_view()),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
 ]
 
 
