@@ -60,6 +60,3 @@ admin.site.register(Customer)
 admin.site.register(News)
 
 
-
-
-

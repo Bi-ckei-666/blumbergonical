@@ -39,18 +39,17 @@ def other_page(request, page):
 
                             # представление кантактов (страница о нас)
 
-class ContactView( View):
+
+def contact(request):
+    return render(request, 'mainapp/contact.html')
+
+'''
+class ContactView(View):
 
     def get(self, request, *args, **kwargs):
             
-        categories = Category.objects.all()
-         
-        context = {
-            'categories': categories
-                        
-        }
-        return render(request, 'mainapp/contact.html', context)
-
+        return render(request, 'mainapp/contact.html')
+'''
                             
 
 
